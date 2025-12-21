@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 
 const PanelChartSection = () => {
   const panelCharts = [
@@ -21,28 +22,37 @@ const PanelChartSection = () => {
     "Madhur Day Panel Chart",
   ];
 
-  const handleClick = (chartName) => {
-    alert(`Clicked on ${chartName}`);
-  };
-
   return (
-    <div className="bg-white border-2 border-blue-400 shadow-lg rounded-xl p-3 mt-6">
-      <h2 className="text-center font-black text-xl bg-gradient-to-r from-blue-600 to-cyan-600 text-white py-2 rounded-lg mb-4">
-        📊 MATKA PANEL CHARTS
-      </h2>
+    <Card className="mt-6 border-2 border-blue-400 shadow-xl">
+      <CardHeader className="bg-gradient-to-r from-blue-600 to-cyan-600 py-2">
+        <CardTitle className="text-center text-xl font-extrabold text-white tracking-wide">
+          📊 MATKA PANEL CHARTS
+        </CardTitle>
+      </CardHeader>
 
-      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-2">
+      <div className="p-3 space-y-2">
         {panelCharts.map((chart, index) => (
           <div
             key={index}
-            onClick={() => handleClick(chart)}
-            className="cursor-pointer rounded-lg shadow-md hover:shadow-xl transition-all duration-200 border-l-4 border-blue-500 p-3 text-center text-base font-bold text-gray-800 bg-gradient-to-br from-blue-50 to-blue-100"
+            className="group flex items-center gap-3 px-4 py-2.5 rounded-full
+                       bg-gradient-to-r from-blue-50 to-cyan-50
+                       shadow-sm hover:shadow-md cursor-pointer
+                       transition-all duration-200"
           >
-            {chart}
+            {/* glowing dot */}
+            <span className="relative flex h-3.5 w-3.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-70"></span>
+              <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-blue-600"></span>
+            </span>
+
+            {/* text */}
+            <p className="text-xl font-semibold leading-tight text-gray-800">
+              {chart}
+            </p>
           </div>
         ))}
       </div>
-    </div>
+    </Card>
   );
 };
 

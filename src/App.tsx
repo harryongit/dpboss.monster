@@ -27,6 +27,8 @@ import About from "@/pages/Main/About";
 import Contact from "@/pages/Main/Contact";
 import PrivacyPolicy from "@/pages/Main/PrivacyPolicy";
 import TermsAndConditions from "@/pages/Main/TermsAndConditions";
+import JodiRecordChart from "./pages/Main/HomeSections/allmarkets/JodiRecordChart";
+import PanelRecordChart from "./pages/Main/HomeSections/allmarkets/PanelRecordChart";
 
 const queryClient = new QueryClient();
 
@@ -41,6 +43,8 @@ const App = () => (
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<MainHome />} />
+               <Route path="/jodi-records-chart/:marketName" element={<JodiRecordChart />} />
+               <Route path="/panel-records-chart/:marketName" element={<PanelRecordChart />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />

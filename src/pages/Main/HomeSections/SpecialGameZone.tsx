@@ -1,45 +1,82 @@
-import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import React from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
+/* SPECIAL GAME ITEMS */
 const specialGameItems = [
-  "Rsboss Special Game Zone",
-  "SATTA MATKA GUESSING FORUM",
-  "100% DATE FIX FREE GAME OPEN TO CLOSE",
-  "RATAN KHATRI FIX PANEL CHART",
-  "MATKA FINAL NUMBER TRICK CHART",
-  "MATKA JODI LIST",
-  "Matka Jodi List",
-  "MATKA JODI COUNT CHART",
-  "DHANVARSHA DAILY FIX OPEN TO CLOSE",
-  "MATKA JODI FAMILY CHART",
-  "PENAL COUNT CHART",
-  "PENAL TOTAL CHART"
+ 
+  "SMboss Guessing Forum (New)",
+  "All market free fix game",
+  "Ratan Khatri Fix Panel Chart",
+  "Matka Final Number Trick Chart",
+  "EverGreen Trick Zone And Matka Tricks By SmBoss",
+];
+
+/* MATKA JODI ITEMS */
+const matkaJodiItems = [
+
+  "Matka Jodi Count Chart",
+  "Dhanvarsha Daily Fix Open To Close",
+  "Matka Jodi Family Chart",
+  "Penal Count Chart",
+  "Penal Total Chart",
+  "All 220 Card List",
+  
+ 
 ];
 
 const SpecialGameZone = () => {
   return (
-    <Card className="bg-gradient-to-br from-yellow-50 to-orange-50 border-2 border-yellow-400 shadow-lg">
-      <CardHeader className="bg-gradient-to-r from-yellow-600 to-orange-600 text-white py-2">
-        <CardTitle className="text-center text-lg font-extrabold tracking-wide">
-          🏆 SPECIAL GAME ZONE
-        </CardTitle>
-      </CardHeader>
+    <div className="space-y-6">
+      {/* SPECIAL GAME ZONE CARD */}
+      <Card className="bg-gradient-to-br from-yellow-50 to-orange-50 border-2 border-yellow-400 shadow-lg">
+        <CardHeader className="bg-gradient-to-r from-yellow-600 to-orange-600 text-white py-2">
+          <CardTitle className="text-center text-xl font-extrabold tracking-wide">
+            🏆 SPECIAL GAME ZONE
+          </CardTitle>
+        </CardHeader>
 
-      <CardContent className="p-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+         <CardContent className="p-0">
           {specialGameItems.map((item, index) => (
+<div
+  key={index}
+  className={`px-1 py-1 text-center text-lg font-bold
+    animate-gradient-text
+    ${index !== specialGameItems.length - 1 ? "border-b border-orange-400" : ""}
+  `}
+>
+  {item}
+</div>
+
+
+
+
+          ))}
+        </CardContent>
+      </Card>
+
+      {/* MATKA JODI CARD */}
+      <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-400 shadow-lg">
+        <CardHeader className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-2">
+          <CardTitle className="text-center text-xl font-extrabold tracking-wide">
+            🎯 MATKA JODI LIST
+          </CardTitle>
+        </CardHeader>
+
+               <CardContent className="p-0">
+          {matkaJodiItems.map((item, index) => (
             <div
               key={index}
-              className="bg-white border border-yellow-300 rounded-lg shadow-sm p-3 hover:shadow-lg transition-all duration-200"
+              className={`px-1 py-1 text-center text-lg font-bold text-gray-800  animate-gradient-text
+                ${index !== matkaJodiItems.length - 1 ? "border-b border-blue-400" : ""}
+              `}
             >
-              <p className="text-sm font-semibold text-gray-800 text-center">
-                {item}
-              </p>
+              {item}
             </div>
           ))}
-        </div>
-      </CardContent>
-    </Card>
+        </CardContent>
+
+      </Card>
+    </div>
   );
 };
 

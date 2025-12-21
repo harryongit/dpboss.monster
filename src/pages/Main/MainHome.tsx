@@ -22,6 +22,10 @@ import JodiChartSection from './HomeSections/JodiChartSection';
 import PanelChartSection from './HomeSections/PanelChartSection';
 import MainBazaarChart from './HomeSections/MainBazaarChart';
 import SpecialGameZone from './HomeSections/SpecialGameZone';
+import TodayResultSection from './HomeSections/TodayResultSection';
+import RajeshreeStarLine from './HomeSections/RajeshreeStarLine';
+import KalyanStarLine from './HomeSections/KalyanStarLine';
+import MainBombayStarLine from './HomeSections/MainBombayStarLine';
 
 const SattaMatkaWebsite = () => {
   const [refreshTime, setRefreshTime] = useState(new Date().toLocaleTimeString());
@@ -142,6 +146,11 @@ const SattaMatkaWebsite = () => {
           <WeeklyJodiChart />
           
          <FreeGameZone  freeGames={freeGames} />
+         <RajeshreeStarLine />
+         <KalyanStarLine/>
+         <MainBombayStarLine/>
+         
+         <TodayResultSection />
           <SpecialGameZone /> 
 <JodiChartSection/>
 <PanelChartSection/>

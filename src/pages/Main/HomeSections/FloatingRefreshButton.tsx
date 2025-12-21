@@ -1,64 +1,77 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { RefreshCw } from 'lucide-react';
+import { RefreshCw, Sparkles } from 'lucide-react';
 
 const FloatingRefreshButton = ({ handleRefresh }: { handleRefresh: () => void }) => {
-  const [showText, setShowText] = useState(false);
+  const [isPulsing, setIsPulsing] = useState(true);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setShowText(prev => !prev);
-    }, 3000); // toggle every 2.5 seconds
+      setIsPulsing(prev => !prev);
+    }, 3000);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <Button
-      onClick={handleRefresh}
-      className={`
-        fixed bottom-10 right-6
-        bg-gradient-to-r from-orange-500 to-rose-600
-        text-white
-        rounded-full
-        shadow-lg shadow-orange-400/50
-        flex items-center justify-center
-        overflow-hidden
-        transition-all duration-500 ease-in-out
-        z-50
-        px-3 py-2
-        ${showText ? 'scale-105 shadow-[0_0_20px_rgba(255,100,100,0.6)]' : 'scale-100 shadow-lg'}
-      `}
-      style={{
-        width: showText ? '140px' : '50px', // button expands for text
-      }}
-    >
-      {/* Rotating icon */}
-      <div className="flex items-center justify-center flex-shrink-0 ">
-        <RefreshCw
-          className={`h-5 w-5 transition-transform duration-500 ${
-            showText ? 'animate-spin-slow' : 'animate-spin-slow'
+    <div className="fixed bottom-10 right-6 z-50">
+      {/* Animated rings */}
+      <div className="absolute inset-0 -z-10">
+        <div
+          className={`absolute inset-0 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 blur-xl transition-all duration-700 ${
+            isPulsing ? 'scale-110 opacity-70' : 'scale-100 opacity-50'
+          }`}
+        />
+        <div
+          className={`absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 blur-lg transition-all duration-1000 ${
+            isPulsing ? 'scale-125 opacity-50' : 'scale-105 opacity-30'
           }`}
         />
       </div>
 
-      {/* Text slides in from left */}
-      <div
-        className="overflow-hidden"
-        style={{
-          width: showText ? '80px' : '0px',
-          transition: 'width 0.5s ease-in-out',
-        }}
-      >
-        <span
-          className={`text-sm font-semibold inline-block  transition-all duration-500 ${
-            showText ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'
-          }`}
-        >
+   <Button
+  onClick={handleRefresh}
+  className="
+    relative
+    h-9
+    px-4
+    flex items-center gap-2
+    rounded-full
+    bg-gradient-to-br from-gray-900 via-slate-800 to-blue-600
+
+
+
+
+
+
+
+
+    text-white
+    shadow-2xl
+    overflow-hidden
+    border border-white/20
+    backdrop-blur-sm
+    transition-all duration-300
+  "
+>
+
+
+        {/* Shimmer */}
+        <div className="absolute inset-0 -translate-x-full animate-[shimmer_2.5s_infinite] bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+
+        {/* Sparkles */}
+        <Sparkles className="absolute top-1 right-2 h-2 w-2 text-yellow-300 animate-ping" />
+        <Sparkles className="absolute bottom-1 left-3 h-2 w-2 text-cyan-300 animate-ping delay-300" />
+
+        {/* Icon */}
+        <RefreshCw className="h-6 w-6 animate-spin-slow flex-shrink-0" />
+
+        {/* Text */}
+        <span className="text-lg font-bold tracking-wide">
           Refresh
         </span>
-      </div>
-    </Button>
+      </Button>
+    </div>
   );
 };
 
