@@ -6,7 +6,7 @@ const WeeklyPattiChart = ({ weeklyPatti }: { weeklyPatti: { number: string; valu
     <Card className="bg-white border-2 border-purple-400 shadow-lg">
       <CardHeader className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-2">
         <CardTitle className="text-center text-base font-black tracking-wide">
-          📅 Rsboss Net Weekly Patti Or Penal Chart From 14-07-2024 To 20-07-2025 For Kalyan, Milan, Kalyan Night, Rajdhani, Time, Main Bazar, Mumbai Royal Night
+          📅 Smboss Net Weekly Patti Or Penal Chart From 14-07-2024 To 20-07-2025 For Kalyan, Milan, Kalyan Night, Rajdhani, Time, Main Bazar, Mumbai Royal Night
         </CardTitle>
       </CardHeader>
       <CardContent className="p-3">
