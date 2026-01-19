@@ -1,79 +1,20 @@
 
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { AlertTriangle, CheckCircle, XCircle } from "lucide-react";
+import { AlertTriangle, CheckCircle, XCircle, Info } from "lucide-react";
 import { motion } from "framer-motion";
-
+import { useUserAssignedMarkets } from "@/hooks/user/useUserAssignedMarkets";
+import { useUserGameStatus } from "@/hooks/user/useUserGameStatus";
+import { useAuth } from "@/contexts/AuthContext";
+import { RefreshButton } from "@/components/ui/refresh-admin";
+import { Toast } from "@/components/ui/ToastProvider";
+import UserUploadResult from "./UserUploadResult";
 const UserDashboard = () => {
-  const userName = "John Doe";
+  const { userUsername } = useAuth();
+  const assignedQuery = useUserAssignedMarkets();
+  const statusQuery = useUserGameStatus();
 
-  const markets = [
-    {
-      name: "BANGALORE DAY",
-      startDate: "05-12-2025",
-      expiryDate: "04-01-2026",
-      remainingDays: 29,
-      totalDays: 60,
-      status: "Inactive",
-    },
-    {
-      name: "BANGALORE NIGHT",
-      startDate: "05-12-2025",
-      expiryDate: "04-01-2026",
-      remainingDays: 29,
-      totalDays: 60,
-      status: "Active",
-    },
-    {
-      name: "MUMBAI DAY",
-      startDate: "06-12-2025",
-      expiryDate: "05-01-2026",
-      remainingDays: 30,
-      totalDays: 60,
-      status: "Active",
-    },
-    {
-      name: "MUMBAI NIGHT",
-      startDate: "06-12-2025",
-      expiryDate: "05-01-2026",
-      remainingDays: 30,
-      totalDays: 60,
-      status: "Inactive",
-    },
-    {
-      name: "DELHI DAY",
-      startDate: "07-12-2025",
-      expiryDate: "06-01-2026",
-      remainingDays: 31,
-      totalDays: 60,
-      status: "Active",
-    },
-    {
-      name: "DELHI NIGHT",
-      startDate: "07-12-2025",
-      expiryDate: "06-01-2026",
-      remainingDays: 31,
-      totalDays: 60,
-      status: "Inactive",
-    },
-    {
-      name: "CHENNAI DAY",
-      startDate: "08-12-2025",
-      expiryDate: "07-01-2026",
-      remainingDays: 32,
-      totalDays: 60,
-      status: "Active",
-    },
-    {
-      name: "CHENNAI NIGHT",
-      startDate: "08-12-2025",
-      expiryDate: "07-01-2026",
-      remainingDays: 32,
-      totalDays: 60,
-      status: "Inactive",
-    },
-  ];
-  
+  const userName = userUsername ?? "User";
 
   const getCardBgClass = (status: string) =>
     status === "Active"
@@ -85,24 +26,29 @@ const UserDashboard = () => {
           status === "Active"
             ? "text-green-600 dark:text-green-400"
             : "text-red-600 dark:text-red-400";
+
+  const getNotifyBgClass = (type: string) => {
+    if (type === "WARNING") return "bg-yellow-50 dark:bg-yellow-900 border-yellow-300 dark:border-yellow-700";
+    if (type === "SUCCESS") return "bg-green-50 dark:bg-green-900 border-green-300 dark:border-green-700";
+    if (type === "ERROR") return "bg-red-50 dark:bg-red-900 border-red-300 dark:border-red-700";
+    if (type === "EXPIRED") return "bg-red-50 dark:bg-red-900 border-red-300 dark:border-red-700";
+    if (type === "LOCKED") return "bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-700";
+    if (type === "NOTICE") return "bg-indigo-50 dark:bg-indigo-900 border-indigo-300 dark:border-indigo-700";
+    return "bg-blue-50 dark:bg-blue-900 border-blue-300 dark:border-blue-700";
+  };
+  const formatDate = (s?: string) => {
+    if (!s) return "";
+    if (s.includes('/')) return s;
+    const d = new Date(s);
+    const dd = String(d.getDate()).padStart(2, '0');
+    const mm = String(d.getMonth() + 1).padStart(2, '0');
+    const yyyy = d.getFullYear();
+    return `${dd}/${mm}/${yyyy}`;
+  };
       
   return (
     <div className="space-y-6">
-
-      {/* Account Alert */}
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 p-4 rounded-lg bg-red-50 dark:bg-red-900 border border-red-300 dark:border-red-700 shadow-sm">
-        <div className="flex items-center gap-3">
-          <AlertTriangle className="text-red-600 dark:text-red-400 w-6 h-6" />
-          <p className="text-red-700 dark:text-red-300 font-semibold">
-            Your account is active till: <span className="underline">04-01-2026</span>
-          </p>
-        </div>
-        <p className="text-red-700 dark:text-red-300 font-medium">
-          Remaining Days: <span className="font-bold">29 days</span>
-        </p>
-      </div>
-
-      {/* Welcome Message */}
+ {/* Welcome Message */}
       <Card className="relative bg-gradient-to-r from-purple-600 to-purple-400 dark:from-purple-800 dark:to-purple-600 text-white rounded-xl p-6 lg:p-8 shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
         <div className="absolute top-0 -left-10 w-40 h-40 bg-purple-500 dark:bg-purple-700 rounded-full opacity-30 pointer-events-none" />
         <div className="absolute bottom-0 -right-10 w-40 h-40 bg-purple-500 dark:bg-purple-700 rounded-full opacity-30 pointer-events-none" />
@@ -117,77 +63,36 @@ const UserDashboard = () => {
           </div>
         </div>
       </Card>
+      <Card className="border border-gray-200 dark:border-gray-700">
+        <CardHeader className="flex flex-row items-center justify-between">
+          <CardTitle className="text-base font-semibold">Notifications</CardTitle>
+          <RefreshButton onClick={async () => { await statusQuery.refetch(); Toast.success('Notifications refreshed'); }} loading={statusQuery.isFetching} />
+        </CardHeader>
+        <CardContent>
+          {statusQuery.data?.data && statusQuery.data.data.length > 0 && (
+            <div className="grid gap-4 md:grid-cols-3">
+              {statusQuery.data.data.map((n, idx) => (
+                <Card key={idx} className={`border shadow-sm ${getNotifyBgClass(n.type)}`}>
+                  <CardContent className="px-4 py-3 space-y-1">
+                    <p className="text-sm font-medium">{n.message}</p>
+                    {n.expiry_date && (
+                                                  <p className="text-xs text-muted-foreground">Expiry: <span className="text-red-500 font-medium">{formatDate(n.expiry_date)}</span></p>
 
-      {/* Market Details */}
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-  {markets.map((market, index) => {
-    const progress = (market.remainingDays / market.totalDays) * 100;
-    const isActive = market.status === "Active";
-
-    return (
-      <motion.div
-        key={index}
-        initial={{ opacity: 0, y: 25, scale: 0.95 }}
-        whileInView={{ opacity: 1, y: 0, scale: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-      >
-        <motion.div
-          whileHover={{
-            scale: 1.05,
-            rotateX: 3,
-            rotateY: -3,
-            transition: { duration: 0.25 },
-          }}
-          className="relative cursor-pointer"
-        >
-          <Card
-            className={`border border-gray-200 dark:border-gray-700 rounded-xl shadow-md transition-shadow duration-300 hover:shadow-xl ${getCardBgClass(market.status)}`}
-          >
-            {/* Card Header */}
-            <div className="flex justify-between items-center px-4 py-3 border-b border-gray-200 dark:border-gray-700">
-              <h3 className="text-lg font-semibold">{market.name}</h3>
-              <div className="flex items-center gap-1">
-                {isActive ? (
-                  <CheckCircle size={16} className={getStatusStyles(market.status)} />
-                ) : (
-                  <XCircle size={16} className={getStatusStyles(market.status)} />
-                )}
-                <span className={`font-semibold ${getStatusStyles(market.status)}`}>
-                  {market.status}
-                </span>
-              </div>
+                    )}
+                  </CardContent>
+                </Card>
+              ))}
             </div>
+          )}
+          {(!statusQuery.data?.data || statusQuery.data.data.length === 0) && (
+            <div className="p-4 text-sm text-gray-600 dark:text-gray-300">No notifications</div>
+          )}
+        </CardContent>
+      </Card>
 
-            {/* Card Content */}
-            <CardContent className="space-y-3">
-              <p>
-                <span className="font-medium">Start Date:</span>{" "}
-                <span className="text-indigo-600 dark:text-indigo-400">{market.startDate}</span>
-              </p>
-              <p>
-                <span className="font-medium">Expiry Date:</span>{" "}
-                <span className="text-red-600 dark:text-red-400">{market.expiryDate}</span>
-              </p>
-              <p>
-                <span className="font-medium">Remaining Days:</span>{" "}
-                <span className="text-yellow-700 dark:text-yellow-400">{market.remainingDays} days</span>
-              </p>
+     
 
-              {/* Progress Bar */}
-              <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
-                <div
-                  className={`h-3 rounded-full ${isActive ? "bg-green-500" : "bg-red-500"}`}
-                  style={{ width: `${progress}%` }}
-                />
-              </div>
-            </CardContent>
-          </Card>
-        </motion.div>
-      </motion.div>
-    );
-  })}
-</div>
+      <UserUploadResult></UserUploadResult>
     </div>
   );
 };

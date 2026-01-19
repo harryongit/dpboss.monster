@@ -146,9 +146,9 @@ const SattaMatkaWebsite = () => {
           <WeeklyJodiChart />
           
          <FreeGameZone  freeGames={freeGames} />
-         <RajeshreeStarLine />
+         {/* <RajeshreeStarLine />
          <KalyanStarLine/>
-         <MainBombayStarLine/>
+         <MainBombayStarLine/> */}
          
          <TodayResultSection />
           <SpecialGameZone /> 

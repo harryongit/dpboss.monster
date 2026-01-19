@@ -8,7 +8,7 @@ import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import Dashboard from "./pages/Admin/Dashboard";
 import Login from "./pages/Admin/Login";
 import AddMarket from "./pages/Admin/AddMarket";
-import UserRegister from "./pages/User/UserRegister";
+import UserRegister from "./pages/Admin/UserRegister";
 import AddUserMarket from "./pages/Admin/AddUserMarket";
 import MarketHoliday from "./pages/Admin/MarketHoliday";
 import Settings from "./pages/Admin/Settings";
@@ -37,155 +37,154 @@ const App = () => (
     <ThemeProvider>
       <AuthProvider>
         <TooltipProvider>
-          {/* Place ToastProvider here so it works globally */}
           <ToastProvider />  
 
           <BrowserRouter>
             <Routes>
-              <Route path="/" element={<MainHome />} />
-               <Route path="/jodi-records-chart/:marketName" element={<JodiRecordChart />} />
-               <Route path="/panel-records-chart/:marketName" element={<PanelRecordChart />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-              <Route path="/terms" element={<TermsAndConditions />} />
+                <Route path="/" element={<MainHome />} />
+                 <Route path="/jodi-records-chart/:marketName" element={<JodiRecordChart />} />
+                 <Route path="/panel-records-chart/:marketName" element={<PanelRecordChart />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                <Route path="/terms" element={<TermsAndConditions />} />
 
-              <Route path="/admin/dashboard_smboss_login" element={<Login />} />
-              <Route
-                path="/admin"
-                element={
-                  <ProtectedRoute role="admin">
-                    <DashboardLayout>
-                      <Dashboard />
-                    </DashboardLayout>
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/admin/add-market"
-                element={
-                  <ProtectedRoute role="admin">
-                    <DashboardLayout>
-                      <AddMarket />
-                    </DashboardLayout>
-                  </ProtectedRoute>
-                }
-              />
-               <Route
-                path="/admin/add-final-ank"
-                element={
-                  <ProtectedRoute role="admin">
-                    <DashboardLayout>
-                      <AddFinalAnk />
-                    </DashboardLayout>
-                  </ProtectedRoute>
-                }
-              />
-              
-              <Route
-                path="/admin/user-register"
-                element={
-                  <ProtectedRoute role="admin">
-                    <DashboardLayout>
-                      <UserRegister />
-                    </DashboardLayout>
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/admin/add-user-market"
-                element={
-                  <ProtectedRoute role="admin">
-                    <DashboardLayout>
-                      <AddUserMarket />
-                    </DashboardLayout>
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/admin/market-holiday"
-                element={
-                  <ProtectedRoute role="admin">
-                    <DashboardLayout>
-                      <MarketHoliday />
-                    </DashboardLayout>
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/admin/add-time"
-                element={
-                  <ProtectedRoute role="admin">
-                    <DashboardLayout>
-                      <AddTime />
-                    </DashboardLayout>
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/admin/upload-result"
-                element={
-                  <ProtectedRoute role="admin">
-                    <DashboardLayout>
-                      <UploadResult />
-                    </DashboardLayout>
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/admin/settings"
-                element={
-                  <ProtectedRoute role="admin">
-                    <DashboardLayout>
-                      <Settings />
-                    </DashboardLayout>
-                  </ProtectedRoute>
-                }
-              />
-               <Route
-                path="/admin/free-fix"
-                element={
-                  <ProtectedRoute role="admin">
-                    <DashboardLayout>
-                      <FreeFix />
-                    </DashboardLayout>
-                  </ProtectedRoute>
-                }
-              />
+                <Route path="/admin/dashboard_smboss_login" element={<Login />} />
+                <Route
+                  path="/admin"
+                  element={
+                    <ProtectedRoute role="admin">
+                      <DashboardLayout>
+                        <Dashboard />
+                      </DashboardLayout>
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/admin/add-market"
+                  element={
+                    <ProtectedRoute role="admin">
+                      <DashboardLayout>
+                        <AddMarket />
+                      </DashboardLayout>
+                    </ProtectedRoute>
+                  }
+                />
+                 <Route
+                  path="/admin/add-final-ank"
+                  element={
+                    <ProtectedRoute role="admin">
+                      <DashboardLayout>
+                        <AddFinalAnk />
+                      </DashboardLayout>
+                    </ProtectedRoute>
+                  }
+                />
+                
+                <Route
+                  path="/admin/user-register"
+                  element={
+                    <ProtectedRoute role="admin">
+                      <DashboardLayout>
+                        <UserRegister />
+                      </DashboardLayout>
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/admin/add-user-market"
+                  element={
+                    <ProtectedRoute role="admin">
+                      <DashboardLayout>
+                        <AddUserMarket />
+                      </DashboardLayout>
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/admin/market-holiday"
+                  element={
+                    <ProtectedRoute role="admin">
+                      <DashboardLayout>
+                        <MarketHoliday />
+                      </DashboardLayout>
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/admin/add-time"
+                  element={
+                    <ProtectedRoute role="admin">
+                      <DashboardLayout>
+                        <AddTime />
+                      </DashboardLayout>
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/admin/upload-result"
+                  element={
+                    <ProtectedRoute role="admin">
+                      <DashboardLayout>
+                        <UploadResult />
+                      </DashboardLayout>
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/admin/settings"
+                  element={
+                    <ProtectedRoute role="admin">
+                      <DashboardLayout>
+                        <Settings />
+                      </DashboardLayout>
+                    </ProtectedRoute>
+                  }
+                />
+                 <Route
+                  path="/admin/free-fix"
+                  element={
+                    <ProtectedRoute role="admin">
+                      <DashboardLayout>
+                        <FreeFix />
+                      </DashboardLayout>
+                    </ProtectedRoute>
+                  }
+                />
 
-              <Route path="/user/login" element={<UserLogin />} />
-              <Route
-                path="/user"
-                element={
-                  <ProtectedRoute role="user">
-                    <UserDashboardLayout>
-                      <UserDashboard />
-                    </UserDashboardLayout>
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/user/upload-result"
-                element={
-                  <ProtectedRoute role="user">
-                    <UserDashboardLayout>
-                      <UserUploadResult />
-                    </UserDashboardLayout>
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/user/free-fix"
-                element={
-                  <ProtectedRoute role="user">
-                    <UserDashboardLayout>
-                      <FreeFix />
-                    </UserDashboardLayout>
-                  </ProtectedRoute>
-                }
-              />
+                <Route path="/user/login" element={<UserLogin />} />
+                <Route
+                  path="/user"
+                  element={
+                    <ProtectedRoute role="user">
+                      <UserDashboardLayout>
+                        <UserDashboard />
+                      </UserDashboardLayout>
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/user/upload-result"
+                  element={
+                    <ProtectedRoute role="user">
+                      <UserDashboardLayout>
+                        <UserUploadResult />
+                      </UserDashboardLayout>
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/user/free-fix"
+                  element={
+                    <ProtectedRoute role="user">
+                      <UserDashboardLayout>
+                        <FreeFix />
+                      </UserDashboardLayout>
+                    </ProtectedRoute>
+                  }
+                />
 
-              <Route path="*" element={<NotFound />} />
+                <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
         </TooltipProvider>

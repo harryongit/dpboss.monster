@@ -19,7 +19,7 @@ const menuItems = [
  
   // { title: 'Add Time', icon: Clock, path: '/admin/add-time' },
 
-  { title: 'Settings', icon: Settings, path: '/admin/settings' },
+  // { title: 'Settings', icon: Settings, path: '/admin/settings' },
   { title: 'Free Fix', icon: WandSparkles, path: '/admin/free-fix' },
 ];
 

@@ -20,6 +20,7 @@ interface DataTableProps {
   onDelete?: (row: any) => void;
   actions?: boolean;
   customActions?: (row: any) => React.ReactNode;
+  headerRight?: React.ReactNode;
 }
 
 export const DataTable = ({
@@ -30,6 +31,7 @@ export const DataTable = ({
   onDelete,
   actions = true,
   customActions,
+  headerRight,
 }: DataTableProps) => {
 
   const [search, setSearch] = useState("");
@@ -58,14 +60,16 @@ export const DataTable = ({
 
       {/* TITLE OUTSIDE CARD */}
       <div className="mb-4 flex items-center justify-between">
-  {/* Title */}
-  <h2 className="text-xl font-semibold">{title}</h2>
-
-  {/* Total entries as badge */}
-  <span className="text-sm font-medium bg-gray-200 text-gray-800 px-3 py-1 rounded-full">
-    Total entries: {data.length}
-  </span>
-</div>
+        <span className="text-sm font-medium bg-gray-200 text-gray-800 px-3 py-1 rounded-full">
+            Total entries: {data.length}
+          </span>
+        <div className="flex items-center gap-2">
+          {/* <span className="text-sm font-medium bg-gray-200 text-gray-800 px-3 py-1 rounded-full">
+            Total entries: {data.length}
+          </span> */}
+          {headerRight}
+        </div>
+      </div>
 
 
       <Card>
@@ -98,7 +102,7 @@ export const DataTable = ({
 
               <span className="text-sm text-muted-foreground">entries</span>
             </div>
-
+              
             {/* Search */}
             <div className="flex items-center">
               <Input

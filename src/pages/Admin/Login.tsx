@@ -8,16 +8,19 @@ import { swalError, swalSuccess } from '@/lib/swal';
 import { Lock, User, Sun, Moon, Eye, EyeOff } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
 import adminLogin from "@/assets/admin-login.jpg";
+import { useAdminLogin } from '@/hooks/admin/useAdminLogin';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [showPass, setShowPass] = useState(false);
-  const { login } = useAuth();
+  const { setAdminSession } = useAuth();
   const navigate = useNavigate();
   const { theme, toggleTheme } = useTheme();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const mutation = useAdminLogin();
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!username || !password) {
@@ -25,9 +28,10 @@ const Login = () => {
       return;
     }
 
-    const success = login(username, password);
+    try {
+      const resp = await mutation.mutateAsync({ username, password });
+      setAdminSession(resp.data.user);
 
-    if (success) {
       swalSuccess("Login Successful!", undefined, {
         showConfirmButton: false,
         timer: 1500,
@@ -37,8 +41,9 @@ const Login = () => {
         navigate('/admin');
       }, 1200);
 
-    } else {
-      swalError("Invalid Credentials", "Try admin/admin123");
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : "Login failed";
+      swalError("Invalid Credentials", message);
     }
   };
 
@@ -117,7 +122,7 @@ const Login = () => {
                 </div>
               </div>
 
-              <Button type="submit" className="w-full bg-primary hover:bg-primary-dark text-primary-foreground">
+              <Button type="submit" className="w-full bg-primary hover:bg-primary-dark text-primary-foreground" disabled={mutation.isPending}>
                 Login
               </Button>
 

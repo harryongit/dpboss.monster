@@ -1,22 +1,49 @@
 
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { DataTable } from "@/components/common/DataTable";
-import { toast } from "sonner";
+import { Toast } from "@/components/ui/ToastProvider";
+
+import { useAdminListMarketHolidays } from "@/hooks/admin/useListMarketHolidays";
+import { useUpdateMarketHoliday } from "@/hooks/admin/useUpdateMarketHoliday";
+import { RefreshButton } from "@/components/ui/refresh-admin";
 
 const MarketHoliday = () => {
-  const [holidays, setHolidays] = useState([
-    { id: 1, gameName: "Kalyan Matka", status: "On" },
-    { id: 2, gameName: "Milan Day", status: "Off" },
-    { id: 3, gameName: "Rajdhani Day", status: "On" },
-  ]);
+  const [holidays, setHolidays] = useState([] as { id: number; gameName: string; status: "On" | "Off" }[]);
+  let adminId = 1;
+  try {
+    const saved = localStorage.getItem('admin');
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      if (parsed?.id) adminId = parsed.id as number;
+    }
+  } catch {
+    adminId = 1;
+  }
 
-  const toggleStatus = (row: any, value: "On" | "Off") => {
-    setHolidays((prev) =>
-      prev.map((h) => (h.id === row.id ? { ...h, status: value } : h))
-    );
-    toast.success(`${row.gameName} holiday status set to ${value}`);
+  const { data, isFetching, refetch } = useAdminListMarketHolidays({ admin_id: adminId });
+  const updateMutation = useUpdateMarketHoliday();
+
+  useEffect(() => {
+    const items = data?.data?.items ?? [];
+    setHolidays(items.map((m) => ({ id: m.market_id, gameName: m.game_name ?? m.game ?? '', status: m.is_holiday ? 'On' : 'Off' })));
+  }, [data]);
+
+  const [pendingId, setPendingId] = useState<number | null>(null);
+  const toggleStatus = async (row: any, value: "On" | "Off") => {
+    const isHoliday = value === 'On';
+    setPendingId(row.id);
+    try {
+      const resp = await updateMutation.mutateAsync({ market_id: row.id, is_holiday: isHoliday, admin_id: adminId });
+      Toast.success(resp.message || `${row.gameName} holiday ${isHoliday ? 'enabled' : 'disabled'}`);
+      await refetch();
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : 'Failed to update holiday';
+      Toast.error(message);
+    } finally {
+      setPendingId(null);
+    }
   };
 
   const columns = [
@@ -34,6 +61,7 @@ const MarketHoliday = () => {
               value="On"
               checked={value === "On"}
               onChange={() => toggleStatus(row, "On")}
+              disabled={pendingId === row.id || updateMutation.isPending}
               className="accent-green-500"
             />
             On
@@ -45,6 +73,7 @@ const MarketHoliday = () => {
               value="Off"
               checked={value === "Off"}
               onChange={() => toggleStatus(row, "Off")}
+              disabled={pendingId === row.id || updateMutation.isPending}
               className="accent-red-500"
             />
             Off
@@ -57,16 +86,14 @@ const MarketHoliday = () => {
   return (
     <div className="space-y-6">
       
-      
-       
-          <DataTable
-            title="Market Holidays"
-            columns={columns}
-            data={holidays}
-            actions={false} 
-          />
-     
-      
+        <DataTable
+          title="Market Holidays"
+          columns={columns}
+          data={holidays}
+          actions={false}
+          headerRight={<RefreshButton onClick={() => { void refetch(); }} loading={isFetching} />}
+        />
+      {/* )} */}
     </div>
   );
 };

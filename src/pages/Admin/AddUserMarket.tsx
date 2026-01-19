@@ -1,39 +1,98 @@
 
 
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { DataTable } from '@/components/common/DataTable';
-import { toast } from 'sonner';
+import { Toast } from '@/components/ui/ToastProvider';
 import { confirmSwal } from '@/lib/ConfirmSwal';
+import { useAllMarkets } from '@/hooks/common/useAllMarkets';
+import { useAllUsers } from '@/hooks/common/useAllUsers';
+import { useListUserMarkets } from '@/hooks/admin/useListUserMarkets';
+import { useCreateUserMarket } from '@/hooks/admin/useCreateUserMarket';
+import { useDeleteUserMarket } from '@/hooks/admin/useDeleteUserMarket';
+import { RefreshButton } from '@/components/ui/refresh-admin';
+import { Loader2 } from 'lucide-react';
 
 const AddUserMarket = () => {
   const [formData, setFormData] = useState({
-    userName: '',
-    game: '',
-    noOfDays: '30',
+    userId: '',
+    marketId: '',
+    days: '30',
   });
+  const [userMarkets, setUserMarkets] = useState([] as { id: number; userName: string; game: string; addedOn: string; status: string }[]);
 
-  const [userMarkets, setUserMarkets] = useState([
-    { id: 1, userName: 'john_doe', game: 'Kalyan Matka', addedOn: '2024-11-01', status: 'Active till 16-12-2025' },
-    { id: 2, userName: 'jane_smith', game: 'Milan Day', addedOn: '2024-11-15', status: 'Active till 20-12-2025' },
-  ]);
+  let adminId = 1;
+  try {
+    const saved = localStorage.getItem('admin');
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      if (parsed?.id) adminId = parsed.id as number;
+    }
+  } catch {
+    adminId = 1;
+  }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const usersQuery = useAllUsers({ admin_id: adminId });
+  const marketsQuery = useAllMarkets({ admin_id: adminId });
+  const listQuery = useListUserMarkets({ admin_id: adminId });
+  const createMutation = useCreateUserMarket();
+  const deleteMutation = useDeleteUserMarket();
+
+  const userMap = useMemo(() => {
+    const items = usersQuery.data?.data?.items ?? [];
+    const map = new Map<number, string>();
+    items.forEach((u) => map.set(u.user_id, u.user_name));
+    return map;
+  }, [usersQuery.data]);
+
+  const marketMap = useMemo(() => {
+    const items = marketsQuery.data?.data?.items ?? [];
+    const map = new Map<number, string>();
+    items.forEach((m) => map.set(m.market_id, m.market_name));
+    return map;
+  }, [marketsQuery.data]);
+
+  useEffect(() => {
+    const items = listQuery.data?.data?.items ?? [];
+    setUserMarkets(
+      items.map((it) => {
+        const added = it.added_on;
+        const till = it.active_till ?? formatAddDays(added, it.days);
+        return {
+          id: it.id,
+          userName: userMap.get(it.user_id) ?? String(it.user_id),
+          game: marketMap.get(it.market_id) ?? String(it.market_id),
+          addedOn: added,
+          status: till ? `Active till ${till}` : 'Active',
+        };
+      }),
+    );
+  }, [listQuery.data, userMap, marketMap]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const newMarket = {
-      id: Date.now(),
-      userName: formData.userName,
-      game: formData.game,
-      addedOn: new Date().toISOString().slice(0, 10),
-      status: `Active till ${new Date(Date.now() + parseInt(formData.noOfDays) * 86400000).toLocaleDateString()}`,
-    };
-    setUserMarkets(prev => [...prev, newMarket]);
-    toast.success('User market added successfully!');
-    setFormData({ userName: '', game: '', noOfDays: '30' });
+    if (!formData.userId || !formData.marketId || !formData.days) {
+      Toast.error('Please select user, market and days');
+      return;
+    }
+    try {
+      const resp = await createMutation.mutateAsync({
+        user_id: parseInt(formData.userId, 10),
+        market_id: parseInt(formData.marketId, 10),
+        days: parseInt(formData.days, 10),
+        admin_id: adminId,
+      });
+      Toast.success(resp.message || 'Assignment created');
+      await listQuery.refetch();
+      setFormData({ userId: '', marketId: '', days: '30' });
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : 'Failed to assign market';
+      Toast.error(message);
+    }
   };
 
   // DELETE USER MARKET WITH CONFIRMATION
@@ -46,9 +105,14 @@ const AddUserMarket = () => {
     });
 
     if (!confirmed) return;
-
-    setUserMarkets(prev => prev.filter((m) => m.id !== row.id));
-    toast.success(`${row.userName} removed from ${row.game} successfully!`);
+    try {
+      const resp = await deleteMutation.mutateAsync({ id: row.id, admin_id: adminId });
+      Toast.success(resp.message || `${row.userName} removed from ${row.game} successfully!`);
+      await listQuery.refetch();
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : 'Failed to delete assignment';
+      Toast.error(message);
+    }
   };
 
   const columns = [
@@ -70,48 +134,49 @@ const AddUserMarket = () => {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="userName">User Name *</Label>
+                <Label htmlFor="userId">User Name *</Label>
                 <Select
-                  value={formData.userName}
-                  onValueChange={(value) => setFormData(prev => ({ ...prev, userName: value }))}
+                  value={formData.userId}
+                  onValueChange={(value) => setFormData(prev => ({ ...prev, userId: value }))}
                   required
                 >
                   <SelectTrigger>
                     <SelectValue placeholder="Select user" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="john_doe">john_doe</SelectItem>
-                    <SelectItem value="jane_smith">jane_smith</SelectItem>
+                    {(usersQuery.data?.data?.items ?? []).map((u) => (
+                      <SelectItem key={u.user_id} value={String(u.user_id)}>{u.user_name}</SelectItem>
+                    ))}
                   </SelectContent>
                 </Select>
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="game">Game *</Label>
+                <Label htmlFor="marketId">Game *</Label>
                 <Select
-                  value={formData.game}
-                  onValueChange={(value) => setFormData(prev => ({ ...prev, game: value }))}
+                  value={formData.marketId}
+                  onValueChange={(value) => setFormData(prev => ({ ...prev, marketId: value }))}
                   required
                 >
                   <SelectTrigger>
                     <SelectValue placeholder="Select game" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="kalyan">Kalyan Matka</SelectItem>
-                    <SelectItem value="milan">Milan Day</SelectItem>
-                    <SelectItem value="rajdhani">Rajdhani Day</SelectItem>
+                    {(marketsQuery.data?.data?.items ?? []).map((m) => (
+                      <SelectItem key={m.market_id} value={String(m.market_id)}>{m.market_name}</SelectItem>
+                    ))}
                   </SelectContent>
                 </Select>
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="noOfDays">No. of Days (Default 30) *</Label>
+                <Label htmlFor="days">No. of Days *</Label>
                 <Input
-                  id="noOfDays"
-                  name="noOfDays"
+                  id="days"
+                  name="days"
                   type="number"
-                  value={formData.noOfDays}
-                  onChange={(e) => setFormData(prev => ({ ...prev, noOfDays: e.target.value }))}
+                  value={formData.days}
+                  onChange={(e) => setFormData(prev => ({ ...prev, days: e.target.value }))}
                   placeholder="30"
                   required
                 />
@@ -119,8 +184,10 @@ const AddUserMarket = () => {
             </div>
 
             <div className="flex justify-center">
-              <Button type="submit" className="bg-success hover:bg-success/90 text-success-foreground px-8">
-                Submit
+              <Button type="submit" className="bg-success hover:bg-success/90 text-success-foreground px-8" disabled={createMutation.isPending}>
+                {createMutation.isPending ? (
+                  <span className="flex items-center gap-2"><Loader2 className="h-4 w-4 animate-spin" /> Submitting...</span>
+                ) : 'Submit'}
               </Button>
             </div>
           </form>
@@ -132,10 +199,22 @@ const AddUserMarket = () => {
         title="User Market Report"
         columns={columns}
         data={userMarkets}
-        onDelete={onDelete} // delete with confirmation
+        onDelete={onDelete}
+        headerRight={<RefreshButton onClick={() => { void listQuery.refetch(); }} loading={listQuery.isFetching} />}
       />
     </div>
   );
 };
 
 export default AddUserMarket;
+
+function formatAddDays(dateStr: string, days: number): string {
+  if (!dateStr || !days) return '';
+  const d = new Date(dateStr);
+  if (isNaN(d.getTime())) return '';
+  d.setDate(d.getDate() + days);
+  const yyyy = d.getFullYear();
+  const mm = String(d.getMonth() + 1).padStart(2, '0');
+  const dd = String(d.getDate()).padStart(2, '0');
+  return `${yyyy}-${mm}-${dd}`;
+}

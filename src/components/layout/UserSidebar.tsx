@@ -2,6 +2,7 @@ import { Home, Upload, Settings, WandSparkles, X } from 'lucide-react';
 import { NavLink } from '@/components/NavLink';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { cn } from '@/lib/utils';
+import { useAuth } from '@/contexts/AuthContext';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -16,6 +17,13 @@ const menuItems = [
 ];
 
 export const UserSidebar = ({ isOpen, onClose }: SidebarProps) => {
+  const { userUsername } = useAuth();
+  const name = userUsername ?? 'User';
+  const initials = name
+    .split(' ')
+    .map((s) => s[0]?.toUpperCase())
+    .slice(0, 2)
+    .join('') || 'US';
   return (
     <>
       {isOpen && (
@@ -38,12 +46,12 @@ export const UserSidebar = ({ isOpen, onClose }: SidebarProps) => {
           <div className="flex items-center space-x-3">
             <Avatar className="h-12 w-12 bg-primary">
               <AvatarFallback className="bg-primary text-primary-foreground font-semibold">
-                US
+                {initials}
               </AvatarFallback>
             </Avatar>
             <div>
               <p className="text-sm font-semibold text-sidebar-foreground">Welcome,</p>
-              <p className="text-lg font-bold text-sidebar-primary">User</p>
+              <p className="text-lg font-bold text-sidebar-primary">{name}</p>
             </div>
           </div>
         </div>

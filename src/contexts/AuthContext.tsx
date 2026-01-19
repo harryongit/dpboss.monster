@@ -5,9 +5,10 @@ interface AuthContextType {
   isUserAuthenticated: boolean;
   username: string | null;
   userUsername: string | null;
-  login: (username: string, password: string) => boolean;
-  loginUser: (username: string, password: string) => boolean;
+  setAdminSession: (user: { id: number }) => void;
+  setUserSession: (user: { id: number; username: string; mobile: string; email: string; status: number }) => void;
   logout: () => void;
+  ready: boolean;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -17,42 +18,62 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [isUserAuthenticated, setIsUserAuthenticated] = useState(false);
   const [username, setUsername] = useState<string | null>(null);
   const [userUsername, setUserUsername] = useState<string | null>(null);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     const savedAdminAuth = localStorage.getItem('isAuthenticated');
-    const savedAdminUsername = localStorage.getItem('username');
+    const savedAdminname = localStorage.getItem('adminname');
     const savedUserAuth = localStorage.getItem('isUserAuthenticated');
     const savedUserUsername = localStorage.getItem('userUsername');
-    if (savedAdminAuth === 'true' && savedAdminUsername) {
+    const savedAdmin = localStorage.getItem('admin');
+    const savedUser = localStorage.getItem('user');
+    if (savedAdminAuth === 'true' && savedAdminname) {
       setIsAuthenticated(true);
-      setUsername(savedAdminUsername);
+      setUsername(savedAdminname);
+    }
+    if (savedAdminAuth === 'true' && savedAdmin) {
+      try {
+        const parsed = JSON.parse(savedAdmin);
+        if (parsed?.id) {
+          setIsAuthenticated(true);
+          setUsername('admin');
+        }
+      } catch {
+        void 0;
+      }
     }
     if (savedUserAuth === 'true' && savedUserUsername) {
       setIsUserAuthenticated(true);
       setUserUsername(savedUserUsername);
     }
+    if (savedUserAuth === 'true' && savedUser) {
+      try {
+        const parsed = JSON.parse(savedUser);
+        if (parsed?.username) {
+          setIsUserAuthenticated(true);
+          setUserUsername(parsed.username);
+        }
+      } catch {
+        void 0;
+      }
+    }
+    setReady(true);
   }, []);
 
-  const login = (user: string, pass: string) => {
-    if (user === 'admin' && pass === 'admin123') {
-      setIsAuthenticated(true);
-      setUsername(user);
-      localStorage.setItem('isAuthenticated', 'true');
-      localStorage.setItem('username', user);
-      return true;
-    }
-    return false;
+  const setAdminSession = (user: { id: number }) => {
+    setIsAuthenticated(true);
+    setUsername('admin');
+    localStorage.setItem('isAuthenticated', 'true');
+    localStorage.setItem('adminname', 'admin');
+    localStorage.setItem('admin', JSON.stringify(user));
   };
 
-  const loginUser = (user: string, pass: string) => {
-    if (user === 'user' && pass === 'user123') {
-      setIsUserAuthenticated(true);
-      setUserUsername(user);
-      localStorage.setItem('isUserAuthenticated', 'true');
-      localStorage.setItem('userUsername', user);
-      return true;
-    }
-    return false;
+  const setUserSession = (user: { id: number; username: string; mobile: string; email: string; status: number }) => {
+    setIsUserAuthenticated(true);
+    setUserUsername(user.username);
+    localStorage.setItem('isUserAuthenticated', 'true');
+    localStorage.setItem('userUsername', user.username);
+    localStorage.setItem('user', JSON.stringify(user));
   };
 
   const logout = () => {
@@ -61,13 +82,15 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setIsUserAuthenticated(false);
     setUserUsername(null);
     localStorage.removeItem('isAuthenticated');
-    localStorage.removeItem('username');
+    localStorage.removeItem('adminname');
     localStorage.removeItem('isUserAuthenticated');
     localStorage.removeItem('userUsername');
+    localStorage.removeItem('admin');
+    localStorage.removeItem('user');
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, isUserAuthenticated, username, userUsername, login, loginUser, logout }}>
+    <AuthContext.Provider value={{ isAuthenticated, isUserAuthenticated, username, userUsername, setAdminSession, setUserSession, logout, ready }}>
       {children}
     </AuthContext.Provider>
   );

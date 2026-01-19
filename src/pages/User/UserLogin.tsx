@@ -11,21 +11,25 @@ import { useTheme } from '@/contexts/ThemeContext';
 import userLoginBG from "@/assets/admin-login.jpg"; // use any image you want
 import { swalError, swalSuccess } from '@/lib/swal';
 import { confirmSwal } from '@/lib/ConfirmSwal';
+import { useUserLogin } from '@/hooks/user/useUserLogin';
 const UserLogin = () => {
   useMeta({ title: 'User Login - Matka' });
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [showPass, setShowPass] = useState(false);
-  const { loginUser } = useAuth();
+  const { setUserSession } = useAuth();
   const navigate = useNavigate();
   const { theme, toggleTheme } = useTheme();
+  const mutation = useUserLogin();
 
 
 
 
   
   const remainingDays = 29; // You can fetch this dynamically from user data if available
+
+
 
 
 
@@ -37,24 +41,22 @@ const UserLogin = () => {
       return;
     }
   
-    const success = loginUser(username, password);
-  
-    if (success) {
-      // Show confirmation dialog using confirmSwal
+    try {
+      const resp = await mutation.mutateAsync({ username, password });
+      setUserSession(resp.data.user);
       const confirmed = await confirmSwal({
         title: "Login Successful!",
-        text: `You have ${remainingDays} days left before renewal.`,
+        text: `Welcome ${resp.data.user.username}`,
         confirmText: "OK",
         cancelText: "Stay",
         icon: "success",
       });
-  
       if (confirmed) {
-        navigate('/user/upload-result'); // Navigate only if user clicks OK
-        
+        navigate('/user/upload-result');
       }
-    } else {
-      swalError("Invalid Credentials", "Try admin/admin123");
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : "Login failed";
+      swalError("Invalid Credentials", message);
     }
   };
   
@@ -133,7 +135,7 @@ const UserLogin = () => {
               </div>
 
 
-              <Button type="submit" className="w-full bg-primary hover:bg-primary-dark text-primary-foreground">
+              <Button type="submit" className="w-full bg-primary hover:bg-primary-dark text-primary-foreground" disabled={mutation.isPending}>
                 Login
               </Button>
             </form>

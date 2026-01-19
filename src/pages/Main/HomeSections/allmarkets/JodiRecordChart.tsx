@@ -45,13 +45,15 @@ const getNumberStyle = (num: string) => {
 
 
 
-  if (n >= 90) {
-    return "bg-red-600 text-white";
-  }
+if (n >= 90) {
+return "bg-red-500/20 text-red-700  ";
+
+
+}
 
 
 
-  return "text-rose-700";
+  return "text-black";
 };
 
 const JodiRecordChart = () => {
@@ -109,7 +111,7 @@ const JodiRecordChart = () => {
                 {days.map((day) => (
                   <div
                     key={day}
-                    className="text-sm font-bold text-orange-700 py-1"
+                    className="text-sm font-bold text-black py-1 border border-orange-300"
                   >
                     {day}
                   </div>
@@ -125,7 +127,7 @@ const JodiRecordChart = () => {
                       border border-orange-200
                       text-center
                       py-1.5
-                      font-extrabold
+                      font-medium
                       text-lg
                       rounded-sm
                       transition
