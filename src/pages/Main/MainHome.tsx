@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo } from 'react';
 import HeaderLogo from '@/pages/Main/HomeSections/HeaderLogo';
 import WelcomeBanner from '@/pages/Main/HomeSections/WelcomeBanner';
 import LuckyNumberCard from '@/pages/Main/HomeSections/LuckyNumberCard';
@@ -26,49 +26,31 @@ import TodayResultSection from './HomeSections/TodayResultSection';
 import RajeshreeStarLine from './HomeSections/RajeshreeStarLine';
 import KalyanStarLine from './HomeSections/KalyanStarLine';
 import MainBombayStarLine from './HomeSections/MainBombayStarLine';
+import { useMainWebsite } from '@/hooks/main/useMainWebsite';
 
 const SattaMatkaWebsite = () => {
-  const [refreshTime, setRefreshTime] = useState(new Date().toLocaleTimeString());
+  const { data, refetch } = useMainWebsite();
 
-  const handleRefresh = () => {
-    setRefreshTime(new Date().toLocaleTimeString());
+  const refreshTime = useMemo(() => data?.data?.updated_time ?? new Date().toLocaleTimeString(), [data?.data?.updated_time]);
+
+  const handleRefresh = async () => {
+    await refetch();
   };
 
-  const finalAnk = [
-    { market: "KALYAN MORNING", ank: "0" },
-    { market: "MILAN MORNING", ank: "2" },
-    { market: "SRIDEVI", ank: "0" },
-    { market: "MAIN BAZAR MORNING", ank: "6" },
-    { market: "MADHURI", ank: "6" },
-    { market: "TIME BAZAR", ank: "6" },
-    { market: "MILAN DAY", ank: "0" },
-    { market: "KALYAN", ank: "6" },
-    { market: "SRIDEVI NIGHT", ank: "4" },
-    { market: "MILAN NIGHT", ank: "2" },
-    { market: "RAJDHANI NIGHT", ank: "8" },
-    { market: "MAIN BAZAR", ank: "8" },
-  ];
+  const liveMarkets = useMemo(() => {
+    const items = data?.data?.live_markets ?? [];
+    return items.map((m) => ({ name: m.market_name, result: m.result, time: '', status: 'Live' }));
+  }, [data?.data?.live_markets]);
 
-  const liveMarkets = [
-    { name: "MAIN SRIDEVI DAY", result: "234-96-123", time: "01:05 PM - 02:05 PM", status: "Open" },
-    { name: "NEW TIME BAZAR", result: "347-40-190", time: "01:00 PM - 02:00 PM", status: "Open" },
-    { name: "RAJDHANI MORNING", result: "157-33-670", time: "11:25 AM - 12:55 PM", status: "Closed" },
-    { name: "BOMBAY RAJSHREE DAY", result: "590-4", time: "01:15 PM - 03:15 PM", status: "Open" },
-  ];
+  const allMarkets = useMemo(() => {
+    const items = data?.data?.all_markets ?? [];
+    return items.map((m) => ({ name: m.market_name, result: m.result ?? 'loading', time: `${m.open_time ?? ''} - ${m.close_time ?? ''}`, color: m.color }));
+  }, [data?.data?.all_markets]);
 
-  const allMarkets = [
-    { name: "KALYAN MORNING", result: "359-7", time: "11:15 AM - 12:15 PM" },
-    { name: "MILAN MORNING", result: "137-15-456", time: "10:30 AM - 11:30 AM" },
-    { name: "SRIDEVI", result: "579-14-347", time: "11:35 AM - 12:35 PM" },
-    { name: "MAIN BAZAR MORNING ", result: "669-17-160", time: "11:15 AM - 12:15 PM" },
-    { name: "MADHURI", result: "359-71-588", time: "11:45 AM - 12:45 PM" },
-    { name: "PADMAVATHI", result: "128-19-144", time: "11:40 AM - 12:40 PM" },
-    { name: "RAJDHANI MORNING", result: "157-33-670", time: "11:25 AM - 12:55 PM" },
-    { name: "SRIDEVI MORNING", result: "118-00-127", time: "10:00 AM - 11:00 AM" },
-    { name: "MAHARANI", result: "260-8", time: "12:15 PM - 02:15 PM" },
-  
-   
-  ];
+  const finalAnk = useMemo(() => {
+    const items = data?.data?.final_ank ?? [];
+    return items.map((m) => ({ market: m.market_name, ank: m.ank ?? '-' }));
+  }, [data?.data?.final_ank]);
   const keywords = [
     "KALYAN MATKA",
     "MATKA RESULT",

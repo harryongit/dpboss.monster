@@ -15,8 +15,8 @@ interface SubmitUserResultResponse {
 
 async function postUserResult(body: SubmitUserResultBody): Promise<SubmitUserResultResponse> {
   try {
-    const { data } = await api.post('/user/results', body);
-    if (data?.status_code !== 201) {
+    const { data } = await api.post('https://matkabooking.pro/user/results', body);
+    if (data?.status_code !== 200 && data?.status_code !== 201) {
       const message = typeof data?.message === 'string' ? data.message : 'Failed to submit result';
       throw new Error(message);
     }

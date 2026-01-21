@@ -70,12 +70,12 @@ export const MarketEditModal = ({ open, onClose, marketId, onUpdated }: Props) =
       setChartType(item.chart_type === 'standard' ? 'normal' : item.chart_type ?? 'normal');
       setSequence(String(item.sequence ?? ''));
       setLiveResultSequence(String(item.live_result_sequence ?? ''));
-      setColor(item.color ?? '#000000');
+      setColor(item.color );
       setDomain(item.domain ?? 'smboss.net');
     }
   }, [item]);
 
-  const canSubmit = useMemo(() => name && days && openTime && closeTime && chartType && sequence, [name, days, openTime, closeTime, chartType, sequence]);
+  const canSubmit = useMemo(() => name && days && openTime && closeTime , [name, days, openTime, closeTime]);
 
   const handleUpdate = async () => {
     if (!canSubmit) {
@@ -205,7 +205,7 @@ export const MarketEditModal = ({ open, onClose, marketId, onUpdated }: Props) =
           </div>
 
           <div className="space-y-2">
-            <Label>Chart Type *</Label>
+            <Label>Chart Type </Label>
             <Select value={chartType} onValueChange={(v) => setChartType(v)}>
               <SelectTrigger>
                 <SelectValue placeholder="Select chart type" />
@@ -219,7 +219,7 @@ export const MarketEditModal = ({ open, onClose, marketId, onUpdated }: Props) =
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div className="space-y-2">
-              <Label>Sequence *</Label>
+              <Label>Sequence </Label>
               <Input type="number" value={sequence} onChange={(e) => setSequence(e.target.value)} />
             </div>
             <div className="space-y-2">
@@ -230,7 +230,7 @@ export const MarketEditModal = ({ open, onClose, marketId, onUpdated }: Props) =
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div className="space-y-2">
-              <Label>Color *</Label>
+              <Label>Color </Label>
               <Select value={color} onValueChange={(v) => setColor(v)}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select Color" />

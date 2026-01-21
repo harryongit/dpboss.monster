@@ -77,18 +77,18 @@ const AddMarket = () => {
       Toast.error("Please enter open/close time");
       return;
     }
-    if (!formData.chart) {
-      Toast.error("Please select chart type");
-      return;
-    }
-    if (!formData.sequenceNumber) {
-      Toast.error("Please enter sequence number");
-      return;
-    }
-    if (!formData.color) {
-      Toast.error("Please select color");
-      return;
-    }
+    // if (!formData.chart) {
+    //   Toast.error("Please select chart type");
+    //   return;
+    // }
+    // if (!formData.sequenceNumber) {
+    //   Toast.error("Please enter sequence number");
+    //   return;
+    // }
+    // if (!formData.color) {
+    //   Toast.error("Please select color");
+    //   return;
+    // }
 
     const colorHexMap: Record<string, string> = {
       Red: '#ff0000',
@@ -102,10 +102,10 @@ const AddMarket = () => {
       White: '#ffffff',
     };
     const colorHex = colorHexMap[formData.color];
-    if (!colorHex) {
-      Toast.error("Invalid color selected");
-      return;
-    }
+    // if (!colorHex) {
+    //   Toast.error("Invalid color selected");
+    //   return;
+    // }
 
     const toApiTime = (t: string) => t;
     let adminId = 1;
@@ -135,8 +135,8 @@ const AddMarket = () => {
         close_start_time: formData.closeStartTime || undefined,
         close_stop_time: formData.closeStopTime || undefined,
         chart_type: chartType,
-        sequence: parseInt(formData.sequenceNumber || '1', 10),
-        live_result_sequence: formData.liveResultSequence ? parseInt(formData.liveResultSequence, 10) : undefined,
+        sequence: parseInt(formData.sequenceNumber ),
+        live_result_sequence: formData.liveResultSequence ? parseInt(formData.liveResultSequence) : undefined,
         color: colorValue,
         domain: 'smboss.net',
       };
@@ -218,7 +218,7 @@ const AddMarket = () => {
                   value={formData.gameName}
                   onChange={handleInputChange}
                   placeholder="Enter game name"
-                  required
+                 
                 />
               </div>
 
@@ -259,7 +259,7 @@ const AddMarket = () => {
                   name="openTime"
                   value={formData.openTime}
                   onChange={handleInputChange}
-                  required
+                
                 />
               </div>
 
@@ -276,7 +276,7 @@ const AddMarket = () => {
                   name="closeTime"
                   value={formData.closeTime}
                   onChange={handleInputChange}
-                  required
+                  
                 />
               </div>
 
@@ -346,7 +346,7 @@ const AddMarket = () => {
 
               {/* Chart Dropdown */}
               <div className="space-y-2">
-                <Label>Chart *</Label>
+                <Label>Chart </Label>
 
                 <Select
                   value={formData.chart}
@@ -367,14 +367,14 @@ const AddMarket = () => {
 
               {/* Sequence Number */}
               <div className="space-y-2">
-                <Label>Sequence Number *</Label>
+                <Label>Sequence Number </Label>
                 <Input
                   type="number"
                   name="sequenceNumber"
                   value={formData.sequenceNumber}
                   onChange={handleInputChange}
                   placeholder="Enter sequence number"
-                  required
+                 
                 />
               </div>
 
@@ -392,7 +392,7 @@ const AddMarket = () => {
 
               {/* Color Dropdown */}
               <div className="space-y-2">
-                <Label>Color *</Label>
+                <Label>Color </Label>
 
                 <Select
                   value={formData.color}

@@ -20,8 +20,10 @@ const UserUploadResult = () => {
     setValues((prev) => ({ ...prev, [id]: value }));
   };
 
-  const handleUpload = (id: number, name: string) => {
-    if (!values[id]) {
+  const handleUpload = (id: number, name: string, existing?: string | null) => {
+    const hasLocal = Object.prototype.hasOwnProperty.call(values, id);
+    const valueToSubmit = hasLocal ? (values[id] ?? "") : (existing ?? "");
+    if (!valueToSubmit) {
       Toast.error("Please enter a result number!");
       return;
     }
@@ -35,11 +37,15 @@ const UserUploadResult = () => {
       } catch {}
     }
     submitMutation.mutate(
-      { user_id, market_id: id, result_number: values[id] },
+      { user_id, market_id: id, result_number: valueToSubmit },
       {
         onSuccess: () => {
           Toast.success(`Result for ${name} submitted`);
-          setValues((prev) => ({ ...prev, [id]: "" }));
+          setValues((prev) => {
+            const { [id]: _, ...rest } = prev;
+            return rest;
+          });
+          void listQuery.refetch();
         },
         onError: (err) => {
           const anyErr: any = err as any;
@@ -69,13 +75,13 @@ const UserUploadResult = () => {
               <CardContent className="space-y-3">
                 <Input
                   placeholder="Enter result number"
-                  value={values[market.market_id] || ""}
+                  value={Object.prototype.hasOwnProperty.call(values, market.market_id) ? (values[market.market_id] ?? "") : (market.result ?? "")}
                   onChange={(e) => handleChange(market.market_id, e.target.value)}
                 />
                 <Button
                   className="bg-green-600 hover:bg-green-700 text-white w-full"
-                  disabled={submitMutation.isPending && pendingId === market.market_id}
-                  onClick={() => handleUpload(market.market_id, market.market_name)}
+                  disabled={(submitMutation.isPending && pendingId === market.market_id)}
+                  onClick={() => handleUpload(market.market_id, market.market_name, market.result)}
                 >
                   {submitMutation.isPending && pendingId === market.market_id ? 'Submitting...' : 'Upload Result'}
                 </Button>

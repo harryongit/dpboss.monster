@@ -71,8 +71,12 @@ const FinalAnkSection = ({
             display: none;
           }
         `}</style>
-
-        {finalAnk.map((item, idx) => (
+        {(!finalAnk || finalAnk.length === 0) && (
+          <div className="text-center text-amber-700 font-semibold bg-amber-50 border border-amber-200 rounded-md p-2">
+            Final Ank not available.
+          </div>
+        )}
+        {finalAnk && finalAnk.length > 0 && finalAnk.map((item, idx) => (
           <div
             key={idx}
             className="flex items-center justify-between bg-white/90 p-3 rounded-2xl shadow-md hover:shadow-lg transition-all cursor-pointer border border-orange-200"

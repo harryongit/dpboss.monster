@@ -1,4 +1,4 @@
-import { Home, Upload, Settings, WandSparkles, X } from 'lucide-react';
+import { Home, Upload, Settings, WandSparkles, X, UploadCloud } from 'lucide-react';
 import { NavLink } from '@/components/NavLink';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { cn } from '@/lib/utils';
@@ -10,8 +10,8 @@ interface SidebarProps {
 }
 
 const menuItems = [
-  { title: 'Home', icon: Home, path: '/user' },
-  { title: 'Upload Result', icon: Upload, path: '/user/upload-result' },
+  { title: 'Upload Result', icon: Upload, path: '/user' },
+  // { title: 'Upload Result', icon: Upload, path: '/user/upload-result' },
   { title: 'Free Fix', icon: WandSparkles, path: '/user/free-fix' },
  
 ];

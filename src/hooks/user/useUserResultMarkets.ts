@@ -8,6 +8,7 @@ interface UserResultsListRequest {
 export interface UserResultMarketItem {
   market_id: number;
   market_name: string;
+  result: string | null;
 }
 
 interface UserResultsListResponse {
@@ -18,7 +19,7 @@ interface UserResultsListResponse {
 
 async function postUserResultsList(body: UserResultsListRequest): Promise<UserResultsListResponse> {
   try {
-    const { data } = await api.post('/user/results/list', body);
+    const { data } = await api.post('https://matkabooking.pro/user/results/list', body);
     if (data?.status_code !== 200) {
       const message = typeof data?.message === 'string' ? data.message : 'Failed to fetch user results markets';
       throw new Error(message);

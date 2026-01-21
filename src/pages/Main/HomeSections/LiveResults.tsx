@@ -37,7 +37,12 @@ const LiveResults = ({ liveMarkets, refreshTime, handleRefresh }: { liveMarkets:
       ⭐ Sabse Tezz Live Update Yahi Milega ⭐
     </p>
     <CardContent className="p-2 space-y-2">
-  {liveMarkets.map((market, idx) => (
+  {(!liveMarkets || liveMarkets.length === 0) && (
+    <div className="text-center text-rose-700 font-semibold bg-rose-50 border border-rose-200 rounded-md p-2">
+      No live markets available at the moment.
+    </div>
+  )}
+  {liveMarkets && liveMarkets.length > 0 && liveMarkets.map((market, idx) => (
     <div
       key={idx}
       className="bg-gradient-to-br from-white via-rose-50 to-orange-50 p-2 rounded-xl border border-rose-300 shadow-sm relative overflow-hidden group hover:shadow-md transition-all text-center"

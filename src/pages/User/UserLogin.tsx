@@ -52,7 +52,7 @@ const UserLogin = () => {
         icon: "success",
       });
       if (confirmed) {
-        navigate('/user/upload-result');
+        navigate('/user');
       }
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : "Login failed";
