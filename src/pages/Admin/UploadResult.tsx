@@ -70,10 +70,10 @@ const UploadResult = () => {
     const formattedDate = toDDMMYYYY(formData.resultDate);
     const selectedMarketId = parseInt(formData.marketId, 10);
     const duplicate = results.some((r) => r.marketId === selectedMarketId && r.date === formattedDate);
-    if (duplicate) {
-      Toast.error('Result already exist on this date so please change entry');
-      return;
-    }
+    // if (duplicate) {
+    //   Toast.error('Result already exist on this date so please change entry');
+    //   return;
+    // }
     try {
       const resp = await createMutation.mutateAsync({
         date: formattedDate,
