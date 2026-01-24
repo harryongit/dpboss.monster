@@ -3,7 +3,7 @@ import logo from "@/assets/logo.png";
 
 const HeaderLogo = () => {
   return (
-    <div className="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-md border-b-4 border-rose-500">
+    <div className=" top-0 z-50 bg-white/95 backdrop-blur-md shadow-md border-b-4 border-rose-500">
       <div className="p-3 text-center">
 
         <div className="flex items-center justify-center gap-3 mb-1">
