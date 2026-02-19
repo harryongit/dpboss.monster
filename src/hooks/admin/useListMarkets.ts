@@ -16,6 +16,7 @@ interface ListMarketsItem {
   domain: string;
   status: number;
   is_holiday: boolean;
+  free_fix_flag?: number;
 }
 interface ListMarketsResponse {
   status_code: number;

@@ -16,6 +16,7 @@ interface CreateMarketRequest {
   live_result_sequence?: number;
   color: string;
   domain: string;
+  free_fix_flag?: number;
 }
 
 interface CreateMarketResponse {

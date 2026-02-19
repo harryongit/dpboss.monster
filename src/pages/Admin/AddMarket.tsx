@@ -21,6 +21,8 @@ import { useCreateMarket } from "@/hooks/admin/useCreateMarket";
 import { MarketEditModal } from "@/components/admin/MarketEditModal";
 import { useDeleteMarket } from "@/hooks/admin/useDeleteMarket";
 import { Loader2 } from "lucide-react";
+import { Switch } from "@/components/ui/switch";
+import { useUpdateMarketFreeFix } from "@/hooks/admin/useUpdateMarketFreeFix";
 
 const AddMarket = () => {
   const [formData, setFormData] = useState({
@@ -39,12 +41,14 @@ const AddMarket = () => {
     domain: "spdpboss.net",
   });
 
-  const [markets, setMarkets] = useState([] as { id: number; gameName: string; openTime: string; closeTime: string }[]);
+  const [markets, setMarkets] = useState([] as { id: number; gameName: string; openTime: string; closeTime: string; freeFixFlag?: number }[]);
   const { data, isFetching, refetch } = useAdminListMarkets();
   const createMutation = useCreateMarket();
   const deleteMutation = useDeleteMarket();
   const [editOpen, setEditOpen] = useState(false);
   const [editId, setEditId] = useState<number | undefined>(undefined);
+  const updateFreeFixMutation = useUpdateMarketFreeFix();
+  const [pendingToggleId, setPendingToggleId] = useState<number | null>(null);
   useEffect(() => {
     const items = data?.data?.items ?? [];
     if (items.length) {
@@ -54,6 +58,7 @@ const AddMarket = () => {
           gameName: m.game_name ?? m.name,
           openTime: m.open_time,
           closeTime: m.close_time,
+          freeFixFlag: m.free_fix_flag,
         })),
       );
     }
@@ -139,6 +144,7 @@ const AddMarket = () => {
         live_result_sequence: formData.liveResultSequence ? parseInt(formData.liveResultSequence) : undefined,
         color: colorValue,
         domain: 'spdpboss.net',
+        free_fix_flag: 1,
       };
       const resp = await createMutation.mutateAsync(payload);
       const apiMsg = resp?.message ?? 'Market created';
@@ -200,6 +206,43 @@ const AddMarket = () => {
     { header: "Game Name", accessor: "gameName" },
     { header: "Open Time", accessor: "openTime" },
     { header: "Close Time", accessor: "closeTime" },
+    { header: "Free Fix", accessor: "freeFixFlag", cell: (_value: any, row: any) => {
+      const checked = (row.freeFixFlag ?? 1) === 1;
+      const loading = pendingToggleId === row.id && updateFreeFixMutation.isPending;
+      return (
+        <div className="flex items-center gap-2">
+          <Switch
+            checked={checked}
+            disabled={loading}
+            onCheckedChange={async (v) => {
+              let adminId = 1;
+              try {
+                const saved = localStorage.getItem('admin');
+                if (saved) {
+                  const parsed = JSON.parse(saved);
+                  if (parsed?.id) adminId = parsed.id as number;
+                }
+              } catch {
+                adminId = 1;
+              }
+              setPendingToggleId(row.id);
+              try {
+                const next = v ? 1 : 0;
+                const resp = await updateFreeFixMutation.mutateAsync({ market_id: row.id, free_fix_flag: next, admin_id: adminId });
+                Toast.success(resp.message || "Free fix flag updated");
+                setMarkets((prev) => prev.map((r) => r.id === row.id ? { ...r, freeFixFlag: next } : r));
+              } catch (err: unknown) {
+                const message = err instanceof Error ? err.message : 'Failed to update free fix';
+                Toast.error(message);
+              } finally {
+                setPendingToggleId(null);
+              }
+            }}
+          />
+          {loading && <Loader2 className="h-4 w-4 animate-spin" />}
+        </div>
+      );
+    }},
   ];
 
   return (

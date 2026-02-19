@@ -6,6 +6,7 @@ interface CreateUserRequest {
   mobile: string;
   password: string;
   admin_id: number;
+  free_fix_flag?: number;
 }
 
 interface CreateUserResponse {

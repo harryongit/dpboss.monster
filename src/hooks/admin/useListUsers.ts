@@ -12,6 +12,7 @@ interface ListUsersItem {
   password: string;
   status: number;
   created_date?: string;
+  free_fix_flag?: number;
 }
 
 interface ListUsersResponse {

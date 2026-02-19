@@ -24,7 +24,10 @@ const matkaJodiItems = [
  
 ];
 
+import { useNavigate } from "react-router-dom";
+
 const SpecialGameZone = () => {
+  const navigate = useNavigate();
   return (
     <div className="space-y-6">
       {/* SPECIAL GAME ZONE CARD */}
@@ -37,15 +40,20 @@ const SpecialGameZone = () => {
 
          <CardContent className="p-0">
           {specialGameItems.map((item, index) => (
-<div
-  key={index}
-  className={`px-1 py-1 text-center text-lg font-bold
-    animate-gradient-text
-    ${index !== specialGameItems.length - 1 ? "border-b border-orange-400" : ""}
-  `}
->
-  {item}
-</div>
+            <button
+              type="button"
+              key={index}
+              onClick={() => {
+                if (item.toLowerCase() === "all market free fix game") {
+                  navigate("/matka-free-open");
+                }
+              }}
+              className={`w-full px-1 py-1 text-center text-lg font-bold animate-gradient-text
+                ${index !== specialGameItems.length - 1 ? "border-b border-orange-400" : ""}
+              `}
+            >
+              {item}
+            </button>
 
 
 

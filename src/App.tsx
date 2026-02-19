@@ -19,7 +19,6 @@ import MainHome from "@/pages/Main/MainHome";
 import UserLogin from "@/pages/User/UserLogin";
 import UserDashboard from "@/pages/User/UserDashboard";
 import { UserDashboardLayout } from "@/components/layout/UserDashboardLayout";
-import FreeFix from "@/pages/FreeFix";
 import ToastProvider from "@/components/ui/ToastProvider"; // ✅ import ToastProvider
 import AddFinalAnk from "./pages/Admin/AddFinalAnk";
 import UserUploadResult from "./pages/User/UserUploadResult";
@@ -29,6 +28,9 @@ import PrivacyPolicy from "@/pages/Main/PrivacyPolicy";
 import TermsAndConditions from "@/pages/Main/TermsAndConditions";
 import JodiRecordChart from "./pages/Main/HomeSections/allmarkets/JodiRecordChart";
 import PanelRecordChart from "./pages/Main/HomeSections/allmarkets/PanelRecordChart";
+import AdminFreeFix from "@/pages/Admin/AdminFreeFix";
+import UserFreeFix from "./pages/User/UserFreeFix";
+import MatkaFreeOpen from "./pages/Main/MatkaFreeOpen";
 
 const queryClient = new QueryClient();
 
@@ -48,6 +50,7 @@ const App = () => (
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                 <Route path="/terms" element={<TermsAndConditions />} />
+                <Route path="/matka-free-open" element={<MatkaFreeOpen />} />
 
                 <Route path="/admin/dashboard_spdpboss_login" element={<Login />} />
                 <Route
@@ -146,7 +149,7 @@ const App = () => (
                   element={
                     <ProtectedRoute role="admin">
                       <DashboardLayout>
-                        <FreeFix />
+                        <AdminFreeFix />
                       </DashboardLayout>
                     </ProtectedRoute>
                   }
@@ -178,7 +181,7 @@ const App = () => (
                   element={
                     <ProtectedRoute role="user">
                       <UserDashboardLayout>
-                        <FreeFix />
+                        <UserFreeFix />
                       </UserDashboardLayout>
                     </ProtectedRoute>
                   }

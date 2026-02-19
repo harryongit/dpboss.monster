@@ -8,14 +8,14 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { DataTable } from '@/components/common/DataTable';
 import { Toast } from '@/components/ui/ToastProvider';
 import { confirmSwal } from '@/lib/ConfirmSwal';
-import { useAllMarkets } from '@/hooks/common/useAllMarkets';
+import { useListMarketsFreeFixAllowed } from '@/hooks/admin/useListMarketsFreeFixAllowed';
 import { useListFreeFix } from '@/hooks/admin/useListFreeFix';
 import { useCreateFreeFix } from '@/hooks/admin/useCreateFreeFix';
 import { useDeleteFreeFix } from '@/hooks/admin/useDeleteFreeFix';
 import { RefreshButton } from '@/components/ui/refresh-admin';
 import { Skeleton } from '@/components/ui/skeleton';
 
-const FreeFix = () => {
+const AdminFreeFix = () => {
   const [formData, setFormData] = useState({
     resultDate: '',
     marketId: '',
@@ -37,7 +37,7 @@ const FreeFix = () => {
     adminId = 1;
   }
 
-  const marketsQuery = useAllMarkets({ admin_id: adminId });
+  const marketsQuery = useListMarketsFreeFixAllowed({ admin_id: adminId });
   const listQuery = useListFreeFix({ admin_id: adminId });
   const createMutation = useCreateFreeFix();
   const deleteMutation = useDeleteFreeFix();
@@ -45,7 +45,7 @@ const FreeFix = () => {
   const marketMap = useMemo(() => {
     const items = marketsQuery.data?.data?.items ?? [];
     const map = new Map<number, string>();
-    items.forEach((m) => map.set(m.market_id, m.market_name));
+    items.forEach((m: any) => map.set(m.market_id, m.game_name ?? m.market_name));
     return map;
   }, [marketsQuery.data]);
 
@@ -68,6 +68,10 @@ const FreeFix = () => {
       return;
     }
     try {
+      if (formData.resultDate && formData.resultDate < toYMD(new Date())) {
+        Toast.error('Past date not allowed');
+        return;
+      }
       const resp = await createMutation.mutateAsync({
         date: toDDMMYYYY(formData.resultDate),
         market_id: parseInt(formData.marketId, 10),
@@ -123,6 +127,7 @@ const FreeFix = () => {
                   name="resultDate"
                   type="date"
                   value={formData.resultDate}
+                  min={toYMD(new Date())}
                   onChange={(e) => setFormData((prev) => ({ ...prev, resultDate: e.target.value }))}
                   required
                 />
@@ -138,8 +143,8 @@ const FreeFix = () => {
                     <SelectValue placeholder="Select game" />
                   </SelectTrigger>
                   <SelectContent>
-                    {(marketsQuery.data?.data?.items ?? []).map((m) => (
-                      <SelectItem key={m.market_id} value={String(m.market_id)}>{m.market_name}</SelectItem>
+                    {(marketsQuery.data?.data?.items ?? []).map((m: any) => (
+                      <SelectItem key={m.market_id} value={String(m.market_id)}>{m.game_name ?? m.market_name}</SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
@@ -195,7 +200,7 @@ const FreeFix = () => {
   );
 };
 
-export default FreeFix;
+export default AdminFreeFix;
 
 function toDDMMYYYY(dateStr: string): string {
   if (!dateStr) return '';
@@ -205,4 +210,11 @@ function toDDMMYYYY(dateStr: string): string {
   const mm = String(d.getMonth() + 1).padStart(2, '0');
   const yyyy = d.getFullYear();
   return `${dd}/${mm}/${yyyy}`;
+}
+
+function toYMD(d: Date): string {
+  const dd = String(d.getDate()).padStart(2, '0');
+  const mm = String(d.getMonth() + 1).padStart(2, '0');
+  const yyyy = d.getFullYear();
+  return `${yyyy}-${mm}-${dd}`;
 }

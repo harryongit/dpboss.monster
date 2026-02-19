@@ -19,6 +19,8 @@ import { useUpdateUser } from "@/hooks/admin/useUpdateUser";
 import { useUpdateUserStatus } from "@/hooks/admin/useUpdateUserStatus";
 import { UserEditModal } from "@/components/admin/UserEditModal";
 import { useDeleteUser } from "@/hooks/admin/useDeleteUser";
+import { Switch } from "@/components/ui/switch";
+import { useUpdateUserFreeFix } from "@/hooks/admin/useUpdateUserFreeFix";
 
 
 const UserRegister = () => {
@@ -36,8 +38,10 @@ const UserRegister = () => {
   const updateStatusMutation = useUpdateUserStatus();
   const deleteMutation = useDeleteUser();
 
-  const [users, setUsers] = useState([] as { id: number; userName: string; password: string; mobile: string; registerOn: string; status: string }[]);
+  const [users, setUsers] = useState([] as { id: number; userName: string; password: string; mobile: string; registerOn: string; status: string; freeFixFlag?: number }[]);
   const { data, isFetching, refetch } = useAdminListUsers();
+  const updateUserFreeFixMutation = useUpdateUserFreeFix();
+  const [pendingToggleId, setPendingToggleId] = useState<number | null>(null);
   useEffect(() => {
     const items = data?.data?.items ?? [];
     setUsers(
@@ -48,6 +52,7 @@ const UserRegister = () => {
         mobile: u.mobile,
         registerOn: (u as any).created_date ?? "-",
         status: u.status === 1 ? "Active" : "Inactive",
+        freeFixFlag: (u as any).free_fix_flag,
       }))
     );
   }, [data]);
@@ -89,6 +94,7 @@ const UserRegister = () => {
           mobile: formData.mobileNo,
           password: formData.password,
           admin_id: adminId,
+          free_fix_flag: 1,
         });
         Toast.success(resp.message || 'User created');
         await refetch();
@@ -179,6 +185,47 @@ const UserRegister = () => {
     { header: "Password", accessor: "password" },
     { header: "Mobile", accessor: "mobile" },
     { header: "Register On", accessor: "registerOn" },
+    {
+      header: "Free Fix",
+      accessor: "freeFixFlag",
+      cell: (_value: any, row: any) => {
+        const checked = (row.freeFixFlag ?? 1) === 1;
+        const loading = pendingToggleId === row.id && updateUserFreeFixMutation.isPending;
+        return (
+          <div className="flex items-center gap-2">
+            <Switch
+              checked={checked}
+              disabled={loading}
+              onCheckedChange={async (v) => {
+                let adminId = 1;
+                try {
+                  const saved = localStorage.getItem('admin');
+                  if (saved) {
+                    const parsed = JSON.parse(saved);
+                    if (parsed?.id) adminId = parsed.id as number;
+                  }
+                } catch {
+                  adminId = 1;
+                }
+                setPendingToggleId(row.id);
+                try {
+                  const next = v ? 1 : 0;
+                  const resp = await updateUserFreeFixMutation.mutateAsync({ user_id: row.id, free_fix_flag: next, admin_id: adminId });
+                  Toast.success(resp.message || "Free fix flag updated");
+                  setUsers((prev) => prev.map((r) => r.id === row.id ? { ...r, freeFixFlag: next } : r));
+                } catch (err: unknown) {
+                  const message = err instanceof Error ? err.message : 'Failed to update free fix';
+                  Toast.error(message);
+                } finally {
+                  setPendingToggleId(null);
+                }
+              }}
+            />
+            {loading && <Loader2 className="h-4 w-4 animate-spin" />}
+          </div>
+        );
+      },
+    },
     {
       header: "Status",
       accessor: "status",
