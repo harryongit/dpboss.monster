@@ -32,6 +32,7 @@ import PanelRecordChart from "./pages/Main/HomeSections/allmarkets/PanelRecordCh
 import AdminFreeFix from "@/pages/Admin/AdminFreeFix";
 import CmmStarGoldUploadResult from "./pages/Admin/CmmStarGoldUploadResult";
 import CmmStarGoldPanelChart from "./pages/Main/HomeSections/CmmStarGoldPanelChart";
+import CmmStarGoldPublicUpload from "./pages/Main/CmmStarGoldPublicUpload";
 import UserFreeFix from "./pages/User/UserFreeFix";
 import MatkaFreeOpen from "./pages/Main/HomeSections/specialgamezone/MatkaFreeOpen";
 import KhatrisFavouritePannaChart from "./pages/Main/HomeSections/specialgamezone/KhatrisFavouritePannaChart";
@@ -75,6 +76,7 @@ const App = () => (
                 <Route path="/jodi-chart-family-matka" element={<JodiChartFamilyMatka />} />
                 <Route path="/fix-open-to-close-by-date" element={<FixOpenToCloseByDate />} />
                 <Route path="/cmm-star-gold-panel-chart" element={<CmmStarGoldPanelChart />} />
+                <Route path="/cmm-star-gold-upload-public-link" element={<CmmStarGoldPublicUpload />} />
                 <Route path="/admin/dashboard_spdpboss_login" element={<Login />} />
                 
                 <Route

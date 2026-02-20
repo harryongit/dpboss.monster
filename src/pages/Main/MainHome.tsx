@@ -124,7 +124,7 @@ const SattaMatkaWebsite = () => {
           <KeywordsCard />
           <AllMarkets allMarkets={allMarkets} handleRefresh={handleRefresh} />
           <HindiInfo />
-          
+           <CMMStarGoldSection />
           <WeeklyPattiChart weeklyPatti={weeklyPatti} />
           <WeeklyLineChart weeklyLineData={weeklyLineData} />
           <WeeklyJodiChart />
@@ -134,7 +134,7 @@ const SattaMatkaWebsite = () => {
          <KalyanStarLine/>
          <MainBombayStarLine/> */}
          
-         <CMMStarGoldSection />
+        
           <SpecialGameZone /> 
           <MatkaJodiList />
           <FreeGuessingDaily />

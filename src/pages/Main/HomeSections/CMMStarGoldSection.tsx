@@ -30,6 +30,12 @@ const CMMStarGoldSection = () => {
           >
             Panel
           </button>
+          <button
+            className="ml-2 px-3 py-1 rounded bg-white text-green-700 font-semibold border border-white shadow-sm"
+            onClick={() => navigate('/cmm-star-gold-upload-public')}
+          >
+            Upload
+          </button>
         </div>
       </div>
 
