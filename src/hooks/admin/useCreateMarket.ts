@@ -17,6 +17,7 @@ interface CreateMarketRequest {
   color: string;
   domain: string;
   free_fix_flag?: number;
+  market_caption_flag?: number;
 }
 
 interface CreateMarketResponse {

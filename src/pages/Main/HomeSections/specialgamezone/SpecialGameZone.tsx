@@ -4,11 +4,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 /* SPECIAL GAME ITEMS */
 const specialGameItems = [
  
-  "SpdpBoss Guessing Forum (New)",
   "All market free fix game",
   "Ratan Khatri Fix Panel Chart",
   "Matka Final Number Trick Chart",
-  "EverGreen Trick Zone And Matka Tricks By SpdpBoss",
+ 
 ];
 
 

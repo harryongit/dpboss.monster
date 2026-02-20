@@ -5,6 +5,7 @@ interface LiveMarketItem {
   market_id: number;
   market_name: string;
   result: string;
+  market_caption_flag?: number;
 }
 
 interface AllMarketItem {
@@ -14,6 +15,7 @@ interface AllMarketItem {
   color?: string;
   open_time?: string;
   close_time?: string;
+  market_caption_flag?: number;
 }
 
 interface FinalAnkItem {

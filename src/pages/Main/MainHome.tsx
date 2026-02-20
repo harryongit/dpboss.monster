@@ -24,7 +24,7 @@ import MainBazaarChart from './HomeSections/MainBazaarChart';
 import SpecialGameZone from './HomeSections/specialgamezone/SpecialGameZone';
 import MatkaJodiList from './HomeSections/matkajodilist/MatkaJodiListSection';
 import FreeGuessingDaily from './HomeSections/FreeGuessingDaily';
-import TodayResultSection from './HomeSections/TodayResultSection';
+import CMMStarGoldSection from './HomeSections/CMMStarGoldSection';
 import RajeshreeStarLine from './HomeSections/RajeshreeStarLine';
 import KalyanStarLine from './HomeSections/KalyanStarLine';
 import MainBombayStarLine from './HomeSections/MainBombayStarLine';
@@ -41,12 +41,12 @@ const SattaMatkaWebsite = () => {
 
   const liveMarkets = useMemo(() => {
     const items = data?.data?.live_markets ?? [];
-    return items.map((m) => ({ name: m.market_name, result: m.result, time: '', status: 'Live' }));
+    return items.map((m) => ({ name: m.market_name, result: m.result, time: '', status: 'Live', captionFlag: m.market_caption_flag ?? 0 }));
   }, [data?.data?.live_markets]);
 
   const allMarkets = useMemo(() => {
     const items = data?.data?.all_markets ?? [];
-    return items.map((m) => ({ id: m.market_id, name: m.market_name, result: m.result ?? 'loading', time: `${m.open_time ?? ''} - ${m.close_time ?? ''}`, color: m.color }));
+    return items.map((m) => ({ id: m.market_id, name: m.market_name, result: m.result ?? 'loading', time: `${m.open_time ?? ''} - ${m.close_time ?? ''}`, color: m.color, captionFlag: m.market_caption_flag ?? 0 }));
   }, [data?.data?.all_markets]);
 
   const finalAnk = useMemo(() => {
@@ -134,7 +134,7 @@ const SattaMatkaWebsite = () => {
          <KalyanStarLine/>
          <MainBombayStarLine/> */}
          
-         <TodayResultSection />
+         <CMMStarGoldSection />
           <SpecialGameZone /> 
           <MatkaJodiList />
           <FreeGuessingDaily />

@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
 
-type Market = { id?: number; name: string; result: string; time: string; color?: string };
+type Market = { id?: number; name: string; result: string; time: string; color?: string; captionFlag?: number };
 
 const AllMarkets = ({ allMarkets, handleRefresh }: { allMarkets: Market[]; handleRefresh: () => void }) => {
   const navigate = useNavigate();
@@ -79,6 +79,11 @@ const marketName = state?.marketName;
                 <p className="text-2xl text-center font-black text-transparent bg-clip-text bg-gradient-to-r from-rose-700 to-orange-600">
                   {market.result}
                 </p>
+                {(market.captionFlag ?? 0) === 1 && (
+                  <p className="mt-1 text-xs font-semibold text-rose-700 text-center">
+                    {market.result?.toLowerCase() === 'loading' ? 'खबर लाइन चालू है' : 'सबसे तेज सबसे सही'}
+                  </p>
+                )}
               </div>
 
               {/* Left Jodi - Center Time - Right Panel */}

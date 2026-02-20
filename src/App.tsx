@@ -13,6 +13,7 @@ import AddUserMarket from "./pages/Admin/AddUserMarket";
 import MarketHoliday from "./pages/Admin/MarketHoliday";
 import Settings from "./pages/Admin/Settings";
 import AddTime from "./pages/Admin/AddTime";
+import AddTimeCmmStarGold from "./pages/Admin/AddTimeCmmStarGold";
 import UploadResult from "./pages/Admin/UploadResult";
 import NotFound from "./pages/NotFound";
 import MainHome from "@/pages/Main/MainHome";
@@ -29,6 +30,8 @@ import TermsAndConditions from "@/pages/Main/TermsAndConditions";
 import JodiRecordChart from "./pages/Main/HomeSections/allmarkets/JodiRecordChart";
 import PanelRecordChart from "./pages/Main/HomeSections/allmarkets/PanelRecordChart";
 import AdminFreeFix from "@/pages/Admin/AdminFreeFix";
+import CmmStarGoldUploadResult from "./pages/Admin/CmmStarGoldUploadResult";
+import CmmStarGoldPanelChart from "./pages/Main/HomeSections/CmmStarGoldPanelChart";
 import UserFreeFix from "./pages/User/UserFreeFix";
 import MatkaFreeOpen from "./pages/Main/HomeSections/specialgamezone/MatkaFreeOpen";
 import KhatrisFavouritePannaChart from "./pages/Main/HomeSections/specialgamezone/KhatrisFavouritePannaChart";
@@ -71,6 +74,7 @@ const App = () => (
                 <Route path="/panel-total-chart" element={<PanelTotalChart />} />
                 <Route path="/jodi-chart-family-matka" element={<JodiChartFamilyMatka />} />
                 <Route path="/fix-open-to-close-by-date" element={<FixOpenToCloseByDate />} />
+                <Route path="/cmm-star-gold-panel-chart" element={<CmmStarGoldPanelChart />} />
                 <Route path="/admin/dashboard_spdpboss_login" element={<Login />} />
                 
                 <Route
@@ -145,11 +149,31 @@ const App = () => (
                   }
                 />
                 <Route
+                  path="/admin/add-time-cmmstargold"
+                  element={
+                    <ProtectedRoute role="admin">
+                      <DashboardLayout>
+                        <AddTimeCmmStarGold />
+                      </DashboardLayout>
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
                   path="/admin/upload-result"
                   element={
                     <ProtectedRoute role="admin">
                       <DashboardLayout>
                         <UploadResult />
+                      </DashboardLayout>
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/admin/upload-cmmstargold-result"
+                  element={
+                    <ProtectedRoute role="admin">
+                      <DashboardLayout>
+                        <CmmStarGoldUploadResult />
                       </DashboardLayout>
                     </ProtectedRoute>
                   }

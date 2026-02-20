@@ -17,6 +17,7 @@ interface ListMarketsItem {
   status: number;
   is_holiday: boolean;
   free_fix_flag?: number;
+  market_caption_flag?: number;
 }
 interface ListMarketsResponse {
   status_code: number;

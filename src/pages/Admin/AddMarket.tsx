@@ -23,6 +23,7 @@ import { useDeleteMarket } from "@/hooks/admin/useDeleteMarket";
 import { Loader2 } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
 import { useUpdateMarketFreeFix } from "@/hooks/admin/useUpdateMarketFreeFix";
+import { useUpdateMarketCaption } from "@/hooks/admin/useUpdateMarketCaption";
 
 const AddMarket = () => {
   const [formData, setFormData] = useState({
@@ -41,13 +42,14 @@ const AddMarket = () => {
     domain: "spdpboss.net",
   });
 
-  const [markets, setMarkets] = useState([] as { id: number; gameName: string; openTime: string; closeTime: string; freeFixFlag?: number }[]);
+  const [markets, setMarkets] = useState([] as { id: number; gameName: string; openTime: string; closeTime: string; freeFixFlag?: number; captionFlag?: number }[]);
   const { data, isFetching, refetch } = useAdminListMarkets();
   const createMutation = useCreateMarket();
   const deleteMutation = useDeleteMarket();
   const [editOpen, setEditOpen] = useState(false);
   const [editId, setEditId] = useState<number | undefined>(undefined);
   const updateFreeFixMutation = useUpdateMarketFreeFix();
+  const updateCaptionMutation = useUpdateMarketCaption();
   const [pendingToggleId, setPendingToggleId] = useState<number | null>(null);
   useEffect(() => {
     const items = data?.data?.items ?? [];
@@ -59,6 +61,7 @@ const AddMarket = () => {
           openTime: m.open_time,
           closeTime: m.close_time,
           freeFixFlag: m.free_fix_flag,
+          captionFlag: m.market_caption_flag ?? 0,
         })),
       );
     }
@@ -145,6 +148,7 @@ const AddMarket = () => {
         color: colorValue,
         domain: 'spdpboss.net',
         free_fix_flag: 1,
+        market_caption_flag: 0,
       };
       const resp = await createMutation.mutateAsync(payload);
       const apiMsg = resp?.message ?? 'Market created';
@@ -233,6 +237,43 @@ const AddMarket = () => {
                 setMarkets((prev) => prev.map((r) => r.id === row.id ? { ...r, freeFixFlag: next } : r));
               } catch (err: unknown) {
                 const message = err instanceof Error ? err.message : 'Failed to update free fix';
+                Toast.error(message);
+              } finally {
+                setPendingToggleId(null);
+              }
+            }}
+          />
+          {loading && <Loader2 className="h-4 w-4 animate-spin" />}
+        </div>
+      );
+    }},
+    { header: "Caption", accessor: "captionFlag", cell: (_value: any, row: any) => {
+      const checked = (row.captionFlag ?? 0) === 1;
+      const loading = pendingToggleId === row.id && updateCaptionMutation.isPending;
+      return (
+        <div className="flex items-center gap-2">
+          <Switch
+            checked={checked}
+            disabled={loading}
+            onCheckedChange={async (v) => {
+              let adminId = 1;
+              try {
+                const saved = localStorage.getItem('admin');
+                if (saved) {
+                  const parsed = JSON.parse(saved);
+                  if (parsed?.id) adminId = parsed.id as number;
+                }
+              } catch {
+                adminId = 1;
+              }
+              setPendingToggleId(row.id);
+              try {
+                const next = v ? 1 : 0;
+                const resp = await updateCaptionMutation.mutateAsync({ market_id: row.id, market_caption_flag: next, admin_id: adminId });
+                Toast.success(resp.message || "Market caption flag updated");
+                setMarkets((prev) => prev.map((r) => r.id === row.id ? { ...r, captionFlag: next } : r));
+              } catch (err: unknown) {
+                const message = err instanceof Error ? err.message : 'Failed to update caption flag';
                 Toast.error(message);
               } finally {
                 setPendingToggleId(null);

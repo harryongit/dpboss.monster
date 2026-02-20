@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Clock, RefreshCw } from 'lucide-react';
 
-type LiveMarket = { name: string; result: string; time: string; status: string };
+type LiveMarket = { name: string; result: string; time: string; status: string; captionFlag?: number };
 
 const LiveResults = ({ liveMarkets, refreshTime, handleRefresh }: { liveMarkets: LiveMarket[]; refreshTime: string; handleRefresh: () => void }) => {
   return (
@@ -69,6 +69,11 @@ const LiveResults = ({ liveMarkets, refreshTime, handleRefresh }: { liveMarkets:
         <p className="text-xl font-black text-transparent bg-clip-text bg-gradient-to-r from-rose-700 to-orange-600 text-center tracking-wide">
           {market.result}
         </p>
+        {(market.captionFlag ?? 0) === 1 && (
+          <p className="mt-1 text-lg font-semibold text-rose-700 text-center">
+            {market.result?.toLowerCase() === 'loading' ? 'खबर लाइन चालू है' : 'सबसे तेज सबसे सही'}
+          </p>
+        )}
       </div>
     </div>
   ))}
