@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import HeaderLogo from '@/pages/Main/HomeSections/HeaderLogo';
 import WelcomeBanner from '@/pages/Main/HomeSections/WelcomeBanner';
 import LuckyNumberCard from '@/pages/Main/HomeSections/LuckyNumberCard';
-import FinalAnkSection from '@/pages/Main/HomeSections/FinalAnkSection';
+
 import LiveResults from '@/pages/Main/HomeSections/LiveResults';
 import AllMarkets from '@/pages/Main/HomeSections/AllMarkets';
 import NoticeSection from '@/pages/Main/HomeSections/NoticeSection';
@@ -131,7 +131,7 @@ const SattaMatkaWebsite = () => {
 <JodiChartSection/>
 <PanelChartSection/>
 
-          <FinalAnkSection finalAnk={finalAnk}  />
+         
           {/* <IntroductionSection /> */}
           <FAQSection />
           {/* <HindiFAQ /> */}

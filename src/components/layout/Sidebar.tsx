@@ -23,6 +23,7 @@ const menuItems = [
   { title: 'Free Fix', icon: WandSparkles, path: '/admin/free-fix' },
   { title: 'Add Time Main Star Line', icon: Clock, path: '/admin/add-time-mainstarline' },
   { title: 'Upload result of Main Star Line', icon: Upload, path: '/admin/upload-mainstarline-result' },
+  { title: 'Database Management', icon: Settings, path: '/admin/database' },
 ];
 
 export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {

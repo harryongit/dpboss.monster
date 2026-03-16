@@ -1,44 +1,99 @@
-import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Sparkles } from 'lucide-react';
+import React, { useEffect, useRef } from "react";
+import { Card, CardContent } from "@/components/ui/card";
 
-const LuckyNumberCard = () => {
+type FinalAnkItem = { market: string; ank: string };
+
+const LuckyNumberCard = ({
+  goldenAnk = "2-7-0-5",
+  finalAnk = [
+    { market: "SRIDEVI", ank: "2" },
+    { market: "MUMBAI DAY", ank: "3" },
+    { market: "MILAN DAY", ank: "6" },
+    { market: "KALYAN", ank: "8" },
+    { market: "MADHURI", ank: "4" },
+  ],
+}: {
+  goldenAnk?: string;
+  finalAnk?: FinalAnkItem[];
+}) => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+ useEffect(() => {
+  const scrollContainer = scrollRef.current;
+  if (!scrollContainer) return;
+
+  let interval: number;
+  let isPaused = false;
+
+  interval = window.setInterval(() => {
+    if (!isPaused) {
+      scrollContainer.scrollTop += 1;
+
+      // reset when half of duplicated content is reached
+      if (scrollContainer.scrollTop >= scrollContainer.scrollHeight / 2) {
+        scrollContainer.scrollTop = 0;
+      }
+    }
+  }, 30);
+
+  const pause = () => (isPaused = true);
+  const resume = () => (isPaused = false);
+
+  scrollContainer.addEventListener("mouseenter", pause);
+  scrollContainer.addEventListener("mouseleave", resume);
+
+  return () => clearInterval(interval);
+}, []);
+
   return (
-    <Card className="bg-gradient-to-br from-yellow-100 via-amber-100 to-peach border-4 border-rose-600 shadow-2xl relative overflow-hidden max-w-sm mx-auto">
-      {/* Subtle radial glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,200,100,0.4),transparent)] rounded-xl"></div>
+    <Card className="max-w-md mx-auto border-2 border-red-500 rounded-lg overflow-hidden bg-[#f7cfa8] shadow-md">
 
       {/* Header */}
-      <CardHeader className="bg-gradient-to-r from-rose-600 via-orange-600 to-amber-600 text-white py-2">
-        <CardTitle className="text-center text-lg font-black tracking-wide flex items-center justify-center gap-2">
-          <Sparkles className="h-5 w-5 animate-spin-slow" />
-          TODAY LUCKY NUMBER
-          <Sparkles className="h-5 w-5 animate-spin-slow" />
-        </CardTitle>
-      </CardHeader>
+      <div className="bg-gradient-to-r from-pink-500 to-pink-600 text-white text-center font-bold italic text-lg py-1 rounded-b-2xl">
+        Today Lucky Number
+      </div>
 
       {/* Content */}
-      <CardContent className="py-4 text-center relative z-10">
-        <p className="text-sm font-bold text-rose-700 mb-1 tracking-wide">Golden Ank</p>
-        <div className="bg-white/90 backdrop-blur-sm rounded-xl p-2 inline-block shadow-xl border border-amber-500">
-          <p className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-rose-700 via-orange-600 to-amber-600 tracking-widest">
-            1-6-3-8
-          </p>
+      <CardContent className="p-2">
+        <div className="grid grid-cols-2 items-start">
+
+          {/* Golden Ank */}
+          <div className="text-center border-r border-red-400 pr-2">
+            <p className="text-blue-700 font-semibold italic text-sm">
+              Golden Ank
+            </p>
+
+            <p className="text-2xl font-extrabold text-black tracking-widest mt-1">
+              {goldenAnk}
+            </p>
+          </div>
+
+          {/* Final Ank */}
+          <div className="pl-2">
+            <p className="text-blue-700 font-semibold italic text-sm text-center">
+              Final Ank
+            </p>
+
+            <div
+              ref={scrollRef}
+              className="h-16 overflow-y-auto no-scrollbar text-xs font-bold text-blue-900 leading-tight mt-1"
+            >
+              <style>{`
+                .no-scrollbar::-webkit-scrollbar {
+                  display: none;
+                }
+              `}</style>
+
+             {[...finalAnk, ...finalAnk].map((item, idx) => (
+  <div key={idx} className="text-center">
+    {item.market} - {item.ank}
+  </div>
+))}
+            </div>
+          </div>
+
         </div>
       </CardContent>
-
-      {/* Animations */}
-      <style>
-        {`
-          @keyframes spin-slow {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-          }
-          .animate-spin-slow {
-            animation: spin-slow 10s linear infinite;
-          }
-        `}
-      </style>
     </Card>
   );
 };
