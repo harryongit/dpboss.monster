@@ -1,4 +1,4 @@
-import { Home, PlusSquare, UserPlus, Users, Calendar, Settings, Clock, Upload, X ,Trophy,WandSparkles } from 'lucide-react';
+import { Home, PlusSquare, UserPlus, Users, Calendar, Settings, Clock, Upload, X ,Trophy,WandSparkles, Database } from 'lucide-react';
 import { NavLink } from '@/components/NavLink';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { cn } from '@/lib/utils';
@@ -23,7 +23,7 @@ const menuItems = [
   { title: 'Free Fix', icon: WandSparkles, path: '/admin/free-fix' },
   { title: 'Add Time Main Star Line', icon: Clock, path: '/admin/add-time-mainstarline' },
   { title: 'Upload result of Main Star Line', icon: Upload, path: '/admin/upload-mainstarline-result' },
-  { title: 'Database Management', icon: Settings, path: '/admin/database' },
+  { title: 'Database Management', icon: Database, path: '/admin/database' },
 ];
 
 export const Sidebar = ({ isOpen, onClose }: SidebarProps) => {

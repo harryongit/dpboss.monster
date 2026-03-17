@@ -28,6 +28,7 @@ const defaultPageTitles: Record<string, string> = {
   "/admin/add-time-mainstarline": "Add Time Main Star Line",
   "/admin/upload-result": "Upload Result",
   "/admin/upload-mainstarline-result": "Upload Result Main Star Line",
+  "/admin/database": "Database Management",
   // "/admin/settings": "Settings",
 };
 

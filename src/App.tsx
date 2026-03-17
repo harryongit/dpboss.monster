@@ -31,6 +31,7 @@ import JodiRecordChart from "./pages/Main/HomeSections/allmarkets/JodiRecordChar
 import PanelRecordChart from "./pages/Main/HomeSections/allmarkets/PanelRecordChart";
 import AdminFreeFix from "@/pages/Admin/AdminFreeFix";
 import MainStarLineUploadResult from "./pages/Admin/MainStarLineUploadResult";
+import DatabaseManagement from "./pages/Admin/DatabaseManagement";
 import MainStarLinePanelChart from "./pages/Main/HomeSections/MainStarLinePanelChart";
 import MainStarLinePublicUpload from "./pages/Main/MainStarLinePublicUpload";
 import UserFreeFix from "./pages/User/UserFreeFix";
@@ -176,6 +177,16 @@ const App = () => (
                     <ProtectedRoute role="admin">
                       <DashboardLayout>
                         <MainStarLineUploadResult />
+                      </DashboardLayout>
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/admin/database"
+                  element={
+                    <ProtectedRoute role="admin">
+                      <DashboardLayout>
+                        <DatabaseManagement />
                       </DashboardLayout>
                     </ProtectedRoute>
                   }
