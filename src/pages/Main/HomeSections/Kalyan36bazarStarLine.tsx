@@ -10,7 +10,7 @@ const Kalyan36bazarStarLine = () => {
   const results = useMemo(() => {
     const raw: any = resultQuery.data?.data;
     const items: any[] = Array.isArray(raw) ? raw : (raw?.items ?? []);
-    
+
     // Sort by time
     const sorted = items
       .slice()
@@ -37,7 +37,7 @@ const Kalyan36bazarStarLine = () => {
         textShadow: '0 0 2px white, 0 0 2px white, 0 0 2px white',
       }}>
         <div className="flex-1 text-center pl-10">KALYAN 36 BAZAR</div>
-        <button 
+        <button
           onClick={() => navigate('/kalyan-36-bazar-panel-chart')}
           className="bg-black text-white text-[11px] font-black italic px-3 py-1 rounded-md border-2 border-gray-400 leading-none"
         >

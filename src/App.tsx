@@ -46,6 +46,7 @@ import JodiChartFamilyMatka from "./pages/Main/HomeSections/matkajodilist/JodiCh
 import FixOpenToCloseByDate from "./pages/Main/HomeSections/matkajodilist/FixOpenToCloseByDate";
 import AddTimeKalyan36Bazar from "./pages/Admin/AddTimeKalyan36Bazar";
 import UploadKalyan36BazarResult from "./pages/Admin/UploadKalyan36BazarResult";
+import Kalyan36BazarPublicUpload from "./pages/Main/Kalyan36BazarPublicUpload";
 import Kalyan36BazarPanelChart from "./pages/Main/HomeSections/Kalyan36BazarPanelChart";
 
 
@@ -82,6 +83,7 @@ const App = () => (
                 <Route path="/main-star-line-panel-chart" element={<MainStarLinePanelChart />} />
                 <Route path="/kalyan-36-bazar-panel-chart" element={<Kalyan36BazarPanelChart />} />
                 <Route path="/main-star-line-upload-public-link" element={<MainStarLinePublicUpload />} />
+                <Route path="/kalyan-36-bazar-upload-public-link" element={<Kalyan36BazarPublicUpload />} />
                 <Route path="/admin/dashboard_rjboss_login" element={<Login />} />
                 
                 <Route
