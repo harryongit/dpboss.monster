@@ -47,11 +47,12 @@ const AllMarkets = ({
     return hex;
   };
 
+
   return (
-    <Card className="border-[3px] border-red-600 bg-[#f7c89b] max-w-md mx-auto shadow-md">
+    <Card className="satta-card-outset bg-[#fc9] max-w-md mx-auto p-0 overflow-hidden">
       {/* HEADER */}
-      <CardHeader className="bg-pink-600 py-2 px-2">
-        <CardTitle className="text-center text-white text-sm font-black uppercase">
+      <CardHeader className="satta-header-pink p-1">
+        <CardTitle className="text-center text-white text-[18px] font-black uppercase m-0 leading-tight">
           WORLD ME SABSE FAST SATTA MATKA RESULT
         </CardTitle>
       </CardHeader>
@@ -77,7 +78,7 @@ const AllMarkets = ({
             <React.Fragment key={idx}>
               {/* MID BANNER */}
               {idx === middleIndex && (
-                <div className="bg-yellow-200 border-y-[2px] border-red-600 text-center py-[3px]">
+                <div className="bg-yellow-200 border-y-[1px] border-red-600 text-center py-[3px]">
                   <span className="text-[10px] font-black italic uppercase">
                     ADD YOUR GAME :
                   </span>
@@ -89,7 +90,7 @@ const AllMarkets = ({
 
               {/* ROW */}
               <div
-                className="relative border-b-[2px] border-red-600 py-2 px-1 text-center"
+                className="relative border-b-[1px] border-red-600 py-2 px-1 text-center"
                 style={bg ? { backgroundColor: bg } : undefined}
               >
                 {/* LEFT JODI */}
@@ -103,7 +104,7 @@ const AllMarkets = ({
                         { state: { marketId: market.id } }
                       )
                     }
-                    className="bg-purple-700 text-white text-[10px] px-3 py-[2px] rounded-full shadow-sm"
+                    className="satta-btn-purple !text-[10px] !px-2 !py-[2px]"
                   >
                     Jodi
                   </button>
@@ -120,30 +121,30 @@ const AllMarkets = ({
                         { state: { marketId: market.id } }
                       )
                     }
-                    className="bg-purple-700 text-white text-[10px] px-3 py-[2px] rounded-full shadow-sm"
+                    className="satta-btn-purple !text-[10px] !px-2 !py-[2px]"
                   >
                     Panel
                   </button>
                 </div>
 
                 {/* CENTER CONTENT */}
-                <p className="#01094c font-extrabold text-[20px] uppercase leading-tight">
+                <h4 className="satta-market-name text-[22px] uppercase leading-tight m-0">
                   {market.name}
-                </p>
+                </h4>
 
-                <p className="text-purple-800 font-extrabold text-[18px] leading-tight">
+                <span className="satta-result-gradient block">
                   {market.result}
-                </p>
+                </span>
 
                 {(market.captionFlag ?? 0) === 1 && (
-                  <p className="text-[9px] text-red-700 font-bold">
+                  <p className="satta-caption !text-[15px] m-0">
                     {market.result?.toLowerCase() === 'loading'
                       ? 'खबर लाइन चालू है'
                       : 'सबसे तेज सबसे सही'}
                   </p>
                 )}
 
-                <p className="text-[12px]  text-black font-bold  mt-[2px] flex justify-center items-center gap-1">
+                <p className="satta-time-p m-0 flex justify-center items-center gap-1">
                   <Clock className="h-3 w-3" />
                   {market.time}
                 </p>
@@ -155,5 +156,6 @@ const AllMarkets = ({
     </Card>
   );
 };
+
 
 export default AllMarkets;

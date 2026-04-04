@@ -5,29 +5,21 @@ import { Clock, RefreshCw } from "lucide-react";
 
 type LiveMarket = { name: string; result: string; time: string; status: string; captionFlag?: number };
 
+
 const LiveResults = ({ liveMarkets, refreshTime, handleRefresh }: { liveMarkets: LiveMarket[]; refreshTime: string; handleRefresh: () => void }) => {
   return (
-    <Card className="border-2 border-red-500 bg-peach shadow-none rounded-md overflow-hidden">
-
+    <Card className="satta-card-outset bg-[#fc9] p-0 overflow-hidden">
       {/* Header */}
-
-      <CardHeader className="bg-pink text-white text-center py-2 rounded-xl border-4 border-white">
-        <div className="flex justify-between items-center">
-
-          <div className="flex-1 text-center ">
-            <CardTitle className="text-xl font-bold italic tracking-wide">
-              ☔ LIVE RESULT ☔
-            </CardTitle>
-
-            
-          </div>
-
-         
+      <CardHeader className="satta-header-pink p-0">
+        <div className="py-1">
+          <CardTitle className="text-[20px] font-bold italic tracking-wide m-0">
+            ☔ LIVE RESULT ☔
+          </CardTitle>
         </div>
       </CardHeader>
 
       {/* Message */}
-      <p className="text-center font-bold text-black text-sm py-2 border-b border-red-400">
+      <p className="text-center font-bold text-black text-[14px] py-1 border-b border-red-600 satta-text-shadow">
         Sabse Tezz Live Result Yahi Milega
       </p>
 
@@ -42,39 +34,41 @@ const LiveResults = ({ liveMarkets, refreshTime, handleRefresh }: { liveMarkets:
         {liveMarkets && liveMarkets.length > 0 && liveMarkets.map((market, idx) => (
           <div
             key={idx}
-            className="text-center py-3 border-b border-red-400"
+            className="text-center py-2 border-b border-red-600 last:border-b-0"
           >
             {/* Market Name */}
-            <h3 className="text-blue-900 font-extrabold text-xl italic tracking-wide">
+            <h3 className="satta-market-name text-[22px]">
               {market.name}
             </h3>
 
             {/* Result */}
-            <p className="text-purple-800 font-extrabold text-xl mt-1">
+            <p className="satta-result-purple text-[21px] my-1">
               {market.result}
             </p>
 
+            {/* Refresh Button */}
+            <div className="my-1">
+              <button
+                onClick={handleRefresh}
+                className="satta-btn-purple"
+              >
+                Refresh
+              </button>
+            </div>
+
             {(market.captionFlag ?? 0) === 1 && (
-              <p className="mt-1 text-sm font-semibold text-red-700">
+              <p className="satta-caption mt-1">
                 {market.result?.toLowerCase() === "loading"
                   ? "खबर लाइन चालू है"
                   : "सबसे तेज सबसे सही"}
               </p>
             )}
-
-            {/* Refresh Button */}
-           <button
-  onClick={handleRefresh}
-  className="mt-2 px-2 py-[2px] bg-[#4b3dbb] text-white rounded-[8px] text-[12px] font-bold leading-none"
->
-  Refresh
-</button>
           </div>
         ))}
       </CardContent>
-
     </Card>
   );
 };
+
 
 export default LiveResults;

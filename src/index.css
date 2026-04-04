@@ -60,9 +60,9 @@ All colors MUST be HSL.
     --sidebar-active: 142 76% 36%;
 
     /* Table header accent */
-   
+
     --table-header: 350 90% 96%;
---table-header-foreground: 350 55% 30%;
+    --table-header-foreground: 350 55% 30%;
 
 
 
@@ -127,6 +127,7 @@ All colors MUST be HSL.
   }
 }
 
+
 @layer base {
   * {
     @apply border-border;
@@ -134,7 +135,13 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    background-color: #fc9;
+    /* Reference: body{background-color:#fc9;} */
     font-family: Helvetica, sans-serif;
+    font-style: italic;
+    /* Reference: font-style:italic; */
+    font-weight: 700;
+    /* Reference: font-weight:700; */
   }
 }
 
@@ -142,9 +149,11 @@ All colors MUST be HSL.
   0% {
     transform: scale(1) translateX(0px);
   }
+
   50% {
     transform: scale(1.08) translateX(-15px);
   }
+
   100% {
     transform: scale(1) translateX(0px);
   }
@@ -158,6 +167,7 @@ All colors MUST be HSL.
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -196,45 +206,48 @@ All colors MUST be HSL.
 }
 
 
-  .seo-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-  }
+.seo-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
 
 @keyframes gradientFlow {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
 }
 
+
 .animate-gradient-text {
-  background: linear-gradient(
-    270deg,
-    #f97316,
-    #ef4444,
-    #22c55e,
-    #3b82f6,
-    #a855f7
-  );
+  background: linear-gradient(270deg,
+      #f97316,
+      #ef4444,
+      #22c55e,
+      #3b82f6,
+      #a855f7);
   background-size: 400% 400%;
   animation: gradientFlow 4s ease infinite;
 
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
 
 
 .rgb-animate {
@@ -244,7 +257,211 @@ All colors MUST be HSL.
 }
 
 @keyframes rgbMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Satta Matka Reference Styles */
+.satta-card-outset {
+  border: 2px solid #ff182c !important;
+  border-style: outset !important;
+  border-radius: 10px !important;
+  box-shadow: 0 0 20px 0 rgb(0 0 0 / 40%) !important;
+}
+
+.satta-header-pink {
+  background: #ff00a2 !important;
+  padding: 5px 10px !important;
+  text-shadow: 1px 1px 2px #000 !important;
+  display: block !important;
+  color: #fff8f8 !important;
+  margin-bottom: 5px !important;
+  letter-spacing: 1px !important;
+  font-weight: 700 !important;
+  border: 2px solid #fff !important;
+  border-radius: .75em !important;
+  text-align: center !important;
+}
+
+.satta-market-name {
+  font-size: 22px !important;
+  color: #00094d !important;
+  text-shadow: 1px 1px 2px #fff !important;
+  font-weight: 700 !important;
+  font-style: italic !important;
+}
+
+.satta-result-purple {
+  color: #880e4f !important;
+  text-shadow: 1px 1px 2px #ffe2c6 !important;
+  font-size: 21px !important;
+  font-weight: 700 !important;
+  font-style: italic !important;
+}
+
+.satta-btn-purple {
+  border: 1px solid #e6e6e6 !important;
+  background: #522f92 !important;
+  color: #fff !important;
+  padding: 5px 7px !important;
+  border-radius: 8px !important;
+  font-size: 12px !important;
+  transition: all .3s !important;
+  font-weight: 700 !important;
+}
+
+.satta-btn-purple:hover {
+  box-shadow: 0 0 13px 3px #00000033 !important;
+  cursor: pointer !important;
+}
+
+.satta-caption {
+  font-size: 20px !important;
+  color: black !important;
+  font-weight: 700 !important;
+  font-style: italic !important;
+}
+
+
+.satta-result-gradient {
+  font-size: 22px !important;
+  line-height: 1 !important;
+  background: -webkit-linear-gradient(#4500bf, #670009) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  font-weight: 700 !important;
+}
+
+
+.satta-time-p {
+  font-size: 15px !important;
+  color: #000 !important;
+  text-shadow: 1px 1px 2px #ffd9d9 !important;
+  font-weight: 700 !important;
+  font-style: italic !important;
+}
+
+
+.satta-text-shadow {
+  text-shadow: 1px 1px 2px #fff !important;
+  color: #000b65 !important;
+}
+
+/* Chart Specific Styles */
+.satta-para3 {
+  background: linear-gradient(187deg, #fc9 50%, #ffc387 50%) !important;
+  border: 2px solid #ff0016 !important;
+  border-style: outset !important;
+  margin-bottom: 3px !important;
+  line-height: 1.4 !important;
+  font-size: 14px !important;
+  padding: 4px 10px !important;
+  color: #00094d !important;
+  text-shadow: 1px 1px 2px #fff !important;
+  box-shadow: 0 0 20px 0 rgb(0 0 0 / 40%) !important;
+  text-align: center !important;
+}
+
+.satta-chart-table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  border: 1px solid #000 !important;
+}
+
+.satta-chart-table th,
+.satta-chart-table td {
+  border: 1px solid #000;
+  text-align: center !important;
+  padding: 5px 2px !important;
+}
+
+.satta-chart-table thead {
+  background-color: #ffc107 !important;
+}
+
+.satta-chart-table thead th {
+  color: #000 !important;
+  text-shadow: 1px 1px 2px #9a7400ab !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+}
+
+.satta-chart-table tbody td {
+  background-color: #fecd99 !important;
+  color: #000 !important;
+  font-weight: 700 !important;
+}
+
+.satta-chart-table .satta-red {
+  color: red !important;
+}
+
+.satta-chart-result-box {
+  margin: 6px 2px !important;
+  line-height: 1.4 !important;
+  font-size: 14px !important;
+  padding: 4px 10px !important;
+  color: #00094d !important;
+  text-shadow: 1px 1px 2px #fff !important;
+  box-shadow: 0 0 20px 0 rgb(0 0 0 / 40%) !important;
+  border: 1px solid black !important;
+  text-align: center !important;
+  background-color: #fc9 !important;
+}
+
+.satta-chart-result-box .market-name {
+  font-size: 22px !important;
+  color: #00094d !important;
+  text-shadow: 1px 1px 2px #fff !important;
+  font-weight: 700 !important;
+}
+
+.satta-chart-result-box .result-value {
+  color: #880e4f !important;
+  text-shadow: 1px 1px 2px #ffe2c6 !important;
+  font-size: 21px !important;
+  font-weight: 700 !important;
+}
+
+/* Panel Chart Specifics */
+.satta-panel-date {
+  font-size: 13px !important;
+  line-height: 1.1 !important;
+}
+
+.satta-panel-number {
+  font-size: 23px !important;
+}
+
+.satta-panel-panna {
+  font-size: 13px !important;
+  line-height: 1 !important;
+}
+
+@media only screen and (max-width: 500px) {
+  .satta-panel-date {
+    font-size: 9px !important;
+  }
+
+  .satta-panel-number {
+    font-size: 16px !important;
+  }
+
+  .satta-panel-panna {
+    font-size: 9px !important;
+  }
+
+  .satta-chart-table thead th {
+    font-size: 11px !important;
+  }
 }

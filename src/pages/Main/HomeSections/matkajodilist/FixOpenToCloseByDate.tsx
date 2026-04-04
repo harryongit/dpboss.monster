@@ -27,16 +27,16 @@ const FixOpenToCloseByDate = () => {
                 <CardTitle className="text-center text-white font-extrabold tracking-wide text-base flex-1">
                   Fix open to close by date
                 </CardTitle>
-            
+
               </div>
-            
+
             </CardHeader>
 
             <CardContent className="p-5 space-y-8 text-sm text-gray-800 leading-7 font-semibold">
 
               {/* Hindi Section */}
               <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl p-5 shadow-inner border border-indigo-100 whitespace-pre-line">
-{`धनवर्षा
+                {`धनवर्षा
 तारीख के हिसाब से ओपन तू क्लोज निकालने को धनवर्षा कहते हैं इस धनवर्षा को तारीख के हिसाब से बहुत कठोर परिश्रम के बाद हमने आपके लिए निकाला है यह धनवर्षा हर एक मारकेट पर लागू होगा`}
               </div>
 
@@ -51,14 +51,14 @@ const FixOpenToCloseByDate = () => {
                   </thead>
                   <tbody className="bg-white">
                     {[
-                      ["1","4-5-9-8"],["2","1-0-6-9"],["3","2-5-6-7"],["4","3-1-9-6"],
-                      ["5","4-2-3-7"],["6","0-8-9-5"],["7","7-0-2-6"],["8","1-6-3-9"],
-                      ["9","2-7-8-5"],["10","4-6-3-2"],["11","5-4-9-1"],["12","8-9-4-3"],
-                      ["13","4-5-6-0"],["14","7-9-4-6"],["15","0-8-9-5"],["16","7-8-9-0"],
-                      ["17","4-5-2-3"],["18","1-6-2-7"],["19","4-8-5-7"],["20","4-9-2-3"],
-                      ["21","6-9-3-1"],["22","9-8-2-7"],["23","2-5-4-3"],["24","9-7-6-8"],
-                      ["25","4-9-3-7"],["26","4-5-7-9"],["27","5-0-1-6"],["28","7-3-1-5"],
-                      ["29","2-0-3-8"],["30","4-5-0-1"],["31","6-3-2-1"]
+                      ["1", "4-5-9-8"], ["2", "1-0-6-9"], ["3", "2-5-6-7"], ["4", "3-1-9-6"],
+                      ["5", "4-2-3-7"], ["6", "0-8-9-5"], ["7", "7-0-2-6"], ["8", "1-6-3-9"],
+                      ["9", "2-7-8-5"], ["10", "4-6-3-2"], ["11", "5-4-9-1"], ["12", "8-9-4-3"],
+                      ["13", "4-5-6-0"], ["14", "7-9-4-6"], ["15", "0-8-9-5"], ["16", "7-8-9-0"],
+                      ["17", "4-5-2-3"], ["18", "1-6-2-7"], ["19", "4-8-5-7"], ["20", "4-9-2-3"],
+                      ["21", "6-9-3-1"], ["22", "9-8-2-7"], ["23", "2-5-4-3"], ["24", "9-7-6-8"],
+                      ["25", "4-9-3-7"], ["26", "4-5-7-9"], ["27", "5-0-1-6"], ["28", "7-3-1-5"],
+                      ["29", "2-0-3-8"], ["30", "4-5-0-1"], ["31", "6-3-2-1"]
                     ].map(([date, ank], index) => (
                       <tr key={index} className="border-t hover:bg-rose-50 transition">
                         <td className="py-2">{date}</td>
@@ -69,11 +69,11 @@ const FixOpenToCloseByDate = () => {
                 </table>
               </div>
 
-            
+
 
               {/* English Explanation */}
               <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl p-5 shadow-inner border border-indigo-100 whitespace-pre-line">
-{`Hello everyone, how are you all the Satta Matka Enthusiasta, today I am very excited to welcome all of you on Dpboss.Services and today I will introduce you to our very important page which is Fix Open to Close by Date.
+                {`Hello everyone, how are you all the Satta Matka Enthusiasta, today I am very excited to welcome all of you on Rjboss.Services and today I will introduce you to our very important page which is Fix Open to Close by Date.
 
 This concept is called Dhanvarsha, finding your open and close according to the current date of any month or year, is a concept which we call Dhanvarsha in the language of Satta Matka, so here is a fixed formula for we have already calculated it and it depends on the date you need to remember that the date is very important here and this Dhanvarsha concept works for every market and there is no difference between the markets, you can use it for every market and below you can find a breakdown of the dates and their open to close and fix.
 

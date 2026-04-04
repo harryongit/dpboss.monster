@@ -1,5 +1,4 @@
 import React, { useMemo } from "react";
-import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
 import { useParams, useLocation } from "react-router-dom";
 import HeaderLogo from "../HeaderLogo";
 import FooterSection from "../FooterSection";
@@ -65,173 +64,129 @@ const PanelRecordChart = () => {
     return [openArr, jodiArr, closeArr];
   };
 
+
   return (
-    <div className="min-h-screen bg-orange-100">
-      <div className="max-w-md mx-auto">
+    <div className="min-h-screen bg-[#fc9]">
+      <div className="max-w-[1000px] mx-auto overflow-hidden">
         <HeaderLogo />
 
-        <div className="p-3 space-y-3">
-          {/* Market Name */}
-          <div className="flex flex-col items-center mb-3 space-y-2">
-            <div className="text-xl font-extrabold text-black text-center">
-              {decodedMarketName}
-            </div>
+        <div className="p-1">
+          {/* Main Title */}
+          <h1 className="satta-header-pink text-[18px] mb-1 uppercase">
+            {decodedMarketName} PANEL CHART
+          </h1>
 
-            <div className="text-lg font-bold text-black">
-              {panelData?.data?.result || "Loading..."}
-            </div>
-
-            <Button
-              size="sm"
-              onClick={() => refetch()}
-              disabled={isLoading}
-              className="flex items-center justify-center bg-white text-red-600 border border-red-600 font-bold rounded shadow px-3 py-1"
-            >
-              <RefreshCw
-                className={`h-4 w-4 mr-1 ${
-                  isLoading ? "animate-spin" : ""
-                }`}
-              />
-              Refresh Result
-            </Button>
+          {/* Description Box */}
+          <div className="satta-para3 p-2 mb-2">
+            <h2 className="text-[14px] font-bold m-0 italic">
+              {decodedMarketName} PANEL RESULT CHART RECORDS
+            </h2>
+            <p className="text-[12px] leading-tight m-0 opacity-90">
+              Rjboss {decodedMarketName} panel chart, {decodedMarketName} panel chart, old {decodedMarketName} panel chart,
+              {decodedMarketName} pana patti chart, rjboss {decodedMarketName}, {decodedMarketName} panel record, {decodedMarketName} panel record, {decodedMarketName} panel chart 2015,
+              {decodedMarketName} panel chart 2012, {decodedMarketName} panel chart 2012 to 2023, {decodedMarketName} final ank, {decodedMarketName} panel chart.co,
+              {decodedMarketName} panel chart matka, {decodedMarketName} panel chart book, {decodedMarketName} matka chart, matka panel chart {decodedMarketName}, matka {decodedMarketName} chart,
+              satta {decodedMarketName} chart panel, {decodedMarketName} state chart, {decodedMarketName} chart result,
+              सट्टा चार्ट, सट्टा मटका पैनल चार्ट, सट्टा मटका पैनल चार्ट, कल्याण मॉर्निंग मटका पैनल चार्ट, सट्टा मटका कल्याण मॉर्निंग चार्ट पैनल, कल्याण मॉर्निंग सट्टा चार्ट, कल्याण मॉर्निंग पैनल चार्ट
+            </p>
           </div>
 
-          {/* Panel Chart */}
-          <Card className="border-2 border-gray-700 shadow-md">
+          {/* Top Info Box */}
+          <div className="satta-chart-result-box mb-2">
+            <div className="market-name uppercase">{decodedMarketName}</div>
+            <span className="result-value">
+              {panelData?.data?.result || "---"}
+            </span>
+            <div className="mt-1">
+              <button
+                onClick={() => refetch()}
+                className="satta-btn-purple !text-[12px] !px-3 !py-1"
+              >
+                Refresh Result
+              </button>
+            </div>
+          </div>
 
-            {/* BLUE HEADER */}
-            <CardHeader className="bg-blue-700 py-2">
-              <CardTitle className="text-center text-yellow-300 font-extrabold text-sm">
-                KALYAN MORNING MATKA PANEL RECORD 2023 - 2026
-              </CardTitle>
-            </CardHeader>
+          <div className="flex justify-center mb-2">
+            <a href="#bottom" className="satta-btn-purple !bg-[#a0d5ff] !text-[#220c82] !px-8 !py-2 !text-[14px] !rounded-none shadow-md">
+              Go to Bottom
+            </a>
+          </div>
 
-            <CardContent className="p-0 text-[9px]">
+          {/* Main Chart Table */}
+          <div className="overflow-x-auto mb-4 bg-[#fecd99]">
+            <table className="satta-chart-table w-full">
+              <thead>
+                <tr>
+                  <th className="text-[12px]">Date</th>
+                  {(days.slice(0, panelData?.data?.days ?? 7)).map((day) => (
+                    <th key={day} colSpan={3} className="uppercase text-[12px] py-1">
+                      {day}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {isLoading ? (
+                  <tr>
+                    <td colSpan={22} className="p-10 text-center font-bold italic text-blue-900 bg-[#ffebcd]">
+                      Loading record data...
+                    </td>
+                  </tr>
+                ) : (
+                  panelData?.data?.weeks?.map((week, idx) => (
+                    <tr key={idx}>
+                      {/* DATE COLUMN */}
+                      <td className="satta-panel-date bg-[#ffcc00]/10 font-bold p-1">
+                        {formatDateRange(week.start_date, week.end_date)}
+                      </td>
 
-              <div className="overflow-x-auto">
+                      {week.data.map((dayData, dayIdx) => {
+                        const [openArr, jodiArr, closeArr] = processDayData(dayData);
+                        const highlightedNumbers = [
+                          "00", "11", "22", "33", "44", "55", "66", "77", "88", "99",
+                          "05", "16", "27", "38", "49", "94", "83", "72", "61", "50"
+                        ];
+                        const highlightRed = dayData?.jodi && highlightedNumbers.includes(dayData.jodi);
+                        const isRed = highlightRed ? "satta-red" : "";
 
-                <table className="w-full border-collapse text-center">
+                        return (
+                          <React.Fragment key={dayIdx}>
+                            {/* Open Panna */}
+                            <td className={`!border-r-0 satta-panel-panna ${isRed} px-0.5`}>
+                              {openArr.map((n, i) => (
+                                <React.Fragment key={i}>{n}{i < openArr.length - 1 && <br />}</React.Fragment>
+                              ))}
+                            </td>
+                            {/* Jodi */}
+                            <td className={`!border-x-0 satta-panel-number ${isRed} font-black px-1`}>
+                              {jodiArr[0]}
+                            </td>
+                            {/* Close Panna */}
+                            <td className={`!border-l-0 satta-panel-panna ${isRed} px-0.5`}>
+                              {closeArr.map((n, i) => (
+                                <React.Fragment key={i}>{n}{i < closeArr.length - 1 && <br />}</React.Fragment>
+                              ))}
+                            </td>
+                          </React.Fragment>
+                        );
+                      })}
 
-                  {/* HEADER */}
-                  <thead className="bg-yellow-300 text-black font-bold">
-                    <tr>
-                      <th className="border border-gray-700 px-1 py-1 w-[75px]">
-                        Date
-                      </th>
-
-                      {(days.slice(0, panelData?.data?.days ?? 7)).map(
-                        (day) => (
-                          <th
-                            key={day}
-                            className="border border-gray-700 px-1 py-1"
-                          >
-                            {day}
-                          </th>
-                        )
-                      )}
+                      {/* EMPTY FILLERS */}
+                      {Array.from({ length: Math.max(0, (panelData?.data?.days ?? 7) - (week.data?.length || 0)) }).map((_, i) => (
+                        <React.Fragment key={`empty-${i}`}>
+                          <td className="border border-black bg-[#f3c08c] p-1"></td>
+                          <td className="border border-black bg-[#f3c08c] p-1"></td>
+                          <td className="border border-black bg-[#f3c08c] p-1"></td>
+                        </React.Fragment>
+                      ))}
                     </tr>
-                  </thead>
-
-                  {/* BODY */}
-                  <tbody className="bg-orange-100">
-
-                    {isLoading ? (
-                      <tr>
-                        <td colSpan={daysColSpan} className="p-4">
-                          Loading...
-                        </td>
-                      </tr>
-                    ) : (
-                      panelData?.data?.weeks?.map((week, idx) => (
-                        <tr key={idx}>
-
-                          {/* DATE COLUMN */}
-                          <td className="border border-gray-700 text-[9px] font-bold bg-orange-200">
-                            {formatDateRange(
-                              week.start_date,
-                              week.end_date
-                            )}
-                          </td>
-
-                          {week.data.map((dayData, dayIdx) => {
-                            const [openArr, jodiArr, closeArr] =
-                              processDayData(dayData);
-
-                            const highlightedNumbers = [
-                              "00","11","22","33","44","55","66","77","88","99",
-                              "05","16","27","38","49","94","83","72","61","50"
-                            ];
-
-                            const highlightRed =
-                              dayData?.jodi &&
-                              highlightedNumbers.includes(dayData.jodi);
-
-                            return (
-                              <td
-                                key={dayIdx}
-                                className="border border-gray-700"
-                              >
-                                <div className="flex justify-center gap-1">
-
-                                  {[openArr, jodiArr, closeArr].map(
-                                    (cell, i) => (
-                                      <div
-                                        key={i}
-                                        className="flex flex-col items-center justify-center leading-none"
-                                        style={{ minHeight: "42px" }}
-                                      >
-                                        {cell.map((num, nIdx) => (
-                                          <span
-                                            key={nIdx}
-                                            className={`
-                                              ${
-                                                highlightRed
-                                                  ? "text-red-600 font-bold"
-                                                  : "text-black"
-                                              }
-                                              ${
-                                                isDoubleNumber(num)
-                                                  ? "text-[11px]"
-                                                  : "text-[9px]"
-                                              }
-                                            `}
-                                          >
-                                            {num}
-                                          </span>
-                                        ))}
-                                      </div>
-                                    )
-                                  )}
-
-                                </div>
-                              </td>
-                            );
-                          })}
-
-                          {/* EMPTY CELLS */}
-                          {Array.from({
-                            length: Math.max(
-                              0,
-                              (panelData?.data?.days ?? 7) -
-                                (week.data?.length || 0)
-                            ),
-                          }).map((_, i) => (
-                            <td
-                              key={`empty-${i}`}
-                              className="border border-gray-700"
-                            ></td>
-                          ))}
-
-                        </tr>
-                      ))
-                    )}
-
-                  </tbody>
-                </table>
-              </div>
-
-            </CardContent>
-          </Card>
+                  ))
+                )}
+              </tbody>
+            </table>
+          </div>
+          <div id="bottom" />
         </div>
 
         <FooterSection />
@@ -242,5 +197,6 @@ const PanelRecordChart = () => {
     </div>
   );
 };
+
 
 export default PanelRecordChart;  

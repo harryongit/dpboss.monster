@@ -1,5 +1,4 @@
 import React, { useMemo } from "react";
-import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
 import { useParams, useLocation } from "react-router-dom";
 import HeaderLogo from "../HeaderLogo";
 import FooterSection from "../FooterSection";
@@ -40,101 +39,117 @@ const JodiRecordChart = () => {
   // 2. Fetch jodi chart data
   const { data: jodiData, isLoading: isJodiLoading, refetch } = useJodiChart(marketId);
 
+
   const isLoading = (!!marketId && isJodiLoading);
   const dayCount = jodiData?.data?.days ?? 7;
   const displayDays = days.slice(0, dayCount);
 
+  const highlightedNumbers = [
+    "00", "11", "22", "33", "44", "55", "66", "77", "88", "99",
+    "05", "16", "27", "38", "49", "94", "83", "72", "61", "50"
+  ];
+
   return (
-    <div className="min-h-screen bg-peach">
+    <div className="min-h-screen bg-[#fc9]">
       <div className="max-w-md mx-auto">
         <HeaderLogo />
 
-        <div className="p-3 space-y-3">
-   
-   <div className=" flex flex-col items-center justify-center bg-gray-50 px-4">
-  {/* Market Name */}
-  <div className="text-2xl font-extrabold tracking-wide drop-shadow-lg text-black text-center">
-    {decodedMarketName}
-  </div>
+        <div className="p-1">
+          {/* Main Title */}
+          <h1 className="satta-header-pink text-[18px] mb-1">
+            {decodedMarketName} JODI CHART
+          </h1>
 
-  {/* Result */}
-  <div className="text-xl font-bold uppercase tracking-wider text-black mb-2 text-center">
-    {jodiData?.data?.result || "Loading..."}
-  </div>
+          {/* Description Box */}
+          <div className="satta-para3 p-2 mb-2">
+            <h2 className="text-[14px] font-bold m-0 italic">
+              {decodedMarketName} JODI RESULT CHART RECORDS
+            </h2>
+            <p className="text-[12px] leading-tight m-0 opacity-90">
+              Rjboss {decodedMarketName} jodi chart, {decodedMarketName} jodi chart, old {decodedMarketName} jodi chart, rjboss {decodedMarketName} chart, {decodedMarketName} jodi record, {decodedMarketName}jodi record, {decodedMarketName} jodi chart 2015,
+              {decodedMarketName} jodi chart 2012, {decodedMarketName} jodi chart 2012 to 2023, {decodedMarketName} final ank, {decodedMarketName} jodi chart.co,
+              {decodedMarketName} jodi chart matka, {decodedMarketName} jodi chart book, {decodedMarketName} matka chart, matka jodi chart {decodedMarketName}, matka {decodedMarketName} chart,
+              satta {decodedMarketName} chart jodi, {decodedMarketName} state chart, {decodedMarketName} chart result,
+              सट्टा चार्ट, सट्टा मटका जोड़ी चार्ट, सट्टा मटका जोड़ी चार्ट, कल्याण मॉर्निंग मटका जोड़ी चार्ट, सट्टा मटका कल्याण मॉर्निंग चार्ट जोड़ी, कल्याण मॉर्निंग सट्टा चार्ट, कल्याण मॉर्निंग जोड़ी चार्ट
+            </p>
+          </div>
 
-  {/* Refresh Result Button */}
-  <Button
-    size="sm"
-    onClick={() => refetch()}
-    disabled={isLoading}
-    className="flex items-center justify-center bg-white text-orange-600 border border-orange-600 font-bold rounded shadow-md px-4 py-2 hover:bg-white/80 transition-all duration-300"
-  >
-    <RefreshCw className={`h-4 w-4 mr-1 ${isLoading ? "animate-spin" : ""}`} />
-    Refresh Result
-  </Button>
-</div>
+          {/* Top Info Box */}
+          <div className="satta-chart-result-box mb-2">
+            <div className="market-name uppercase">{decodedMarketName}</div>
+            <span className="result-value">
+              {jodiData?.data?.result || "---"}
+            </span>
+            <div className="mt-1">
+              <button
+                onClick={() => refetch()}
+                className="satta-btn-purple !text-[12px] !px-3 !py-1"
+              >
+                Refresh Result
+              </button>
+            </div>
+          </div>
 
+          <div className="flex justify-center mb-2">
+            <a href="#bottom" className="satta-btn-purple !bg-[#a0d5ff] !text-[#220c82] !px-8 !py-2 !text-[14px] !rounded-none shadow-md border !border-black/20">
+              Go to Bottom
+            </a>
+          </div>
 
-          <Card className="border-2 border-orange-500 shadow-xl">
-            {/* HEADER */}
-            <CardHeader className="bg-gradient-to-r from-orange-600 via-rose-600 to-pink-600 py-2">
-              <CardTitle className="text-center text-white font-black tracking-wide text-lg">
-                🌅 {decodedMarketName} JODI CHART
-              </CardTitle>
-            </CardHeader>
+          {/* Chart Table */}
+          <div className="overflow-hidden mb-4">
+            <table className="satta-chart-table">
+              <thead>
+                <tr>
 
-            <CardContent className="p-1">
-              {/* DAYS */}
-              <div className="grid text-center bg-peach font-black text-black border-b border-orange-400" style={{ gridTemplateColumns: `repeat(${dayCount}, minmax(0, 1fr))` }}>
-                {displayDays.map((day) => (
-                  <div
-                    key={day}
-                    className="text-sm font-bold text-black py-1 border border-orange-300"
-                  >
-                    {day}
-                  </div>
-                ))}
-              </div>
+                  {displayDays.map((day) => (
+                    <th key={day} className="uppercase text-[12px] py-2">
+                      {day}
+                    </th>
+                  ))}
 
-              {/* DATA GRID */}
-              <div className="grid" style={{ gridTemplateColumns: `repeat(${dayCount}, minmax(0, 1fr))` }}>
+                </tr>
+              </thead>
+              <tbody>
                 {isLoading ? (
-                    <div className="p-4 text-center" style={{ gridColumn: `1 / span ${dayCount}` }}>Loading...</div>
+                  <tr>
+                    <td colSpan={dayCount} className="p-10 text-center font-bold italic text-blue-900 bg-[#ffebcd]">
+                      Loading record data...
+                    </td>
+                  </tr>
                 ) : (
-                    (jodiData?.data?.weeks?.flatMap((week) => {
-                        // Ensure we always have 7 days
-                        let filledJodi = [...week.jodi];
-                        if (filledJodi.length > dayCount) {
-                            filledJodi = filledJodi.slice(0, dayCount);
-                        }
-                        while(filledJodi.length < dayCount) {
-                            filledJodi.push("**"); // Placeholder for empty days
-                        }
-                        return filledJodi;
-                    }) ?? []).map((num, idx) => (
-                  <div
-                    key={idx}
-                    className={`
-                      border border-orange-200
-                      text-center
-                      py-1.5
-                      font-medium
-                      text-lg
-                      rounded-sm
-                      transition
-                      hover:scale-105
-                      ${getNumberStyle(num)}
-                    `}
-                  >
-                    {num}
-                  </div>
-                )))}
-              </div>
-            </CardContent>
-          </Card>
+                  jodiData?.data?.weeks?.map((week, wIdx) => {
+                    let filledJodi = [...week.jodi];
+                    if (filledJodi.length > dayCount) filledJodi = filledJodi.slice(0, dayCount);
+                    while (filledJodi.length < dayCount) filledJodi.push("**");
 
-          <FooterSection />
+                    return (
+                      <tr key={wIdx}>
+                        {filledJodi.map((num, idx) => (
+                          <td
+                            key={idx}
+                            className={`
+                              text-center
+                              py-2
+                              font-bold
+                              text-[24px]
+                              ${highlightedNumbers.includes(num) ? "satta-red" : ""}
+                            `}
+                          >
+                            {num}
+                          </td>
+                        ))}
+                      </tr>
+                    );
+                  })
+                )}
+              </tbody>
+            </table>
+          </div>
+          <div id="bottom"></div>
         </div>
+
+        <FooterSection />
       </div>
 
       <ScrollToggleButton />
@@ -142,5 +157,6 @@ const JodiRecordChart = () => {
     </div>
   );
 };
+
 
 export default JodiRecordChart;
