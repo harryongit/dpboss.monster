@@ -10,11 +10,11 @@ const HeaderLogo = () => {
 
           {/* Logo */}
           <img
-            src={dpboss?.src || dpboss}
+            src={typeof dpboss === 'object' ? dpboss.src : (dpboss as string)}
             alt="DPBOSS Logo"
             className="h-12 w-auto"
           />
-
+          <h1>BOSS.MONSTER</h1>
 
 
         </div>
