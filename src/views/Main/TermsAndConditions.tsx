@@ -8,10 +8,10 @@ import HomeButton from "@/components/ui/HomeButton";
 
 const TermsAndConditions = () => {
   useMeta({
-    title: "Terms and Conditions - RJBOSS.NET",
+    title: "Terms and Conditions - DPBOSS.MONSTER",
     description:
-      "Read the terms and conditions of RJBOSS.NET. By using this website, you agree to these terms.",
-    keywords: "terms and conditions rjboss, rjboss terms, website terms",
+      "Read the terms and conditions of DPBOSS.MONSTER. By using this website, you agree to these terms.",
+    keywords: "terms and conditions dpboss, dpboss terms, website terms",
   });
 
   return (
@@ -35,7 +35,7 @@ const TermsAndConditions = () => {
                     Introduction
                   </p>
                   <p className="text-xs text-gray-700 leading-relaxed">
-                    Welcome to RJBOSS.NET. By accessing or using this website,
+                    Welcome to DPBOSS.MONSTER. By accessing or using this website,
                     you agree to be bound by these Terms and Conditions. If you
                     do not agree with any part of these terms, please discontinue
                     use of the website.
@@ -48,7 +48,7 @@ const TermsAndConditions = () => {
                     Website Purpose
                   </p>
                   <p className="text-xs text-gray-700 leading-relaxed">
-                    RJBOSS.NET is an informational and entertainment-only
+                    DPBOSS.MONSTER is an informational and entertainment-only
                     platform. The website does not promote, support, or
                     facilitate gambling, betting, or any form of illegal
                     activity.
@@ -74,7 +74,7 @@ const TermsAndConditions = () => {
                   </p>
                   <p className="text-xs text-gray-700 leading-relaxed">
                     While we strive to provide accurate and timely information,
-                    RJBOSS.NET does not guarantee the completeness, reliability,
+                    DPBOSS.MONSTER does not guarantee the completeness, reliability,
                     or accuracy of any content published on the website.
                   </p>
                 </div>
@@ -85,7 +85,7 @@ const TermsAndConditions = () => {
                     Limitation of Liability
                   </p>
                   <p className="text-xs text-gray-700 leading-relaxed">
-                    RJBOSS.NET shall not be held liable for any direct or
+                    DPBOSS.MONSTER shall not be held liable for any direct or
                     indirect losses, damages, or consequences resulting from
                     the use of or reliance on the information provided on this
                     website.
@@ -99,7 +99,7 @@ const TermsAndConditions = () => {
                   </p>
                   <p className="text-xs text-gray-700 leading-relaxed">
                     This website may contain links to third-party websites.
-                    RJBOSS.NET is not responsible for the content, accuracy, or
+                    DPBOSS.MONSTER is not responsible for the content, accuracy, or
                     privacy practices of external sites.
                   </p>
                 </div>
@@ -110,7 +110,7 @@ const TermsAndConditions = () => {
                     Intellectual Property
                   </p>
                   <p className="text-xs text-gray-700 leading-relaxed">
-                    All content, logos, text, and design elements on RJBOSS.NET
+                    All content, logos, text, and design elements on DPBOSS.MONSTER
                     are the intellectual property of the website unless stated
                     otherwise. Unauthorized use is strictly prohibited.
                   </p>
@@ -122,7 +122,7 @@ const TermsAndConditions = () => {
                     Changes to Terms
                   </p>
                   <p className="text-xs text-gray-700 leading-relaxed">
-                    RJBOSS.NET reserves the right to update or modify these Terms
+                    DPBOSS.MONSTER reserves the right to update or modify these Terms
                     and Conditions at any time without prior notice. Continued
                     use of the website constitutes acceptance of the updated
                     terms.
@@ -157,7 +157,7 @@ const TermsAndConditions = () => {
                     Acceptance of Terms
                   </p>
                   <p className="text-xs text-gray-700 leading-relaxed">
-                    By accessing RJBOSS.NET, you acknowledge that you have read,
+                    By accessing DPBOSS.MONSTER, you acknowledge that you have read,
                     understood, and agreed to these Terms and Conditions in
                     full.
                   </p>

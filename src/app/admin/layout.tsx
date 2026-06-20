@@ -7,9 +7,9 @@ import { DashboardLayout } from "@/components/layout/DashboardLayout";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  
+
   // Public admin route
-  if (pathname === "/admin/dashboard_rjboss_login") {
+  if (pathname === "/admin/dashboard_dpboss_login") {
     return <>{children}</>;
   }
 

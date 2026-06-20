@@ -17,15 +17,15 @@ const WelcomeBanner = () => {
 
         {/* Text */}
         <div className="leading-tight text-center flex-1">
-         <p
-  className="font-bold italic text-black text-md"
-  style={{
-    textShadow: '0 0 1px white, 0 0 1px white, 0 0 1px white',
-  }}
->
-  !! Welcome to rjboss international <br />
-  !! Satta Matka Fast Result
-</p>
+          <p
+            className="font-bold italic text-black text-md"
+            style={{
+              textShadow: '0 0 1px white, 0 0 1px white, 0 0 1px white',
+            }}
+          >
+            !! Welcome to dpboss international <br />
+            !! Satta Matka Fast Result
+          </p>
         </div>
 
       </div>

@@ -79,7 +79,7 @@ export const TopBar = ({ onMenuClick, pageTitles }: TopBarProps) => {
       navigate(
         location.pathname.startsWith("/user")
           ? "/user/login"
-          : "/admin/dashboard_rjboss_login"
+          : "/admin/dashboard_dpboss_login"
       );
     }
   };

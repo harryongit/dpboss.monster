@@ -60,101 +60,101 @@ const All22CardPannaPanelPattiChart = () => {
               </CardTitle>
             </CardHeader>
 
-           <CardContent className="p-4 space-y-5 text-sm font-semibold text-gray-800">
+            <CardContent className="p-4 space-y-5 text-sm font-semibold text-gray-800">
 
-  {[
-    {
-      title: "777 !!-1-!! 100",
-      lines: [
-        "128-137-146-236-245- 290-380-470-489-560",
-        "678-579-119-155-227- 335-344-399-588-669"
-      ],
-    },
-    {
-      title: "444 !!-2-!! 200",
-      lines: [
-        "129-138-147-156-237- 246-345-390-480-570",
-        "679-589-110-228-255- 336-499-660-688-778"
-      ],
-    },
-    {
-      title: "111 !!-3-!! 300",
-      lines: [
-        "120-139-148-157-238- 247-256-346-490-580",
-        "670-689-166-229-337- 355-445-599-779-788"
-      ],
-    },
-    {
-      title: "888 !!-4-!! 400",
-      lines: [
-        "130-149-158-167-239- 248-257-347-356-590",
-        "680-789-112-220-266- 338-446-455-699-770"
-      ],
-    },
-    {
-      title: "555 !!-5-!! 500",
-      lines: [
-        "140-159-168-230-249- 258-267-348-357-456",
-        "690-780-113-122-177- 339-366-447-799-889"
-      ],
-    },
-    {
-      title: "222 !!-6-!! 600",
-      lines: [
-        "123-150-169-178-240- 259-268-349-358-457",
-        "367-790-114-277-330- 448-466-556-880-899"
-      ],
-    },
-    {
-      title: "999 !!-7-!! 700",
-      lines: [
-        "124-160-179-250-269- 278-340-359-368-458",
-        "467-890-115-133-188- 223-377-449-557-566"
-      ],
-    },
-    {
-      title: "666 !!-8-!! 800",
-      lines: [
-        "125-134-170-189-260- 279-350-369-378-459",
-        "567-468-116-224-233- 288-440-477-558-990"
-      ],
-    },
-    {
-      title: "333 !!-9-!! 900",
-      lines: [
-        "126-135-180-234-270- 289-360-379-450-469",
-        "117-478-568-144-199- 225-388-559-577-667"
-      ],
-    },
-    {
-      title: "000 !!-0-!! 550",
-      lines: [
-        "127-136-145-190-235-280 370-389-460-479",
-        "569-578-118-226-244-299-334-488-668-677"
-      ],
-    },
-  ].map((item, index) => (
-    <div
-      key={index}
-      className="border border-indigo-300 rounded-xl overflow-hidden shadow-sm"
-    >
-      <div className="bg-indigo-600 text-white text-center py-2 font-bold tracking-wide">
-        {item.title}
-      </div>
-      <div className="bg-white text-center py-3 px-2 leading-7">
-        <div>{item.lines[0]}</div>
-        <div>{item.lines[1]}</div>
-      </div>
-    </div>
-  ))}
+              {[
+                {
+                  title: "777 !!-1-!! 100",
+                  lines: [
+                    "128-137-146-236-245- 290-380-470-489-560",
+                    "678-579-119-155-227- 335-344-399-588-669"
+                  ],
+                },
+                {
+                  title: "444 !!-2-!! 200",
+                  lines: [
+                    "129-138-147-156-237- 246-345-390-480-570",
+                    "679-589-110-228-255- 336-499-660-688-778"
+                  ],
+                },
+                {
+                  title: "111 !!-3-!! 300",
+                  lines: [
+                    "120-139-148-157-238- 247-256-346-490-580",
+                    "670-689-166-229-337- 355-445-599-779-788"
+                  ],
+                },
+                {
+                  title: "888 !!-4-!! 400",
+                  lines: [
+                    "130-149-158-167-239- 248-257-347-356-590",
+                    "680-789-112-220-266- 338-446-455-699-770"
+                  ],
+                },
+                {
+                  title: "555 !!-5-!! 500",
+                  lines: [
+                    "140-159-168-230-249- 258-267-348-357-456",
+                    "690-780-113-122-177- 339-366-447-799-889"
+                  ],
+                },
+                {
+                  title: "222 !!-6-!! 600",
+                  lines: [
+                    "123-150-169-178-240- 259-268-349-358-457",
+                    "367-790-114-277-330- 448-466-556-880-899"
+                  ],
+                },
+                {
+                  title: "999 !!-7-!! 700",
+                  lines: [
+                    "124-160-179-250-269- 278-340-359-368-458",
+                    "467-890-115-133-188- 223-377-449-557-566"
+                  ],
+                },
+                {
+                  title: "666 !!-8-!! 800",
+                  lines: [
+                    "125-134-170-189-260- 279-350-369-378-459",
+                    "567-468-116-224-233- 288-440-477-558-990"
+                  ],
+                },
+                {
+                  title: "333 !!-9-!! 900",
+                  lines: [
+                    "126-135-180-234-270- 289-360-379-450-469",
+                    "117-478-568-144-199- 225-388-559-577-667"
+                  ],
+                },
+                {
+                  title: "000 !!-0-!! 550",
+                  lines: [
+                    "127-136-145-190-235-280 370-389-460-479",
+                    "569-578-118-226-244-299-334-488-668-677"
+                  ],
+                },
+              ].map((item, index) => (
+                <div
+                  key={index}
+                  className="border border-indigo-300 rounded-xl overflow-hidden shadow-sm"
+                >
+                  <div className="bg-indigo-600 text-white text-center py-2 font-bold tracking-wide">
+                    {item.title}
+                  </div>
+                  <div className="bg-white text-center py-3 px-2 leading-7">
+                    <div>{item.lines[0]}</div>
+                    <div>{item.lines[1]}</div>
+                  </div>
+                </div>
+              ))}
 
-</CardContent>
+            </CardContent>
           </Card>
 
           {/* Description Section */}
           <Card className="border shadow-md">
             <CardContent className="p-4 text-sm text-gray-800 leading-7 space-y-4">
-              <p>Hello everyone, how are you all? I hope you all are doing well. Welcome to rjboss.Services Today we are exploring a very important page of our website, it will help you a lot to learn the Panna Panel and Patti Chart. So this page includes all 22 cards of Panna Panel Patti, in the form of a chart.</p>
+              <p>Hello everyone, how are you all? I hope you all are doing well. Welcome to dpboss.Services Today we are exploring a very important page of our website, it will help you a lot to learn the Panna Panel and Patti Chart. So this page includes all 22 cards of Panna Panel Patti, in the form of a chart.</p>
 
               <p>When you visit this page, you see on the top, there are panels written for every single digit like 1, 2, 3, 4, 5, 6, 7, 8, 9, and 0, and then below it, you will find another section, where you can see all 22 Satta Matka cards, and here you will find the complete sequence and the combinations of the panels.</p>
 

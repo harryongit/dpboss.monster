@@ -56,7 +56,7 @@ const MatkaJodiCountChart = () => {
 
               {/* English Explanation */}
               <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl p-6 shadow-inner border border-indigo-100 whitespace-pre-line">
-{`Hello everyone, welcome to our platform rjboss.Services and today we will shed light on the Matka Jodi count chart. So this is a very simple count chart, but a very important one, and it will help you understand the concept of the count chart in the Satta Matka language. So we have several entries here on this page for the Matka Jodi count chart.
+                {`Hello everyone, welcome to our platform dpboss.Services and today we will shed light on the Matka Jodi count chart. So this is a very simple count chart, but a very important one, and it will help you understand the concept of the count chart in the Satta Matka language. So we have several entries here on this page for the Matka Jodi count chart.
 
 First, we have count 0 and the figure for it is 00. Then we have count 1 and here we have some figures. Mostly figures are starting from the 0, 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, and 11. Then we have count 2 in which we have 02, 11, 20, 29, 38, 47, 56, 65, 74, 83, 92. These are fixed numbers and they are used for the Matka Jodi count.
 

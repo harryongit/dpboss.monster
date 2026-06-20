@@ -8,10 +8,10 @@ import HomeButton from "@/components/ui/HomeButton";
 
 const Contact = () => {
   useMeta({
-    title: "Contact Us - RJBOSS.NET",
+    title: "Contact Us - DPBOSS.MONSTER",
     description:
-      "Contact RJBOSS.NET for feedback, corrections, or general inquiries. We aim to respond within 24–48 hours.",
-    keywords: "contact rjboss, rjboss support, rjboss feedback",
+      "Contact DPBOSS.MONSTER for feedback, corrections, or general inquiries. We aim to respond within 24–48 hours.",
+    keywords: "contact dpboss, dpboss support, dpboss feedback",
   });
 
   return (
@@ -23,7 +23,7 @@ const Contact = () => {
           <Card className="bg-white border-2 border-violet-400 shadow-lg">
             <CardHeader className="bg-gradient-to-r from-violet-600 to-sky-500 text-white py-2">
               <CardTitle className="text-center text-sm font-black tracking-wide">
-                📞 CONTACT RJBOSS.NET
+                📞 CONTACT DPBOSS.MONSTER
               </CardTitle>
             </CardHeader>
 
@@ -46,7 +46,7 @@ const Contact = () => {
                     Email Support
                   </p>
                   <p className="text-xs text-gray-700 leading-relaxed">
-                    📧 support@rjboss.net <br />
+                    📧 support@dpboss.monster <br />
                     Please include clear details so we can assist you better.
                   </p>
                 </div>
@@ -68,7 +68,7 @@ const Contact = () => {
                     Important Note
                   </p>
                   <p className="text-xs text-gray-700 leading-relaxed">
-                    RJBOSS.NET is an informational and entertainment-only
+                    DPBOSS.MONSTER is an informational and entertainment-only
                     platform. We do not provide betting services or personal
                     gambling advice.
                   </p>

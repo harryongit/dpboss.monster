@@ -94,7 +94,7 @@ const PanelRecordChart = () => {
             </h2>
             <p className="text-[12px] leading-tight m-0 opacity-90">
               Rjboss {decodedMarketName} panel chart, {decodedMarketName} panel chart, old {decodedMarketName} panel chart,
-              {decodedMarketName} pana patti chart, rjboss {decodedMarketName}, {decodedMarketName} panel record, {decodedMarketName} panel record, {decodedMarketName} panel chart 2015,
+              {decodedMarketName} pana patti chart, dpboss {decodedMarketName}, {decodedMarketName} panel record, {decodedMarketName} panel record, {decodedMarketName} panel chart 2015,
               {decodedMarketName} panel chart 2012, {decodedMarketName} panel chart 2012 to 2023, {decodedMarketName} final ank, {decodedMarketName} panel chart.co,
               {decodedMarketName} panel chart matka, {decodedMarketName} panel chart book, {decodedMarketName} matka chart, matka panel chart {decodedMarketName}, matka {decodedMarketName} chart,
               satta {decodedMarketName} chart panel, {decodedMarketName} state chart, {decodedMarketName} chart result,

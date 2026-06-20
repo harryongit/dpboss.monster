@@ -13,7 +13,7 @@ const FooterSection = () => {
       <div className="text-center py-5 px-3 space-y-3">
         {/* Brand */}
         <p className="font-black text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-sky-600 to-cyan-600 text-base">
-          © 2024 RJBOSS.NET
+          © 2024 DPBOSS.MONSTER
         </p>
 
         {/* Tagline */}
@@ -23,7 +23,7 @@ const FooterSection = () => {
 
         {/* Links */}
         <div className="flex flex-wrap justify-center gap-x-2 gap-y-1 text-xs font-medium">
-          <span className="text-gray-500">Powered by RJBOSS.NET</span>
+          <span className="text-gray-500">Powered by DPBOSS.MONSTER</span>
           <span className="text-gray-400">•</span>
 
           <NavLink to="/about" className={linkClass}>

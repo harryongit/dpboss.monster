@@ -21,7 +21,7 @@ const SpecialGameZone = () => {
       <Card className="bg-peach border-2 border-blue-900 shadow-lg rounded-lg">
         <CardHeader className="bg-red-600 text-white py-2">
           <CardTitle className="text-center text-xl font-extrabold tracking-wide">
-            RJBOSS SPECIAL GAME ZONE
+            DPBOSS SPECIAL GAME ZONE
           </CardTitle>
         </CardHeader>
 

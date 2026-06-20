@@ -36,7 +36,7 @@ const RJBossInfoSection = () => {
     "ALL MATKA RESULT LIVE ONLINE",
     "MATKA RESULT",
     "KALYAN MATKA RESULT",
-    "RJBOSS MATKA 143",
+    "DPBOSS MATKA 143",
     "MAIN MATKA",
   ];
 

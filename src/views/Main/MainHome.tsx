@@ -63,7 +63,7 @@ const SattaMatkaWebsite = () => {
     "KALYAN MATKA TIPS",
     "SATTA MATKA",
     "MATKA.COM",
-    "RJBoss MATKA 143",
+    "DPBoss MATKA 143",
     "MAIN MATKA",
     "WORLD ME SABSE FAST SATTA MATKA RESULT",
   ];
@@ -84,16 +84,16 @@ const SattaMatkaWebsite = () => {
           {/* <div className="relative group">
             <div className="absolute -inset-1 bg-gradient-to-r from-red-600 to-orange-600 rounded-xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
             <a
-              href="/rjboss-resultapp.apk"
+              href="/dpboss-resultapp.apk"
               download
               className="relative flex items-center justify-between bg-white border-2 border-red-500 rounded-xl p-3 shadow-lg hover:shadow-xl transition-all active:scale-[0.98]"
             >
               <div className="flex flex-col">
                 <span className="text-sm font-black text-red-600 animate-pulse">
-                  🔥 RJBoss Official App 🔥
+                  🔥 DPBoss Official App 🔥
                 </span>
                 <span className="text-[10px] font-bold text-gray-600">
-                  RJBoss Ka Bharosa - Fast Result
+                  DPBoss Ka Bharosa - Fast Result
                 </span>
               </div>
               <div className="bg-gradient-to-r from-red-600 to-orange-600 text-white px-4 py-2 rounded-lg font-black text-xs shadow-md flex items-center gap-2">
@@ -110,10 +110,10 @@ const SattaMatkaWebsite = () => {
           <div className="bg-peach border-2 border-rose-400 rounded-lg p-2 flex items-center justify-center gap-2 shadow-sm">
             <span className="text-sm font-black italic text-black">Email for any inquiries Or Support:</span>
             <a
-              href="mailto:support@rjboss.net"
+              href="mailto:support@dpboss.monster"
               className="bg-orange-500 text-black px-3 py-0.5 rounded-full text-sm font-black border border-orange-600 shadow-sm"
             >
-              support@rjboss.net
+              support@dpboss.monster
             </a>
           </div>
 

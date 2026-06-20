@@ -8,10 +8,10 @@ import HomeButton from "@/components/ui/HomeButton";
 
 const PrivacyPolicy = () => {
   useMeta({
-    title: "Privacy Policy - RJBOSS.NET",
+    title: "Privacy Policy - DPBOSS.MONSTER",
     description:
-      "Read the privacy policy of RJBOSS.NET. Learn how we handle data, cookies, and user privacy.",
-    keywords: "privacy policy rjboss, rjboss privacy, data policy",
+      "Read the privacy policy of DPBOSS.MONSTER. Learn how we handle data, cookies, and user privacy.",
+    keywords: "privacy policy dpboss, dpboss privacy, data policy",
   });
 
   return (
@@ -35,7 +35,7 @@ const PrivacyPolicy = () => {
                     Introduction
                   </p>
                   <p className="text-xs text-gray-700 leading-relaxed">
-                    At RJBOSS.NET, we respect your privacy and are committed to
+                    At DPBOSS.MONSTER, we respect your privacy and are committed to
                     protecting any information you share while using our
                     website. This Privacy Policy explains how we collect, use,
                     and safeguard information when you visit our platform.
@@ -48,7 +48,7 @@ const PrivacyPolicy = () => {
                     Information We Collect
                   </p>
                   <p className="text-xs text-gray-700 leading-relaxed">
-                    RJBOSS.NET does not require users to create accounts or
+                    DPBOSS.MONSTER does not require users to create accounts or
                     submit personal details to access content. We do not collect
                     personal information such as name, phone number, or address.
                   </p>
@@ -70,7 +70,7 @@ const PrivacyPolicy = () => {
                     collect personally identifiable information.
                   </p>
                   <p className="text-xs text-gray-700 leading-relaxed mt-1">
-                    By continuing to use RJBOSS.NET, you consent to the use of
+                    By continuing to use DPBOSS.MONSTER, you consent to the use of
                     cookies as described in this policy.
                   </p>
                 </div>
@@ -81,7 +81,7 @@ const PrivacyPolicy = () => {
                     Third-Party Services
                   </p>
                   <p className="text-xs text-gray-700 leading-relaxed">
-                    RJBOSS.NET may use third-party services such as analytics
+                    DPBOSS.MONSTER may use third-party services such as analytics
                     tools or advertising partners. These third parties may use
                     cookies or similar technologies according to their own
                     privacy policies.
@@ -135,7 +135,7 @@ const PrivacyPolicy = () => {
                     Changes to This Policy
                   </p>
                   <p className="text-xs text-gray-700 leading-relaxed">
-                    RJBOSS.NET reserves the right to update or modify this
+                    DPBOSS.MONSTER reserves the right to update or modify this
                     Privacy Policy at any time. Changes will be effective
                     immediately upon posting on this page.
                   </p>
@@ -147,7 +147,7 @@ const PrivacyPolicy = () => {
                     Your Consent
                   </p>
                   <p className="text-xs text-gray-700 leading-relaxed">
-                    By using RJBOSS.NET, you acknowledge that you have read,
+                    By using DPBOSS.MONSTER, you acknowledge that you have read,
                     understood, and agree to this Privacy Policy.
                   </p>
                 </div>

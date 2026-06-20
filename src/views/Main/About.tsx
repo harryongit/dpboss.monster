@@ -15,7 +15,7 @@ const About = () => {
           <Card className="bg-white border-2 border-violet-400 shadow-lg">
             <CardHeader className="bg-gradient-to-r from-violet-600 to-sky-500 text-white py-2">
               <CardTitle className="text-center text-sm font-black tracking-wide">
-                ℹ️ ABOUT RJBOSS.NET
+                ℹ️ ABOUT DPBOSS.MONSTER
               </CardTitle>
             </CardHeader>
 
@@ -23,20 +23,20 @@ const About = () => {
               <div className="space-y-3">
                 {[
                   {
-                    title: "What is RJBOSS.NET?",
-                    text: "RJBOSS.NET is an informational platform that provides fast and regularly updated satta matka result information in a clean and easy-to-use format.",
+                    title: "What is DPBOSS.MONSTER?",
+                    text: "DPBOSS.MONSTER is an informational platform that provides fast and regularly updated satta matka result information in a clean and easy-to-use format.",
                   },
                   {
                     title: "Our Purpose",
                     text: "Our purpose is to present publicly available matka results for users who want to view result updates quickly and conveniently, without confusion or unnecessary distractions.",
                   },
                   {
-                    title: "Why Choose RJBOSS.NET?",
+                    title: "Why Choose DPBOSS.MONSTER?",
                     text: "✔ Fast result updates\n✔ Simple and mobile-friendly design\n✔ Clean layout with minimal ads\n✔ Easy navigation for all users",
                   },
                   {
                     title: "Entertainment Disclaimer",
-                    text: "RJBOSS.NET is strictly an entertainment and information-only website. We do not promote, support, or encourage gambling, betting, or any illegal activity.",
+                    text: "DPBOSS.MONSTER is strictly an entertainment and information-only website. We do not promote, support, or encourage gambling, betting, or any illegal activity.",
                   },
                   {
                     title: "Legal Notice",

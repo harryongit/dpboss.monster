@@ -20,7 +20,7 @@ const NoticeSection = () => {
         <div className="text-center px-2 py-2">
 
           <p className="text-[16px] font-bold text-black leading-[1.3]">
-            अपना बाजार <span className="font-extrabold">rjboss.net</span> वेबसाइट में डलवाने
+            अपना बाजार <span className="font-extrabold">dpboss.monster</span> वेबसाइट में डलवाने
             के लिए आज ही हमें कॉल या WhatsApp करें
           </p>
 
@@ -48,7 +48,7 @@ const NoticeSection = () => {
           </div>
 
           <p className="text-blue-700 font-bold text-[13px] mt-[4px]">
-            Email : support@rjboss.net
+            Email : support@dpboss.monster
           </p>
 
           <p className="text-[13px] font-bold text-black mt-[2px]">

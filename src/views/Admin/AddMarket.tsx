@@ -39,7 +39,7 @@ const AddMarket = () => {
     liveResultSequence: "",
     sequenceNumber: "",
     color: "",
-    domain: "rjboss.net",
+    domain: "dpboss.monster",
   });
 
   const [markets, setMarkets] = useState([] as { id: number; gameName: string; openTime: string; closeTime: string; freeFixFlag?: number; captionFlag?: number }[]);
@@ -146,7 +146,7 @@ const AddMarket = () => {
         sequence: parseInt(formData.sequenceNumber ),
         live_result_sequence: formData.liveResultSequence ? parseInt(formData.liveResultSequence) : undefined,
         color: colorValue,
-        domain: 'rjboss.net',
+        domain: 'dpboss.monster',
         free_fix_flag: 1,
         market_caption_flag: 0,
       };
@@ -168,7 +168,7 @@ const AddMarket = () => {
         liveResultSequence: "",
         sequenceNumber: "",
         color: "",
-        domain: "rjboss.net",
+        domain: "dpboss.monster",
       });
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : 'Failed to create market';
@@ -562,7 +562,7 @@ const AddMarket = () => {
             <div className="space-y-2">
               <Label>Domain (Fixed)</Label>
               <Input
-                value="rjboss.net"
+                value="dpboss.monster"
                 readOnly
                 className="bg-muted cursor-not-allowed"
               />

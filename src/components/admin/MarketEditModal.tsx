@@ -44,7 +44,7 @@ export const MarketEditModal = ({ open, onClose, marketId, onUpdated }: Props) =
   const [sequence, setSequence] = useState('');
   const [liveResultSequence, setLiveResultSequence] = useState('');
   const [color, setColor] = useState('#000000');
-  const [domain, setDomain] = useState('rjboss.net');
+  const [domain, setDomain] = useState('dpboss.monster');
 
   const format12 = (t: string) => {
     if (!t) return '';
@@ -71,7 +71,7 @@ export const MarketEditModal = ({ open, onClose, marketId, onUpdated }: Props) =
       setSequence(String(item.sequence ?? ''));
       setLiveResultSequence(String(item.live_result_sequence ?? ''));
       setColor(item.color );
-      setDomain(item.domain ?? 'rjboss.net');
+      setDomain(item.domain ?? 'dpboss.monster');
     }
   }, [item]);
 

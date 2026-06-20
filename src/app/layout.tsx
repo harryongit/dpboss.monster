@@ -6,7 +6,7 @@ import "../index.css"; // Import the existing custom stylesheet
 export const metadata: Metadata = {
   title: "RJ BOSS | Satta Matka Fast Result | Kalyan Milan Rajdhani",
   description: "Get fast and accurate Satta Matka results for Kalyan, Milan, Rajdhani & Time Bazar. RJ BOSS offers daily updates, charts, panel records & live Matka results.",
-  keywords: "satta matka, rj boss, rjboss, matka result, kalyan matka, milan day, rajdhani night, time bazar",
+  keywords: "satta matka, rj boss, dpboss, matka result, kalyan matka, milan day, rajdhani night, time bazar",
   robots: {
     index: true,
     follow: true,
@@ -17,16 +17,16 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://rjboss.net/",
+    canonical: "https://dpboss.monster/",
   },
   openGraph: {
     type: "website",
     title: "RJ BOSS – Fast Satta Matka Results",
     description: "Live Satta Matka results, charts and records for Kalyan, Milan, Rajdhani & Time Bazar.",
-    url: "https://rjboss.net/",
+    url: "https://dpboss.monster/",
     images: [
       {
-        url: "https://rjboss.net/logo512x512.png",
+        url: "https://dpboss.monster/logo512x512.png",
         width: 512,
         height: 512,
         alt: "RJ BOSS Logo",
@@ -37,16 +37,16 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "RJ BOSS – Fast Satta Matka Results",
     description: "Fast Matka results & charts from RJ BOSS.",
-    images: ["https://rjboss.net/logo512x512.png"],
+    images: ["https://dpboss.monster/logo512x512.png"],
   },
   icons: {
     icon: [
-      { url: "https://rjboss.net/favicon.ico" },
-      { url: "https://rjboss.net/faviconlogo32x32.png", sizes: "32x32", type: "image/png" },
-      { url: "https://rjboss.net/faviconlogo48x48.png", sizes: "48x48", type: "image/png" },
+      { url: "https://dpboss.monster/favicon.ico" },
+      { url: "https://dpboss.monster/faviconlogo32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "https://dpboss.monster/faviconlogo48x48.png", sizes: "48x48", type: "image/png" },
     ],
     apple: [
-      { url: "https://rjboss.net/logo512x512.png" },
+      { url: "https://dpboss.monster/logo512x512.png" },
     ],
   },
 };
@@ -80,14 +80,14 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "WebSite",
               "name": "RJ BOSS",
-              "url": "https://rjboss.net/",
+              "url": "https://dpboss.monster/",
               "inLanguage": "en-IN",
               "publisher": {
                 "@type": "Organization",
                 "name": "RJ BOSS",
                 "logo": {
                   "@type": "ImageObject",
-                  "url": "https://rjboss.net/logo512x512.png",
+                  "url": "https://dpboss.monster/logo512x512.png",
                   "width": 512,
                   "height": 512
                 }
@@ -102,10 +102,10 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               "name": "RJ BOSS",
-              "url": "https://rjboss.net/",
+              "url": "https://dpboss.monster/",
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://rjboss.net/logo512x512.png",
+                "url": "https://dpboss.monster/logo512x512.png",
                 "width": 512,
                 "height": 512
               }

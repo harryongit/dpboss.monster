@@ -7,19 +7,19 @@ const IntroductionSection = () => {
       <div className="border-2 border-blue-700 bg-[#f6c79b] rounded-xl overflow-hidden">
         <div className="max-h-[240px] overflow-y-auto px-2 text-[12px] font-bold leading-tight text-black space-y-4 text-center">
           <h2 className="text-[18px] font-black italic underline decoration-blue-700 underline-offset-4 mb-4 uppercase">
-            Introduction to RJBoss Service
+            Introduction to DPBoss Service
           </h2>
 
           <p>
-            Welcome to RJBoss, where entertainment takes center stage, and a world of diverse activities awaits you. In our vibrant community, we've crafted an experience beyond conventional platforms, offering a rich tapestry of entertainment for users with varied interests.
+            Welcome to DPBoss, where entertainment takes center stage, and a world of diverse activities awaits you. In our vibrant community, we've crafted an experience beyond conventional platforms, offering a rich tapestry of entertainment for users with varied interests.
           </p>
 
           <p>
-            Discover the joy of connecting with like-minded individuals through our socializing features. Whether you're an extrovert seeking lively conversations or an introvert looking for a cozy virtual space, RJBoss is your go-to destination for meaningful connections.
+            Discover the joy of connecting with like-minded individuals through our socializing features. Whether you're an extrovert seeking lively conversations or an introvert looking for a cozy virtual space, DPBoss is your go-to destination for meaningful connections.
           </p>
 
           <p>
-            <span className="text-blue-800 uppercase font-black">RJBOSS.Service</span> is your ultimate destination for everything related to the fascinating world of the Satta Matka. As the RJBOSS is a leading authority in the realm of Matka Games, this is your Go-To Platform for any reliable information along with accurate Matka Results and expert guidance obviously. Whether you are a pro or a newcomer player the comprehensive collection of resources such as Kalyan Matka, Matka Result, and Mumbai Matka, will provide you with the thrilling and immersive experience. Join us along and we will embark on this captivating adventure, where every matka number, matka chart, and matka games hold the potential to unlock fortunes.
+            <span className="text-blue-800 uppercase font-black">DPBOSS.Service</span> is your ultimate destination for everything related to the fascinating world of the Satta Matka. As the DPBOSS is a leading authority in the realm of Matka Games, this is your Go-To Platform for any reliable information along with accurate Matka Results and expert guidance obviously. Whether you are a pro or a newcomer player the comprehensive collection of resources such as Kalyan Matka, Matka Result, and Mumbai Matka, will provide you with the thrilling and immersive experience. Join us along and we will embark on this captivating adventure, where every matka number, matka chart, and matka games hold the potential to unlock fortunes.
           </p>
 
           <h3 className="text-blue-800 font-black uppercase text-[15px] pt-4 italic underline underline-offset-2">
@@ -59,11 +59,11 @@ const IntroductionSection = () => {
       <div className="border-2 border-blue-700 bg-[#f6c79b] rounded-xl overflow-hidden">
         <div className="max-h-[240px] overflow-y-auto px-2 text-[12px] font-bold leading-tight text-black space-y-4 text-center">
           <h2 className="text-[18px] font-black italic underline decoration-red-700 underline-offset-4 mb-4 uppercase">
-            RJBOSS Boston – Trusted Source for Satta Matka
+            DPBOSS Monster – Trusted Source for Satta Matka
           </h2>
 
           <p>
-            Satta Matka is not just a game. It’s a daily habit for many. RJBOSS helps users with fast, accurate results and easy guides. From Kalyan Matka to Milan, Rajdhani, and Mumbai Matka – RJBOSS provides all charts, satta matta matka results, and guessing tools in one place.
+            Satta Matka is not just a game. It’s a daily habit for many. DPBOSS helps users with fast, accurate results and easy guides. From Kalyan Matka to Milan, Rajdhani, and Mumbai Matka – DPBOSS provides all charts, satta matta matka results, and guessing tools in one place.
           </p>
 
           <h3 className="text-red-700 font-black uppercase text-[14px] pt-2 italic underline underline-offset-2">WHAT IS SATTA MATKA?</h3>
@@ -71,9 +71,9 @@ const IntroductionSection = () => {
             Satta Matka is a popular number-based game in India. It started in the 1960s and is still played widely. The main goal is to guess numbers that win in different markets like Kalyan Matka, Rajdhani Day, and Milan Matka. Results are now digital, but the game rules remain simple.
           </p>
 
-          <h3 className="text-red-700 font-black uppercase text-[14px] pt-2 italic underline underline-offset-2">HOW RJBOSS HELPS MATKA PLAYERS?</h3>
+          <h3 className="text-red-700 font-black uppercase text-[14px] pt-2 italic underline underline-offset-2">HOW DPBOSS HELPS MATKA PLAYERS?</h3>
           <p>
-            RJBOSS gives users the Satta Matka result fast. It includes Kalyan Satta Matka result, Milan Day, and Satta Matka Open numbers. You also get RJBOSS guessing, RJBOSS 143 guessing, and Boss Matka predictions.
+            DPBOSS gives users the Satta Matka result fast. It includes Kalyan Satta Matka result, Milan Day, and Satta Matka Open numbers. You also get DPBOSS guessing, DPBOSS 143 guessing, and Boss Matka predictions.
           </p>
 
           <h3 className="text-red-700 font-black uppercase text-[14px] pt-2 italic underline underline-offset-2">DAILY MATKA RESULTS</h3>
@@ -98,10 +98,10 @@ const IntroductionSection = () => {
 
           <h3 className="text-red-700 font-black uppercase text-[14px] pt-2 italic underline underline-offset-2">MOBILE & DIGITAL MATKA</h3>
           <p>
-            Today, most users check RJBOSS from their phone. They type fast keywords like satta matta satta matta, satta satta matka, and kalyan kalyan. These users want fast updates. They don’t want to scroll or refresh many times.
+            Today, most users check DPBOSS from their phone. They type fast keywords like satta matta satta matta, satta satta matka, and kalyan kalyan. These users want fast updates. They don’t want to scroll or refresh many times.
           </p>
           <p>
-            That is why RJBOSS keeps its site simple. No heavy layout. Just direct charts. If you want to check कल्याण डीपी बॉस, कल्याण बाजार मटका, you can do it in seconds.
+            That is why DPBOSS keeps its site simple. No heavy layout. Just direct charts. If you want to check कल्याण डीपी बॉस, कल्याण बाजार मटका, you can do it in seconds.
           </p>
 
           <h3 className="text-red-700 font-black uppercase text-[14px] pt-2 italic underline underline-offset-2">MAIN BAZAR AND MUMBAI KALYAN</h3>
@@ -110,10 +110,10 @@ const IntroductionSection = () => {
           </p>
 
           <p className="text-[14px] pt-4 font-black uppercase text-blue-800 tracking-tighter">
-            RJBoss Boston – The Home of Matka Lovers
+            DPBoss Monster – The Home of Matka Lovers
           </p>
           <p className="italic">
-            Experience the fastest updates, clean charts, and the most reliable kalyan matka information available online. RJBOSS.Boston is your all-in-one satta platform.
+            Experience the fastest updates, clean charts, and the most reliable kalyan matka information available online. DPBOSS.Monster is your all-in-one satta platform.
           </p>
         </div>
       </div>
