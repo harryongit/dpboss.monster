@@ -73,7 +73,7 @@ const FixOpenToCloseByDate = () => {
 
               {/* English Explanation */}
               <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl p-5 shadow-inner border border-indigo-100 whitespace-pre-line">
-                {`Hello everyone, how are you all the Satta Matka Enthusiasta, today I am very excited to welcome all of you on Rjboss.Services and today I will introduce you to our very important page which is Fix Open to Close by Date.
+                {`Hello everyone, how are you all the Satta Matka Enthusiasta, today I am very excited to welcome all of you on DpBoss.Services and today I will introduce you to our very important page which is Fix Open to Close by Date.
 
 This concept is called Dhanvarsha, finding your open and close according to the current date of any month or year, is a concept which we call Dhanvarsha in the language of Satta Matka, so here is a fixed formula for we have already calculated it and it depends on the date you need to remember that the date is very important here and this Dhanvarsha concept works for every market and there is no difference between the markets, you can use it for every market and below you can find a breakdown of the dates and their open to close and fix.
 

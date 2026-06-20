@@ -29,10 +29,10 @@ const KhatrisFavouritePannaChart = () => {
             <CardHeader className="bg-gradient-to-r from-rose-600 via-pink-600 to-purple-600 py-2">
               <div className="flex justify-between items-center">
                 <CardTitle className="text-center text-white font-black tracking-wide text-sm flex-1">
-                   Khatri favourite panna chart
+                  Khatri favourite panna chart
                 </CardTitle>
               </div>
-      
+
             </CardHeader>
             <CardContent className="p-3">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -42,7 +42,7 @@ const KhatrisFavouritePannaChart = () => {
                     className="rounded-xl border-2 border-green-700 overflow-hidden"
                   >
                     <div className=" text-center bg-gradient-to-br from-green-600 to-green-700 text-white px-3 py-2 font-extrabold text-sm">
-                     {sec.title}
+                      {sec.title}
                     </div>
                     <div className="bg-white text-green-900 p-3 text-center font-bold space-y-2">
                       <div className="text-base leading-7">{sec.lines[1]}</div>
@@ -56,69 +56,69 @@ const KhatrisFavouritePannaChart = () => {
             </CardContent>
           </Card>
 
-         <Card className="border-2 border-sky-400 shadow-md">
-           <CardHeader className="bg-gradient-to-r from-sky-600 to-cyan-600 py-2">
-             <CardTitle className="text-center text-white font-extrabold text-sm">
-               How to use this chart
-             </CardTitle>
-           </CardHeader>
-           <CardContent className="p-4 text-gray-800 leading-7 space-y-4 text-sm">
-  <p>
-    Hello, all the Matka enthusiasts. Today we welcome you to our platform 
-    <strong> Rjboss.Services</strong>. In this section, we will talk about 
-    <strong> Khatri's Favourite Panna Chart</strong>.
-  </p>
+          <Card className="border-2 border-sky-400 shadow-md">
+            <CardHeader className="bg-gradient-to-r from-sky-600 to-cyan-600 py-2">
+              <CardTitle className="text-center text-white font-extrabold text-sm">
+                How to use this chart
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="p-4 text-gray-800 leading-7 space-y-4 text-sm">
+              <p>
+                Hello, all the Matka enthusiasts. Today we welcome you to our platform
+                <strong> DpBoss.Services</strong>. In this section, we will talk about
+                <strong> Khatri's Favourite Panna Chart</strong>.
+              </p>
 
-  <p>
-    This Panna chart is slightly different because it is based on the 
-    <strong> panel side</strong>, not the Jodi side. For your convenience, 
-    we have created a dedicated page explaining everything about 
-    Khatri’s favourite Panna chart in detail.
-  </p>
+              <p>
+                This Panna chart is slightly different because it is based on the
+                <strong> panel side</strong>, not the Jodi side. For your convenience,
+                we have created a dedicated page explaining everything about
+                Khatri’s favourite Panna chart in detail.
+              </p>
 
-  <p>
-    This page is specially designed by our expert authors to provide all the 
-    important information in one place. It explains the main concept of the chart 
-    and helps you understand how panel combinations are structured.
-  </p>
+              <p>
+                This page is specially designed by our expert authors to provide all the
+                important information in one place. It explains the main concept of the chart
+                and helps you understand how panel combinations are structured.
+              </p>
 
-  <p>
-    The chart is organized based on single-digit numbers. For example, for the 
-    single digit <strong>1</strong>, you will find combinations such as:
-  </p>
+              <p>
+                The chart is organized based on single-digit numbers. For example, for the
+                single digit <strong>1</strong>, you will find combinations such as:
+              </p>
 
-  <p className="font-semibold text-green-700 text-center">
-    128, 137, 236, 678, 245, 290, 470, 579
-  </p>
+              <p className="font-semibold text-green-700 text-center">
+                128, 137, 236, 678, 245, 290, 470, 579
+              </p>
 
-  <p>
-    These are eight three-digit combinations linked to the single digit 1. 
-    Similarly, combinations are provided for digits 2, 3, 4, 5, 6, 7, 8, 9, and 0.
-  </p>
+              <p>
+                These are eight three-digit combinations linked to the single digit 1.
+                Similarly, combinations are provided for digits 2, 3, 4, 5, 6, 7, 8, 9, and 0.
+              </p>
 
-  <p>
-    By studying these panel combinations carefully, you can better understand 
-    how the Panna structure works. The purpose of this chart is to give players 
-    clarity and organized reference data.
-  </p>
+              <p>
+                By studying these panel combinations carefully, you can better understand
+                how the Panna structure works. The purpose of this chart is to give players
+                clarity and organized reference data.
+              </p>
 
-  <p>
-    We recommend Matka players visit this page regularly to analyze different 
-    combinations and understand the concept behind them. Familiarity with the 
-    chart may help you make more informed decisions.
-  </p>
+              <p>
+                We recommend Matka players visit this page regularly to analyze different
+                combinations and understand the concept behind them. Familiarity with the
+                chart may help you make more informed decisions.
+              </p>
 
-  <p>
-    Before placing any bet, review the combinations carefully and finalize your 
-    Panna based on your own analysis. Always approach such games responsibly 
-    and understand the risks involved.
-  </p>
+              <p>
+                Before placing any bet, review the combinations carefully and finalize your
+                Panna based on your own analysis. Always approach such games responsibly
+                and understand the risks involved.
+              </p>
 
-  <p className="font-semibold text-center text-rose-600">
-    Thank you, and we wish you success.
-  </p>
-           </CardContent>
-         </Card>
+              <p className="font-semibold text-center text-rose-600">
+                Thank you, and we wish you success.
+              </p>
+            </CardContent>
+          </Card>
         </div>
 
         <FooterSection />

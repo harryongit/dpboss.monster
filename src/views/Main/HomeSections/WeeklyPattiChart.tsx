@@ -39,10 +39,10 @@ const WeeklyPattiChart = () => {
 
   return (
     <Card className="bg-peach border border-red-600 shadow-sm rounded-none">
-      
+
       <CardHeader className="rgb-animate text-white py-1">
         <CardTitle className="text-center text-lg font-extrabold italic leading-tight">
-          RjBoss Net Weekly Patti Or Penal Chart From {weekRange} Kalyan, Milan, Kalyan Night, Rajdhani, Time, Main Bazar, Mumbai Royal Night, Kalyan Morning
+          DpBoss Net Weekly Patti Or Penal Chart From {weekRange} Kalyan, Milan, Kalyan Night, Rajdhani, Time, Main Bazar, Mumbai Royal Night, Kalyan Morning
         </CardTitle>
       </CardHeader>
 

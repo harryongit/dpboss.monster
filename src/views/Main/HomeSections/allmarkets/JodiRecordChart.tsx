@@ -80,7 +80,7 @@ const JodiRecordChart = () => {
               {decodedMarketName} JODI RESULT CHART RECORDS
             </h2>
             <p className="text-[12px] leading-tight m-0 opacity-90">
-              Rjboss {decodedMarketName} jodi chart, {decodedMarketName} jodi chart, old {decodedMarketName} jodi chart, dpboss {decodedMarketName} chart, {decodedMarketName} jodi record, {decodedMarketName}jodi record, {decodedMarketName} jodi chart 2015,
+              DpBoss {decodedMarketName} jodi chart, {decodedMarketName} jodi chart, old {decodedMarketName} jodi chart, dpboss {decodedMarketName} chart, {decodedMarketName} jodi record, {decodedMarketName}jodi record, {decodedMarketName} jodi chart 2015,
               {decodedMarketName} jodi chart 2012, {decodedMarketName} jodi chart 2012 to 2023, {decodedMarketName} final ank, {decodedMarketName} jodi chart.co,
               {decodedMarketName} jodi chart matka, {decodedMarketName} jodi chart book, {decodedMarketName} matka chart, matka jodi chart {decodedMarketName}, matka {decodedMarketName} chart,
               satta {decodedMarketName} chart jodi, {decodedMarketName} state chart, {decodedMarketName} chart result,

@@ -30,7 +30,7 @@ const WeeklyLineChart = () => {
     <Card className="bg-peach border border-red-600 shadow-sm rounded-none">
       <CardHeader className="rgb-animate text-white py-1">
         <CardTitle className="text-center text-lg font-extrabold italic leading-tight">
-          RjBoss Net Weekly Line Open Or Close From {weekRange} For
+          DpBoss Net Weekly Line Open Or Close From {weekRange} For
           Kalyan, Milan, Kalyan Night, Rajdhani, Time, Main Bazar,
           Mumbai Royal Night, Kalyan Morning
         </CardTitle>

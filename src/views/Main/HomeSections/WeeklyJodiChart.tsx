@@ -37,7 +37,7 @@ const WeeklyJodiChart = () => {
     <Card className="bg-[#e9b886] border border-red-600 shadow-sm rounded-none">
       <CardHeader className="rgb-animate text-white py-1">
         <CardTitle className="text-center text-lg font-extrabold italic leading-tight">
-          RjBoss Net Weekly Jodi Chart From {weekRange} For Kalyan Milan Kalyan Night, Rajdhani Time, Main Bazar, Mumbai Royal Night Market, Kalyan Morning
+          DpBoss Net Weekly Jodi Chart From {weekRange} For Kalyan Milan Kalyan Night, Rajdhani Time, Main Bazar, Mumbai Royal Night Market, Kalyan Morning
         </CardTitle>
       </CardHeader>
 
