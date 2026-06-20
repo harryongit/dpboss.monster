@@ -18,7 +18,7 @@ interface TopBarProps {
 }
 
 const defaultPageTitles: Record<string, string> = {
-  "/admin": "RJ BOSS DASHBOARD",
+  "/admin": "DP BOSS DASHBOARD",
   "/admin/add-market": "Add Market",
   "/admin/add-final-ank": "Add Final Ank",
   "/admin/user-register": "User Register",

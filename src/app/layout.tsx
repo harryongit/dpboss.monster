@@ -4,9 +4,9 @@ import Providers from "./providers";
 import "../index.css"; // Import the existing custom stylesheet
 
 export const metadata: Metadata = {
-  title: "RJ BOSS | Satta Matka Fast Result | Kalyan Milan Rajdhani",
-  description: "Get fast and accurate Satta Matka results for Kalyan, Milan, Rajdhani & Time Bazar. RJ BOSS offers daily updates, charts, panel records & live Matka results.",
-  keywords: "satta matka, rj boss, dpboss, matka result, kalyan matka, milan day, rajdhani night, time bazar",
+  title: "DP BOSS | Satta Matka Fast Result | Kalyan Milan Rajdhani",
+  description: "Get fast and accurate Satta Matka results for Kalyan, Milan, Rajdhani & Time Bazar. DP BOSS offers daily updates, charts, panel records & live Matka results.",
+  keywords: "satta matka, dp boss, dpboss, matka result, kalyan matka, milan day, rajdhani night, time bazar",
   robots: {
     index: true,
     follow: true,
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    title: "RJ BOSS – Fast Satta Matka Results",
+    title: "DP BOSS – Fast Satta Matka Results",
     description: "Live Satta Matka results, charts and records for Kalyan, Milan, Rajdhani & Time Bazar.",
     url: "https://dpboss.monster/",
     images: [
@@ -29,14 +29,14 @@ export const metadata: Metadata = {
         url: "https://dpboss.monster/logo512x512.png",
         width: 512,
         height: 512,
-        alt: "RJ BOSS Logo",
+        alt: "DP BOSS Logo",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "RJ BOSS – Fast Satta Matka Results",
-    description: "Fast Matka results & charts from RJ BOSS.",
+    title: "DP BOSS – Fast Satta Matka Results",
+    description: "Fast Matka results & charts from DP BOSS.",
     images: ["https://dpboss.monster/logo512x512.png"],
   },
   icons: {
@@ -79,12 +79,12 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              "name": "RJ BOSS",
+              "name": "DP BOSS",
               "url": "https://dpboss.monster/",
               "inLanguage": "en-IN",
               "publisher": {
                 "@type": "Organization",
-                "name": "RJ BOSS",
+                "name": "DP BOSS",
                 "logo": {
                   "@type": "ImageObject",
                   "url": "https://dpboss.monster/logo512x512.png",
@@ -101,7 +101,7 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              "name": "RJ BOSS",
+              "name": "DP BOSS",
               "url": "https://dpboss.monster/",
               "logo": {
                 "@type": "ImageObject",
@@ -134,9 +134,9 @@ export default function RootLayout({
 
         {/* SEO Fallback Sections */}
         <section className="seo-hidden">
-          <h1>RJ BOSS – Live Satta Matka Results</h1>
+          <h1>DP BOSS – Live Satta Matka Results</h1>
           <p>
-            RJ BOSS is an informational website providing fast Satta Matka results
+            DP BOSS is an informational website providing fast Satta Matka results
             for Kalyan, Milan Day, Rajdhani Night and Time Bazar along with charts
             and panel records.
           </p>
