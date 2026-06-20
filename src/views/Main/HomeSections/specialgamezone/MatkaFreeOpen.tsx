@@ -12,7 +12,10 @@ const MatkaFreeOpen = () => {
   const query = useDailyGuessingFreeFix();
   const items = query.data?.data?.items ?? [];
   const firstDate = items[0]?.date;
-  const headerDate = firstDate ?? formatToday();
+  const [headerDate, setHeaderDate] = React.useState("");
+  React.useEffect(() => {
+    setHeaderDate(firstDate ?? formatToday());
+  }, [firstDate]);
 
   return (
     <div className="min-h-screen bg-peach">

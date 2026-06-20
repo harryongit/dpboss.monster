@@ -21,7 +21,10 @@ const WeeklyJodiChart = () => {
     return `${format(monday)} To ${format(sunday)}`;
   };
 
-  const weekRange = getWeekRange();
+  const [weekRange, setWeekRange] = React.useState("");
+  React.useEffect(() => {
+    setWeekRange(getWeekRange());
+  }, []);
 
   const jodiData = `34 39 84 89
 03 08 53 58

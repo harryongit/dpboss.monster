@@ -23,6 +23,9 @@ const UserFreeFix = () => {
     pannaResult: '',
   });
 
+  const [minDate, setMinDate] = useState("");
+  useEffect(() => { setMinDate(toYMD(new Date())); }, []);
+
   const [results, setResults] = useState([] as { id: number; marketId: number; gameName: string; singleResult: string; jodiResult: string; pannaResult: string }[]);
 
   let userId = 0;
@@ -108,7 +111,7 @@ const UserFreeFix = () => {
                   name="resultDate"
                   type="date"
                   value={formData.resultDate}
-                  min={toYMD(new Date())}
+                  min={minDate}
                   onChange={(e) => setFormData((prev) => ({ ...prev, resultDate: e.target.value }))}
                   required
                 />

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { RefreshCw } from 'lucide-react';
 import HeaderLogo from '@/views/Main/HomeSections/HeaderLogo';
 import WelcomeBanner from '@/views/Main/HomeSections/WelcomeBanner';
@@ -36,7 +36,10 @@ import { useMainWebsite } from '@/hooks/main/useMainWebsite';
 const SattaMatkaWebsite = () => {
   const { data, refetch } = useMainWebsite();
 
-  const refreshTime = useMemo(() => data?.data?.updated_time ?? new Date().toLocaleTimeString(), [data?.data?.updated_time]);
+  const [refreshTime, setRefreshTime] = React.useState("");
+  React.useEffect(() => {
+    setRefreshTime(data?.data?.updated_time ?? new Date().toLocaleTimeString());
+  }, [data?.data?.updated_time]);
 
   const handleRefresh = async () => {
     await refetch();

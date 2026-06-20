@@ -21,7 +21,10 @@ const WeeklyLineChart = () => {
     return `${format(monday)} To ${format(sunday)}`;
   };
 
-  const weekRange = getWeekRange();
+  const [weekRange, setWeekRange] = React.useState("");
+  React.useEffect(() => {
+    setWeekRange(getWeekRange());
+  }, []);
 
   return (
     <Card className="bg-peach border border-red-600 shadow-sm rounded-none">

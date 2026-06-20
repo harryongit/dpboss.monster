@@ -21,7 +21,10 @@ const WeeklyPattiChart = () => {
     return `${format(monday)} To ${format(sunday)}`;
   };
 
-  const weekRange = getWeekRange();
+  const [weekRange, setWeekRange] = React.useState("");
+  React.useEffect(() => {
+    setWeekRange(getWeekRange());
+  }, []);
 
   const pattiData = `1=>128-470-579-678
 2=>589-246-129-660

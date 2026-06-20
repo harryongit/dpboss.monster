@@ -20,11 +20,14 @@ const FreeGuessingDaily: React.FC = () => {
   // show dummy markets if API empty
   const items = apiItems.length > 0 ? apiItems : [];
 
-  const today = new Date();
-  const dd = String(today.getDate()).padStart(2, "0");
-  const mm = String(today.getMonth() + 1).padStart(2, "0");
-  const yyyy = today.getFullYear();
-  const dateStr = `${dd}/${mm}/${yyyy}`;
+  const [dateStr, setDateStr] = React.useState("");
+  React.useEffect(() => {
+    const today = new Date();
+    const dd = String(today.getDate()).padStart(2, "0");
+    const mm = String(today.getMonth() + 1).padStart(2, "0");
+    const yyyy = today.getFullYear();
+    setDateStr(`${dd}/${mm}/${yyyy}`);
+  }, []);
 
   return (
     <div className="max-w-3xl mx-auto bg-[#f6c79b] border-2 border-pink-500 rounded-md overflow-hidden shadow-md">
