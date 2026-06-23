@@ -1,3 +1,4 @@
+"use client";
 import React, { useMemo, useState } from "react";
 import { useMainStarLinePublicUploadSlots } from "@/hooks/common/useMainStarLinePublicUploadSlots";
 import { useMainStarLinePublicUploadSubmit } from "@/hooks/common/useMainStarLinePublicUploadSubmit";

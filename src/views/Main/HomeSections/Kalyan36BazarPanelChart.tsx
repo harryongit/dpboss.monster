@@ -1,3 +1,4 @@
+"use client";
 import React, { useMemo } from "react";
 import { useNavigate } from "@/lib/router-compat";
 import HeaderLogo from "./HeaderLogo";

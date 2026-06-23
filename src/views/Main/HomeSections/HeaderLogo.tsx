@@ -6,18 +6,18 @@ const HeaderLogo = () => {
     <div className="top-0 z-50">
       <div className="p-1 flex justify-center">
 
-        <div className="border-[3px] border-red-500 rounded-[15px] px-6 py-3 bg-[#f3c08c] font-bold flex items-center justify-center gap-3 w-full max-w-[420px]">
+        <h1 className="border-[3px] border-red-500 rounded-[15px] px-6 py-3 bg-[#f3c08c] font-bold flex items-center justify-center gap-3 w-full max-w-[420px] m-0">
 
           {/* Logo */}
           <img
             src={typeof dpboss === 'object' ? dpboss.src : (dpboss as string)}
-            alt="DPBOSS Logo"
+            alt="DP BOSS Fastest Satta Matka Result Logo"
             className="h-12 w-auto"
           />
-          <h1>BOSS.MONSTER</h1>
+          <span className="text-2xl">BOSS.MONSTER</span>
 
 
-        </div>
+        </h1>
 
       </div>
     </div>

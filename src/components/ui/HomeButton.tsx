@@ -1,3 +1,4 @@
+"use client";
 import { Home } from "lucide-react";
 import { useNavigate } from "@/lib/router-compat";
 import { cn } from "@/lib/utils";

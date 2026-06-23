@@ -11,6 +11,19 @@ const FooterSection = () => {
   return (
     <footer className="mt-6 rounded-t-2xl border-t border-red-500">
       <div className="text-center py-5 px-3 space-y-3">
+        {/* SEO Text */}
+        <div className="text-[10px] text-gray-500 font-medium text-center mb-4 max-w-sm mx-auto space-y-1">
+          <p>
+            DP BOSS is an informational website providing fast Satta Matka results
+            for Kalyan, Milan Day, Rajdhani Night and Time Bazar along with charts
+            and panel records.
+          </p>
+          <p>
+            This website is for informational and entertainment purposes only.
+            We do not promote gambling. Matka is illegal in many regions.
+            Please follow your local laws.
+          </p>
+        </div>
         {/* Brand */}
         <p className="font-black text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-sky-600 to-cyan-600 text-base">
           © 2024 DPBOSS.MONSTER

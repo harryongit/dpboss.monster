@@ -60,6 +60,7 @@ const SattaMatkaWebsite = () => {
     const items = data?.data?.final_ank ?? [];
     return items.map((m) => ({ market: m.market_name, ank: m.ank ?? '-' }));
   }, [data?.data?.final_ank]);
+
   const keywords = [
     "KALYAN MATKA",
     "MATKA RESULT",
@@ -71,10 +72,8 @@ const SattaMatkaWebsite = () => {
     "WORLD ME SABSE FAST SATTA MATKA RESULT",
   ];
 
-
-
   return (
-    <div className="min-h-screen bg-peach">
+    <main className="min-h-screen bg-peach">
       <div className="max-w-md mx-auto">
         <HeaderLogo />
 
@@ -132,13 +131,8 @@ const SattaMatkaWebsite = () => {
           {/* <RajeshreeStarLine />
           <KalyanStarLine /> */}
 
-
-
-
-
           <JodiChartSection />
           <PanelChartSection />
-
 
           <IntroductionSection />
 
@@ -163,11 +157,9 @@ const SattaMatkaWebsite = () => {
           cursor: 'pointer'
         }}
       >
-
         REFRESH
       </button>
-
-    </div>
+    </main>
   );
 };
 

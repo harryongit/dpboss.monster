@@ -4,9 +4,13 @@ import Providers from "./providers";
 import "../index.css"; // Import the existing custom stylesheet
 
 export const metadata: Metadata = {
-  title: "DP BOSS | Satta Matka Fast Result | Kalyan Milan Rajdhani",
-  description: "Get fast and accurate Satta Matka results for Kalyan, Milan, Rajdhani & Time Bazar. DP BOSS offers daily updates, charts, panel records & live Matka results.",
-  keywords: "satta matka, dp boss, dpboss, matka result, kalyan matka, milan day, rajdhani night, time bazar",
+  title: "DP BOSS | Fastest Satta Matka Result | Kalyan Matka | DPBoss",
+  description: "DP BOSS offers the fastest Satta Matka results, Kalyan Matka, Milan Day, Rajdhani Night, live Matka charts, panel records, and daily updates.",
+  keywords: "satta matka, dp boss, dpboss, matka result, kalyan matka, milan day, rajdhani night, time bazar, fastest satta matka result, kalyan chart, matka guessing, live matka result, matka boss, satta boss, kalyan panel chart, jodi record",
+  authors: [{ name: "DP BOSS", url: "https://dpboss.monster/" }],
+  creator: "DP BOSS",
+  category: "Entertainment",
+  metadataBase: new URL('https://dpboss.monster/'),
   robots: {
     index: true,
     follow: true,
@@ -81,6 +85,11 @@ export default function RootLayout({
               "@type": "WebSite",
               "name": "DP BOSS",
               "url": "https://dpboss.monster/",
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://dpboss.monster/search?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+              },
               "inLanguage": "en-IN",
               "publisher": {
                 "@type": "Organization",
@@ -133,20 +142,6 @@ export default function RootLayout({
         </Script>
 
         {/* SEO Fallback Sections */}
-        <section className="seo-hidden">
-          <h1>DP BOSS – Live Satta Matka Results</h1>
-          <p>
-            DP BOSS is an informational website providing fast Satta Matka results
-            for Kalyan, Milan Day, Rajdhani Night and Time Bazar along with charts
-            and panel records.
-          </p>
-          <p>
-            This website is for informational and entertainment purposes only.
-            We do not promote gambling. Matka is illegal in many regions.
-            Please follow your local laws.
-          </p>
-        </section>
-
         <Providers>
           {children}
         </Providers>

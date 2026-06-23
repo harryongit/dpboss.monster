@@ -1,3 +1,4 @@
+"use client";
 import React, { useMemo, useState } from "react";
 import { useMainStarLinePanelResults } from "@/hooks/common/useMainStarLinePanelResults";
 import { useNavigate } from "@/lib/router-compat";

@@ -1,7 +1,22 @@
 import React from "react";
+import { Metadata } from "next";
 import { QueryClient, dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import JodiRecordChart from "@/views/Main/HomeSections/allmarkets/JodiRecordChart";
 import { api } from "@/lib/http";
+
+export async function generateMetadata({ params }: { params: Promise<{ marketName: string }> }): Promise<Metadata> {
+  const resolvedParams = await params;
+  const decodedMarketName = decodeURIComponent(resolvedParams.marketName).toUpperCase();
+  
+  return {
+    title: `${decodedMarketName} Jodi Chart Record | DPBOSS Satta Matka`,
+    description: `Check the latest and historical ${decodedMarketName} Jodi chart records. DP BOSS provides accurate Satta Matka results for ${decodedMarketName}.`,
+    keywords: `${decodedMarketName} jodi chart, ${decodedMarketName} record, satta matka, dp boss, dpboss, matka result`,
+    alternates: {
+      canonical: `https://dpboss.monster/jodi-records-chart/${resolvedParams.marketName}`,
+    },
+  };
+}
 
 export default async function Page({ params }: { params: Promise<{ marketName: string }> }) {
   const resolvedParams = await params;
