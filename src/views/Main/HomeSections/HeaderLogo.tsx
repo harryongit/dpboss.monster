@@ -12,7 +12,7 @@ const HeaderLogo = () => {
           <img
             src={typeof dpboss === 'object' ? dpboss.src : (dpboss as string)}
             alt="DP BOSS Fastest Satta Matka Result Logo"
-            className="h-12 w-auto"
+            className="h-16 w-auto"
           />
 
 
