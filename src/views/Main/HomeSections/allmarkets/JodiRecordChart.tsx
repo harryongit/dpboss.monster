@@ -53,7 +53,7 @@ const JodiRecordChart = () => {
   const { data: jodiData, isLoading: isJodiLoading, refetch } = useJodiChart(marketId);
 
 
-  const isLoading = (!!marketId && isJodiLoading);
+  const isLoading = !marketId || isJodiLoading;
 
   const dayCount = jodiData?.data?.days ?? 7;
   const displayDays = days.slice(0, dayCount);

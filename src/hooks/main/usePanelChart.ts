@@ -48,5 +48,6 @@ export function usePanelChart(marketId?: number) {
     enabled: !!marketId,
     refetchInterval: 30000,
     refetchOnWindowFocus: true,
+    gcTime: 0,
   });
 }

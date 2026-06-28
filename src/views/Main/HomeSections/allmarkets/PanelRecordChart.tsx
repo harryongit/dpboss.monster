@@ -35,7 +35,7 @@ const PanelRecordChart = () => {
   const { data: panelData, isLoading: isPanelLoading, refetch } =
     usePanelChart(marketId);
 
-  const isLoading = !!marketId && isPanelLoading;
+  const isLoading = !marketId || isPanelLoading;
 
 
   const daysColSpan = (panelData?.data?.days ?? 7) + 1;
